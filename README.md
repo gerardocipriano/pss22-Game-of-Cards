@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards">
-    <img src="src/public/images/logo.png" alt="Logo" width="200">
+    <img src="src/main/resources/images/logo1.jpg" alt="Logo" width="200">
   </a>
 
 <h3 align="center">Game-of-Cards</h3>
@@ -86,7 +86,7 @@ Start a game and play against another player on the same screen.
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards">
-    <img src="src/public/img/play.png" alt="Menu" height="500">
+    <img src="src/public/img/play.png" alt="gameplay screen" height="500">
   </a>
 </div>
 
@@ -96,7 +96,7 @@ Opens the card creation interface where the user can create custom cards.
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards">
-    <img src="src/public/img/cc.png" alt="delega page" height="500">
+    <img src="src/public/img/cc.png" alt="card creation page" height="500">
   </a>
 </div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -107,7 +107,7 @@ Opens the deck creation and management interface where the user can assemble and
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards">
-    <img src="src/public/img/dm.png" alt="Submit new dish page" height="500">
+    <img src="src/public/img/dm.png" alt="deck management page" height="500">
   </a>
 </div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -118,7 +118,7 @@ User guide with the rules of the game and information on how to play it.
 
 <div align="center">
   <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards">
-    <img src="src/main/images/th.png" alt="Submit new dish page" height="500">
+    <img src="src/main/images/th.png" alt="rules page" height="500">
   </a>
 </div>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -158,13 +158,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Massimiliano Battelli <massimilian.battelli@studio.unibo.it><br />
+- Massimiliano Battelli <massimilian.battelli@studio.unibo.it><br />
 
-Ambra Benvenuti <ambra.benvenuti@studio.unibo.it><br />
+- Ambra Benvenuti <ambra.benvenuti@studio.unibo.it><br />
 
-Gerardo Cipriano <gerardo.cipriano@studio.unibo.it><br />
+- Gerardo Cipriano <gerardo.cipriano@studio.unibo.it><br />
 
-Edoardo Triossi <edoardo.triossi@studio.unibo.it><br />
+- Edoardo Triossi <edoardo.triossi@studio.unibo.it><br />
 
 
 Project Link: [https://github.com/gerardocipriano/pss22-Game-of-Cards](https://github.com/gerardocipriano/pss22-Game-of-Cards)
