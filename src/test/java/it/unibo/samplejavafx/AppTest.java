@@ -8,6 +8,6 @@ import org.junit.jupiter.api.Test;
 
 class AppTest {
     @Test void testAppHasAGreeting() throws ClassNotFoundException {
-        assertNotNull(Class.forName("javafx.scene.Scene"));
+        assertNotNull(Class.forName("launcher.Launcher"));
     }
 }
