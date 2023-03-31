@@ -14,29 +14,14 @@
          </image>
       </ImageView>
       <Button id="playButton" fx:id="playButton" layoutX="768.0" layoutY="753.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="181.0" prefWidth="417.0" text="PLAY" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="768.0" AnchorPane.rightAnchor="735.0" AnchorPane.topAnchor="753.0">
-         <font>
-            <Font name="Verdana" size="48.0" />
-         </font>
       </Button>
       <Button id="playButton" layoutX="32.0" layoutY="271.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="457.0" text="Card Creation" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="689.0" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="271.0">
-         <font>
-            <Font name="Verdana" size="48.0" />
-         </font>
       </Button>
       <Button id="playButton" layoutX="32.0" layoutY="420.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="457.0" text="Deck" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="540.0" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="420.0">
-         <font>
-            <Font name="Verdana" size="48.0" />
-         </font>
       </Button>
       <Button id="playButton" layoutX="32.0" layoutY="566.0" lineSpacing="1.0" mnemonicParsing="false" opacity="0.97" prefHeight="120.0" prefWidth="457.0" text="Rules" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font name="Verdana" size="48.0" />
-         </font>
       </Button>
       <Button id="settingsButton" fx:id="settingsButton" layoutX="819.0" layoutY="943.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#openSettings" opacity="0.91" prefHeight="95.0" prefWidth="315.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font name="Verdana" size="48.0" />
-         </font>
       </Button>
    </children>
 </AnchorPane>

@@ -5,7 +5,6 @@
 }
 
 .label {
-    -fx-font: Verdana;
-    -fx-font-size: 36px;
+    -fx-font: 36px "Verdana";
     -fx-color: black;
 }
