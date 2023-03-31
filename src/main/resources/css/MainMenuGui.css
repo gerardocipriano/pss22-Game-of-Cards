@@ -1,0 +1,11 @@
+.button {
+    -fx-font-size: 44px;
+    -fx-font: Verdana;
+    -fx-text-align: center;
+}
+
+.label {
+    -fx-font: Verdana;
+    -fx-font-size: 36px;
+    -fx-color: black;
+}
