@@ -6,13 +6,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../css/MainMenuGui.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxml.MainMenu">
+<AnchorPane id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../css/MainMenuGui.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxml.MainMenu">
    <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" opacity="0.8">
-         <image>
-            <Image url="@../images/MainMenu1c.jpg" />
-         </image>
-      </ImageView>
       <Button id="playButton" fx:id="playButton" layoutX="768.0" layoutY="753.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="181.0" prefWidth="417.0" text="PLAY" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="768.0" AnchorPane.rightAnchor="735.0" AnchorPane.topAnchor="753.0">
       </Button>
       <Button id="playButton" layoutX="32.0" layoutY="271.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="457.0" text="Card Creation" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="689.0" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="271.0">

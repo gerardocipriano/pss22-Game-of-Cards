@@ -2,6 +2,7 @@ package controller.fxml;
 
 import java.io.IOException;
 
+import controller.screen.FullScreenManager;
 import controller.sound.BackgroundMusic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,9 @@ public class Settings {
     private Button backButton;
 
     @FXML
+    private Button toggleFullScreenButton;
+
+    @FXML
     private Slider musicAudioLevelSlider;
 
     @FXML
@@ -24,6 +28,11 @@ public class Settings {
             sceneHandler.setPrimaryStage((Stage) backButton.getScene().getWindow());
         }
         sceneHandler.openMainMenu(event);
+    }
+
+    @FXML
+    void toggleFullScreen(final ActionEvent event) throws IOException {
+        FullScreenManager.getInstance((Stage) toggleFullScreenButton.getScene().getWindow()).toggleFullScreen();
     }
 
     public void initialize() {

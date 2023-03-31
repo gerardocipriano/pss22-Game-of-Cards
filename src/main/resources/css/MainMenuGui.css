@@ -1,3 +1,8 @@
+#panel {
+    -fx-background-image: url(/images/MainMenu1c.jpg);
+    -fx-background-size: 100% 100%;
+}
+
 .button {
     -fx-font-size: 44px;
     -fx-font: Verdana;

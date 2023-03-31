@@ -1,6 +1,8 @@
 package controller.fxml;
 
 import java.io.IOException;
+
+import controller.screen.FullScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,13 +51,13 @@ public class SceneHandler {
      */
     public void openSettings(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/SettingsGui.fxml"));
-        primaryStage.setScene(new Scene(root));
+        primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
 
     public void openMainMenu(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MainMenuGui.fxml"));
-        primaryStage.setScene(new Scene(root));
+        primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
     
