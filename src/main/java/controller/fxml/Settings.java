@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import controller.screen.FullScreenManager;
 import controller.sound.BackgroundMusic;
+import controller.sound.SoundButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,7 +15,7 @@ public class Settings {
     private final SceneHandler sceneHandler = SceneHandler.getInstance();
 
     @FXML
-    private Button backButton;
+    private SoundButton backButton;
 
     @FXML
     private Button toggleFullScreenButton;
