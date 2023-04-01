@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import controller.sound.*;
 
 /**
  * This class sets up the GUI for the Main Menu of the application.
@@ -33,6 +34,8 @@ public final class GameStart extends Application {
         primaryStage.setResizable(true);
         primaryStage.show();
         primaryStage.setResizable(false);
+        BackgroundMusic.getInstance().play();
+        BackgroundMusic.getInstance().setVolume(0.1);
     }
     /**
      * Main method.
