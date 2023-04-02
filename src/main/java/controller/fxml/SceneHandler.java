@@ -86,7 +86,7 @@ public class SceneHandler {
      * @throws IOException if an I/O error occurs
      */
     public void openDeckManagement(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/Rules.fxml"));
+        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/DeckManagement.fxml"));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
