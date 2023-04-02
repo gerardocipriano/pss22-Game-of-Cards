@@ -16,12 +16,24 @@ public class MainMenu {
     private SoundButton settingsButton;
 
     @FXML
+    private SoundButton rulesButton;
+
+    @FXML
     void openSettings(final ActionEvent event) throws IOException {
         
         if (sceneHandler.getPrimaryStage() == null) {
             sceneHandler.setPrimaryStage((Stage) settingsButton.getScene().getWindow());
         }
         sceneHandler.openSettings(event);
+    }
+
+    @FXML
+    void openRules(final ActionEvent event) throws IOException {
+        
+        if (sceneHandler.getPrimaryStage() == null) {
+            sceneHandler.setPrimaryStage((Stage) rulesButton.getScene().getWindow());
+        }
+        sceneHandler.openRules(event);
     }
 
 }
