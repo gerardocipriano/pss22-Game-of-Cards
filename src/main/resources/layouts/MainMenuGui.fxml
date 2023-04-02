@@ -11,11 +11,11 @@
       </Button>
       <Button id="playButton" layoutX="32.0" layoutY="271.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="457.0" text="Card Creation" textAlignment="CENTER" textOverrun="CLIP">
       </Button>
-      <Button id="playButton" layoutX="32.0" layoutY="420.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="457.0" text="Deck" textAlignment="CENTER" textOverrun="CLIP">
-      </Button>
+      <SoundButton id="decksButton" fx:factory="create" fx:id="decksButton" onAction="#openDeckManagement" layoutX="32.0" layoutY="420.0" lineSpacing="1.0" mnemonicParsing="false" opacity="0.97" prefHeight="120.0" prefWidth="457.0" text="Decks" textAlignment="CENTER" textOverrun="CLIP">
+      </SoundButton>
       <SoundButton id="rulesButton" fx:factory="create" fx:id="rulesButton" onAction="#openRules" layoutX="32.0" layoutY="567.0" lineSpacing="1.0" mnemonicParsing="false" opacity="0.97" prefHeight="120.0" prefWidth="457.0" text="Rules" textAlignment="CENTER" textOverrun="CLIP">
       </SoundButton>
-      <SoundButton id="settingsButton" fx:factory="create" fx:id="settingsButton" layoutX="821.0" layoutY="954.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#openSettings" opacity="0.91" prefHeight="95.0" prefWidth="311.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="821.0" AnchorPane.rightAnchor="788.0">
+      <SoundButton id="settingsButton" fx:factory="create" fx:id="settingsButton" onAction="#openSettings" layoutX="821.0" layoutY="954.0" lineSpacing="1.0" mnemonicParsing="false"  opacity="0.91" prefHeight="95.0" prefWidth="311.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="821.0" AnchorPane.rightAnchor="788.0">
       </SoundButton>
    </children>
 </AnchorPane>

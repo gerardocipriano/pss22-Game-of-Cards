@@ -27,11 +27,13 @@ public final class GameStart extends Application {
      */
     public void start(final Stage stage) throws IOException {
         final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MainMenuGui.fxml"));
-        final Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
+        final Scene scene = new Scene(root);
         primaryStage.getIcons().add(new Image("/images/logo.png"));
         primaryStage.setScene(scene);
         primaryStage.setTitle("Game of Cards");
         primaryStage.setResizable(true);
+        primaryStage.setWidth(SCENE_WIDTH);
+        primaryStage.setHeight(SCENE_HEIGHT);
         primaryStage.show();
         primaryStage.setResizable(false);
         BackgroundMusic.getInstance().play();
