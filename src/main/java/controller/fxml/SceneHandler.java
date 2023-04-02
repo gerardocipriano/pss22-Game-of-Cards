@@ -2,7 +2,6 @@ package controller.fxml;
 
 import java.io.IOException;
 
-import controller.screen.FullScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -55,6 +54,12 @@ public class SceneHandler {
         primaryStage.show();
     }
 
+        /**
+     * Opens the Main Menu scene.
+     *
+     * @param event the action event
+     * @throws IOException if an I/O error occurs
+     */
     public void openMainMenu(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MainMenuGui.fxml"));
         primaryStage.getScene().setRoot(root);
@@ -105,11 +110,9 @@ public class SceneHandler {
      * @throws IOException if an I/O error occurs
      */
     public void openRules(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/path/to/Rules.fxml"));
-        primaryStage.setScene(new Scene(root));
+        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/Rules.fxml"));
+        primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
 
-    public void openMainMenu() {
-    }
 }
