@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import controller.screen.FullScreenManager;
 import controller.sound.*;
 
 /**
@@ -28,6 +29,7 @@ public final class GameStart extends Application {
     public void start(final Stage stage) throws IOException {
         final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MainMenuGui.fxml"));
         final Scene scene = new Scene(root);
+        
         primaryStage.getIcons().add(new Image("/images/logo.png"));
         primaryStage.setScene(scene);
         primaryStage.setTitle("Game of Cards");
@@ -37,7 +39,7 @@ public final class GameStart extends Application {
         primaryStage.show();
         primaryStage.setResizable(false);
         BackgroundMusic.getInstance().playMainTheme();
-        BackgroundMusic.getInstance().setVolume(0.1);
+        BackgroundMusic.getInstance().setVolume(0.025);
     }
     /**
      * Main method.

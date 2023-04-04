@@ -139,7 +139,7 @@ Optional features:
 
 
 - [ ] Game audio
-- [ ] Back to top button
+- [ ] Player vs CPU
 - [ ] Animations for drawing and activating card effects.
 
 

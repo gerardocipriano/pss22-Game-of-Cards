@@ -22,6 +22,9 @@ public class MainMenu {
     private SoundButton decksButton;
 
     @FXML
+    private SoundButton matchButton;
+
+    @FXML
     void openSettings(final ActionEvent event) throws IOException {
         
         if (sceneHandler.getPrimaryStage() == null) {
@@ -46,6 +49,15 @@ public class MainMenu {
             sceneHandler.setPrimaryStage((Stage) decksButton.getScene().getWindow());
         }
         sceneHandler.openDeckManagement(event);
+    }
+
+    @FXML
+    void openMatch(final ActionEvent event) throws IOException {
+        
+        if (sceneHandler.getPrimaryStage() == null) {
+            sceneHandler.setPrimaryStage((Stage) matchButton.getScene().getWindow());
+        }
+        sceneHandler.openMatch(event);
     }
 
 }

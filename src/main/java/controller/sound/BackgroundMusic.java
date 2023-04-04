@@ -29,6 +29,7 @@ public class BackgroundMusic {
         mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(mainTheme);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.025);
         mediaPlayer.play();
     }
 
@@ -36,6 +37,7 @@ public class BackgroundMusic {
         mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(matchTheme);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.025);
         mediaPlayer.play();
     }
 
