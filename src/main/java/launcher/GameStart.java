@@ -17,8 +17,8 @@ public final class GameStart extends Application {
      * 
      */
     public static final String SEPARATOR = "/";
-    private static final int SCENE_WIDTH = 1920;
-    private static final int SCENE_HEIGHT = 1080;
+    private static final int SCENE_WIDTH = 1280;
+    private static final int SCENE_HEIGHT = 720;
     private final Stage primaryStage = new Stage();
     /**
      * This method loads the Menu and sets the window up.
@@ -36,7 +36,7 @@ public final class GameStart extends Application {
         primaryStage.setHeight(SCENE_HEIGHT);
         primaryStage.show();
         primaryStage.setResizable(false);
-        BackgroundMusic.getInstance().play();
+        BackgroundMusic.getInstance().playMainTheme();
         BackgroundMusic.getInstance().setVolume(0.1);
     }
     /**
