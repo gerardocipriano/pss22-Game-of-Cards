@@ -98,140 +98,36 @@ classDiagram
     Deck -- Card 
 ```
 
+Data la complessità di elaborare una strategia di gioco per il computer, la prima versione software fornita non prevederà la modalità giocatore 1 versus CPU.
  
 
-### Elementi positivi
-
--   Viene descritto accuratamente il modello del dominio.
--   Alcuni problemi, se non risolubili in assoluto o nel monte ore,
-    vengono dichiarati come problemi che non saranno risolti o sarano
-    risolti in futuro.
--   Si modella il dominio in forma di UML, descrivendolo
-    appropriatamente.
-
-### Elementi negativi
-
--   Manca una descrizione a parole del modello del dominio.
--   Manca una descrizione UML delle entità del dominio e delle relazioni
-    che intercorrono fra loro.
--   Vengono elencate soluzioni ai problemi, invece della descrizione
-    degli stessi.
--   Vengono presentati elementi di design, o peggio aspetti
-    implementativi.
--   Viene mostrato uno schema UML che include elementi implementativi o
-    non utili alla descrizione del dominio, ma volti alla soluzione (non
-    devono vedersi, ad esempio, campi o metodi privati, o cose che non
-    siano equivalenti ad interfacce).
-
-### Esempio
-
-GLaDOS dovrà essere in grado di accedere ad un'insieme di camere di
-test. Tale insieme di camere prende il nome di percorso. Ciascuna camera
-è composta di challenge successivi. GLaDOS è responsabile di associare a
-ciascun challenge un insieme di consigli (suggestions) destinati
-all'utente (subject), dipendenti da possibili eventi. GLaDOS dovrà poter
-comunicare coi locali cucina per approntare le torte. Le torte potranno
-essere dolci, oppure semplici promesse di dolci che verranno disattese.
-
-Gli elementi costitutivi il problema sono sintetizzati nella seguente figura.
-
-```mermaid
-classDiagram
-
-class Suggestion
-<<interface>> Suggestion
-
-class Event
-<<interface>> Event
-
-class Personality
-<<interface>> Personality
-
-class Kitchen {
-    +orderCake(): Cake
-}
-<<interface>> Kitchen
-
-class Cake {
-    +isALie(): boolean
-}
-<<interface>> Cake
-
-class AI {
-    +addKitchen(Kitchen)
-    +computeSuggestion(Subject, Event): Suggestion
-    +setPersonality(Personality)
-}
-<<interface>> AI
-
-class Subject {
-    +getPath(Path)
-    +getCurrentChamber(): Chamber
-    +getCurrentChallenge(): Challenge
-}
-<<interface>> Subject
-
-class Challenge
-<<interface>> Challenge
-
-class Chamber {
-    +getChallenges(): List~Challenge~
-}
-<<interface>> Chamber
-
-class Path {
-    +getChambers(): List~Chamber~
-}
-<<interface>> Path
-
-AI --* Personality
-AI -- Suggestion
-AI -- Event
-AI --o Kitchen
-Kitchen -- Cake
-AI -- Subject
-Subject -- Challenge
-Challenge --* Chamber
-Chamber --* Path
-Subject -- Path
-```
-
-La difficoltà primaria sarà quella di riuscire a correlare lo stato
-corrente dell'utente e gli eventi in modo tale da generare i corretti
-suggerimenti. Questo richiederà di mettere in campo appropriate
-strategie di intelligenza artificiale.
-
-Data la complessità di elaborare consigli via AI senza intervento umano,
-la prima versione del software fornita prevederà una serie di consigli
-forniti dall'utente.
-
-Il requisito non funzionale riguardante il consumo energetico richiederà
-studi specifici sulle performance di GLaDOS che non potranno essere
-effettuati all'interno del monte ore previsto: tale feature sarà oggetto
-di futuri lavori.
 
 # Design
 
-In questo capitolo si spiegano le strategie messe in campo per
-soddisfare i requisiti identificati nell'analisi.
-
-Si parte da una visione architetturale, il cui scopo è informare il
-lettore di quale sia il funzionamento dell'applicativo realizzato ad
-alto livello. In particolare, è necessario descrivere accuratamente in
-che modo i componenti principali del sistema si coordinano fra loro. A
-seguire, si dettagliano alcune parti del design, quelle maggiormente
-rilevanti al fine di chiarificare la logica con cui sono stati
-affrontati i principali aspetti dell'applicazione.
-
 ## Architettura
 
-Questa sezione spiega come le componenti principali del software
-interagiscono fra loro.
+Il progetto Java che abbiamo sviluppato segue un pattern in cui ogni aspetto funziona in autonomia per garantire un'organizzazione efficiente. In particolare, l'intero modello si basa sulla classe Match che coordina tutte le funzionalità della partita che abbiamo aggiunto. Per la gestione dei componenti della view, abbiamo utilizzato JavaFX e creato dei file fxml, che contengono la struttura degli elementi grafici dell'interfaccia. Tutti questi elementi costituiscono la vera struttura del progetto e sono stati uniti e interconnessi dai vari controller. In questo modo, possiamo garantire il funzionamento dell'applicazione anche se si dovesse optare per una GUI diversa, senza essere vincolati ad una tecnologia specifica come JavaFX.
 
-In questa sezione vanno descritte, per ciascun componente architetturale
-che ruoli ricopre (due o tre ruoli al massimo), ed in che modo
-interagisce (ossia, scambia informazioni) con gli altri componenti
-dell'architettura.
+``` mermaid
+classDiagram
+
+    class Model {
+    }
+    
+    class Match {
+    }
+    <<interface>> Match
+    
+    class Controller {
+    }
+    
+    class View {
+    }
+    
+    Controller -- View 
+    Match -- Controller
+    Model -- Match
+```
 
 ### Elementi positivi
 
