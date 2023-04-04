@@ -74,7 +74,7 @@ public class SceneHandler {
      * @throws IOException if an I/O error occurs
      */
     public void openCardCreation(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/path/to/CardCreation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/path/to/CardCreationGui.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
@@ -86,7 +86,7 @@ public class SceneHandler {
      * @throws IOException if an I/O error occurs
      */
     public void openDeckManagement(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/DeckManagement.fxml"));
+        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/DeckManagementGui.fxml"));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
@@ -98,7 +98,7 @@ public class SceneHandler {
      * @throws IOException if an I/O error occurs
      */
     public void openMatch(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/path/to/Match.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/path/to/MatchGui.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
@@ -110,7 +110,7 @@ public class SceneHandler {
      * @throws IOException if an I/O error occurs
      */
     public void openRules(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/Rules.fxml"));
+        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/RulesGui.fxml"));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }

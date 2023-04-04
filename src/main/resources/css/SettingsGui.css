@@ -4,13 +4,13 @@
 }
 
 .button {
-    -fx-font-size: 44px;
+    -fx-font-size: 38px;
     -fx-font: Verdana;
 }
 
 .label {
     -fx-font: Verdana;
-    -fx-font-size: 36px;
+    -fx-font-size: 30px;
     -fx-color: black;
     -fx-font-style: bold;
 }
