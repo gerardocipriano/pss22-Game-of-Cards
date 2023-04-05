@@ -16,29 +16,29 @@ import javafx.util.Duration;
 import controller.sound.SoundButton;
 
 /**
- * Controller for the Rules scene.
- */
+* Controller for the Rules scene.
+*/
 public class Rules  {
-
+    
     private final SceneHandler sceneHandler = SceneHandler.getInstance();
-
+    
     @FXML
     private SoundButton backButton;
-
+    
     @FXML
     private TabPane tabPane;
-
+    
     @FXML
     private Text cardCreationText;
- 
+    
     @FXML
     private Text deckManagementText;
-
+    
     /**
-     * 
-     * Initializes the controller.
-     * 
-     */
+    * 
+    * Initializes the controller.
+    * 
+    */
     public void initialize() {
         //Get the text rules from the properties external file
         Properties properties = new Properties();
@@ -47,19 +47,20 @@ public class Rules  {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
         //Set content of labels according to the text in the rules.properties file
         cardCreationText.setText(properties.getProperty("cardCreation"));
         deckManagementText.setText(properties.getProperty("deckManagement"));
         
-        // Set the opacity of the content of all tabs to 0 at startup
-        for (Tab tab : tabPane.getTabs()) {
+        // Set the opacity of the content of all tabs except the first one to 0 at startup
+        for (int i = 1; i < tabPane.getTabs().size(); i++) {
+            Tab tab = tabPane.getTabs().get(i);
             tab.getContent().setOpacity(0);
         }
-
+        
         // Select the first tab
         selectFirstTab();
-
+        
         // Add a listener to the selected item property of the tab pane
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (oldValue != null) {
@@ -84,21 +85,21 @@ public class Rules  {
             }
         });
     }
-
+    
     /**
-     * Selects the first tab.
-     */
+    * Selects the first tab.
+    */
     public void selectFirstTab() {
         // Select the first tab
         tabPane.getSelectionModel().selectFirst();
     }
-
+    
     /**
-     * Handles the action of going back to the main menu.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
-     */
+    * Handles the action of going back to the main menu.
+    *
+    * @param event the action event
+    * @throws IOException if an I/O error occurs
+    */
     @FXML
     void backToMainMenu(final ActionEvent event) throws IOException {
         if (sceneHandler.getPrimaryStage() == null) {
