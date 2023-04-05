@@ -11,12 +11,12 @@ public class DeckManagement {
     private final SceneHandler sceneHandler = SceneHandler.getInstance();
 
     @FXML
-    private Button returnButton;
+    private Button backButton;
 
     @FXML
     void backToMainMenu(final ActionEvent event) throws IOException {
         if (sceneHandler.getPrimaryStage() == null) {
-            sceneHandler.setPrimaryStage((Stage) returnButton.getScene().getWindow());
+            sceneHandler.setPrimaryStage((Stage) backButton.getScene().getWindow());
         }
         sceneHandler.openMainMenu(event);
     }

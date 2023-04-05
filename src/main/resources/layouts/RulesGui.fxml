@@ -4,10 +4,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import controller.sound.SoundButton?>
 
 <VBox  id="panel" xmlns="http://javafx.com/javafx/8" stylesheets="@../css/RulesGui.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxml.Rules">
   <children>
-    <Button mnemonicParsing="false" onAction="#backToMainMenu" text="Indietro" />
+    <SoundButton fx:id="backButton" fx:factory="create" mnemonicParsing="false" onAction="#backToMainMenu" text="Indietro" />
     <TabPane fx:id="tabPane" prefHeight="720.0" prefWidth="1280.0">
       <tabs>
         <Tab text="Fase 1">
@@ -16,7 +17,7 @@
               <items>
                 <AnchorPane>
                   <children>
-                    <Text layoutX="14.0" layoutY="44.0" text="Regolamento per la fase 1..." wrappingWidth="600.0" />
+                    <Text fx:id="cardCreationText" layoutX="14.0" layoutY="44.0"  wrappingWidth="600.0" />
                   </children>
                 </AnchorPane>
                 <AnchorPane>
@@ -32,13 +33,13 @@
             </SplitPane>
           </content>
         </Tab>
-        <Tab text="Fase 1">
+        <Tab text="Fase 2">
       <content>
         <SplitPane dividerPositions="0.5">
           <items>
             <AnchorPane>
               <children>
-                <Text layoutX="14.0" layoutY="44.0" text="Regolamento per la fase 1..." wrappingWidth="600.0" />
+                <Text fx:id="deckManagementText" layoutX="14.0" layoutY="44.0" wrappingWidth="600.0" />
               </children>
             </AnchorPane>
             <AnchorPane>
@@ -54,7 +55,7 @@
         </SplitPane>
       </content>
     </Tab>
-    <!-- Aggiungi altre schede qui -->
+    <!-- Add new tabs here -->
       </tabs>
     </TabPane>
   </children>

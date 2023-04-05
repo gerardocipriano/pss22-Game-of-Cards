@@ -43,7 +43,7 @@
       </Label>
    </top>
    <bottom>
-      <Button fx:id="returnButton" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="15.0" prefWidth="551.0" styleClass="returnButton" text="Back" BorderPane.alignment="CENTER">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="15.0" prefWidth="551.0" styleClass="backButton" text="Back" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" />
          </BorderPane.margin>

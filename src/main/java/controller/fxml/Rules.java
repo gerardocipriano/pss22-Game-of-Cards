@@ -1,12 +1,15 @@
 package controller.fxml;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,12 +28,30 @@ public class Rules  {
     @FXML
     private TabPane tabPane;
 
+    @FXML
+    private Text cardCreationText;
+ 
+    @FXML
+    private Text deckManagementText;
+
     /**
      * 
      * Initializes the controller.
      * 
      */
     public void initialize() {
+        //Get the text rules from the properties external file
+        Properties properties = new Properties();
+        try (InputStream inputStream = getClass().getResourceAsStream("/rules/rules.properties")) {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Set content of labels according to the text in the rules.properties file
+        cardCreationText.setText(properties.getProperty("cardCreation"));
+        deckManagementText.setText(properties.getProperty("deckManagement"));
+        
         // Set the opacity of the content of all tabs to 0 at startup
         for (Tab tab : tabPane.getTabs()) {
             tab.getContent().setOpacity(0);
