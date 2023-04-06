@@ -37,9 +37,11 @@ public class Settings {
     }
 
     public void initialize() {
+        BackgroundMusic bgMusic = BackgroundMusic.getInstance();
+        musicAudioLevelSlider.setValue(bgMusic.getVolume() * 100);
+    
         musicAudioLevelSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100;
-            BackgroundMusic bgMusic = BackgroundMusic.getInstance();
             bgMusic.setVolume(volume);
         });
     }
