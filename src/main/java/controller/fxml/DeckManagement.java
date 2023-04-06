@@ -36,32 +36,75 @@ public class DeckManagement implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         rightList.setCellFactory(param -> new ListCell<Card>() {
+            private final Button cardButton = new Button("Add");
+            private final VBox container = new VBox();
+            {
+                cardButton.setOnAction(event -> {
+                    Card card = getItem();
+                    if (card != null && !card.isMoved()) {
+                        centerList.getItems().add(card);
+                        card.setMoved(true);
+                    }
+                });
+                container.getChildren().addAll(new javafx.scene.control.Label(), cardButton);
+                setGraphic(container);
+            }
+    
             @Override
             protected void updateItem(Card card, boolean empty) {
                 super.updateItem(card, empty);
                 if (empty || card == null) {
                     setText(null);
+                    container.setVisible(false);
+                    cardButton.setOnAction(null);
                 } else {
-                    VBox container = new VBox();
-                    Button cardButton = new Button("Add");
+                    ((javafx.scene.control.Label) container.getChildren().get(0)).setText(card.toString());
+                    container.setVisible(true);
                     cardButton.setOnAction(event -> {
                         if (!card.isMoved()) {
                             centerList.getItems().add(card);
-                            rightList.getItems().remove(card);
                             card.setMoved(true);
                         }
                     });
-                    container.getChildren().addAll(new javafx.scene.control.Label(card.toString()), cardButton);
-                    setGraphic(container);
                 }
             }
         });
+        centerList.setCellFactory(param -> new ListCell<Card>() {
+            private final Button cardButton = new Button("Remove");
+            private final VBox container = new VBox();
+            {
+                cardButton.setOnAction(event -> {
+                    Card card = getItem();
+                    if (card != null) {
+                        card.setMoved(false);
+                        centerList.getItems().remove(card);
+                    }
+                });
+                container.getChildren().addAll(new javafx.scene.control.Label(), cardButton);
+                setGraphic(container);
+            }
+            @Override
+            protected void updateItem(Card card, boolean empty) {
+                super.updateItem(card, empty);
+                if (empty || card == null) {
+                    setText(null);
+                    container.setVisible(false);
+                    cardButton.setOnAction(null);
+                } else {
+                    ((javafx.scene.control.Label) container.getChildren().get(0)).setText(card.toString());
+                    container.setVisible(true);
+                    cardButton.setOnAction(event -> {
+                        card.setMoved(false);
+                        centerList.getItems().remove(card);
+                    });
+                }
+            }
+        });
+
         rightList.getItems().addAll(
             new Card("Card 1", 10),
             new Card("Card 2", 5),
             new Card("Card 3", 8)
         );
-       
-    }
-    
+    } 
 }
