@@ -2,23 +2,23 @@ package model;
 
 public class Card {
     private String name;
-    private int value;
+    private int power;
 
-    public Card(String name, int value) {
+    public Card(String name, int power) {
         this.name = name;
-        this.value = value;
+        this.power = power;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getValue() {
-        return value;
+    public int getpower() {
+        return power;
     }
 
     @Override
     public String toString() {
-        return name + " (" + value + ")";
+        return "Name: " + name + "\n" + "power: " + power;
     }
 }
