@@ -7,11 +7,11 @@
 
 <AnchorPane id="panel" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/DeckManagementGui.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxml.DeckManagement">
    <children>
-      <ListView layoutX="-2.0" layoutY="-5.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1111.0" AnchorPane.topAnchor="0.0" />
+      <ListView fx:id="leftList" layoutX="-2.0" layoutY="-5.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1111.0" AnchorPane.topAnchor="0.0" />
       <ListView fx:id="rightList" layoutX="1111.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1111.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <VBox layoutX="556.0" prefHeight="686.0" prefWidth="169.0">
          <children>
-            <ListView prefHeight="592.0" prefWidth="169.0" />
+            <ListView fx:id="centerList" prefHeight="592.0" prefWidth="169.0" />
             <AnchorPane prefHeight="94.0" prefWidth="169.0">
                <children>
                   <Button layoutX="64.0" layoutY="14.0" mnemonicParsing="false" text="Save" />
