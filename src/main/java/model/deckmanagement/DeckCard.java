@@ -1,12 +1,12 @@
-package model;
+package model.deckmanagement;
 
 
-public class Card {
+public class DeckCard {
     private String name;
     private int value;
     private boolean moved;
 
-    public Card(String name, int value) {
+    public DeckCard(String name, int value) {
         this.name = name;
         this.value = value;
         this.moved = false;
@@ -21,6 +21,6 @@ public class Card {
     }
 
     public String toString() {
-        return this.name + " - " + this.value;
+        return this.name + " Attack: " + this.value;
     }
 }
