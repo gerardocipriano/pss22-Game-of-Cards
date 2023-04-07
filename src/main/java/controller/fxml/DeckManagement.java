@@ -41,10 +41,9 @@ public class DeckManagement implements Initializable {
     
     @FXML
         void saveDeck(final ActionEvent event) throws IOException{
-            System.out.println("tastosavepremuto");
             Deck deck = new Deck();
-            for ( DeckCard i : centerList.getItems()){
-                deck.addCard(i);
+            for (DeckCard card : centerList.getItems()){
+                deck.addCard(card);
             }
             leftList.getItems().add(deck);
         }
@@ -61,6 +60,6 @@ public class DeckManagement implements Initializable {
             );
             centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
             ToggleGroup group = new ToggleGroup();
-            leftList.setCellFactory(param -> new DeckCell("Remove", leftList, group));
+            leftList.setCellFactory(param -> new DeckCell(leftList, group));
         }   
 }

@@ -16,6 +16,11 @@ public class Deck {
         this.cards.add(Card);
     }
     public String toString() {
-        return "<Nome del deck>";
+        return "<Deck's Name>";
+    }
+    public void printCards(){
+        for (DeckCard i : this.cards){
+            System.out.println(i.toString());
+        }
     }
 }
