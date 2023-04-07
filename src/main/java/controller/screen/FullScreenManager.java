@@ -22,4 +22,8 @@ public class FullScreenManager {
         isFullScreen = !isFullScreen;
         stage.setFullScreen(isFullScreen);
     }
+
+    public boolean isFullScreen() {
+        return isFullScreen;
+    }
 }

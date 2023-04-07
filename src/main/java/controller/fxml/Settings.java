@@ -17,11 +17,13 @@ public class Settings {
     @FXML
     private SoundButton backButton;
 
-    @FXML
-    private Button toggleFullScreenButton;
+    @FXML Button toggleFullScreenButton;
 
-    @FXML
-    private Slider musicAudioLevelSlider;
+    @FXML Slider musicAudioLevelSlider;
+
+    public double getMusicAudioLevelSliderValue() {
+        return musicAudioLevelSlider.getValue();
+    }
 
     @FXML
     void backToMainMenu(final ActionEvent event) throws IOException {

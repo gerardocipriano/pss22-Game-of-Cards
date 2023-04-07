@@ -35,6 +35,7 @@ public final class GameStart extends Application {
         primaryStage.setResizable(true);
         primaryStage.setWidth(SCENE_WIDTH);
         primaryStage.setHeight(SCENE_HEIGHT);
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
         primaryStage.setResizable(false);
         BackgroundMusic.getInstance().playMainTheme();
