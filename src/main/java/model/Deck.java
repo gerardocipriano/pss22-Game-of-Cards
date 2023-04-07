@@ -15,10 +15,7 @@ public class Deck {
     public void addCard(DeckCard Card){
         this.cards.add(Card);
     }
-
-    public void getCards(){
-        for ( DeckCard i : cards){
-            System.out.println(i.toString());
-        }
+    public String toString() {
+        return "<Nome del deck>";
     }
 }

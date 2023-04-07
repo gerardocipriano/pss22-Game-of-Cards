@@ -43,10 +43,8 @@ public class DeckManagement implements Initializable {
             System.out.println("tastosavepremuto");
             Deck deck = new Deck();
             for ( DeckCard i : centerList.getItems()){
-                //System.out.println(i.toString());
                 deck.addCard(i);
             }
-            deck.getCards();
             leftList.getItems().add(deck);
         }
         
