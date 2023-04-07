@@ -2,10 +2,10 @@ package model.deckmanagement;
 
 import javafx.scene.control.ListView;
 
-public class AddCell extends Cell {
+public class RightCell extends Cell {
 
     
-    public AddCell(String buttonText, ListView<DeckCard> centerList) {
+    public RightCell(String buttonText, ListView<DeckCard> centerList) {
         super(buttonText, centerList);
     }
 

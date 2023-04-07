@@ -8,12 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deck;
-import model.deckmanagement.AddCell;
+import model.deckmanagement.RightCell;
 import model.deckmanagement.DeckCard;
 import model.deckmanagement.DeckCell;
-import model.deckmanagement.DeleteCell;
+import model.deckmanagement.CenterCell;
 
 public class DeckManagement implements Initializable {
     private final SceneHandler sceneHandler = SceneHandler.getInstance();
@@ -50,7 +51,7 @@ public class DeckManagement implements Initializable {
         
     @Override
         public void initialize(URL location, ResourceBundle resources) {
-            rightList.setCellFactory(param -> new AddCell("Add", centerList)); 
+            rightList.setCellFactory(param -> new RightCell("Add", centerList)); 
             rightList.getItems().addAll(
                 new DeckCard("Card 1", 10),
                 new DeckCard("Card 2", 5),
@@ -58,7 +59,8 @@ public class DeckManagement implements Initializable {
                 new DeckCard("Card 4", 13),
                 new DeckCard("Card 5", 20)
             );
-            centerList.setCellFactory(param -> new DeleteCell("Remove", centerList));
-            leftList.setCellFactory(param -> new DeckCell("Remove", leftList));
+            centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
+            ToggleGroup group = new ToggleGroup();
+            leftList.setCellFactory(param -> new DeckCell("Remove", leftList, group));
         }   
 }

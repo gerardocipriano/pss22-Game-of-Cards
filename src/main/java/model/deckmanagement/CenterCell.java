@@ -2,10 +2,10 @@ package model.deckmanagement;
 
 import javafx.scene.control.ListView;
 
-public class DeleteCell extends Cell {
+public class CenterCell extends Cell {
 
     
-    public DeleteCell(String buttonText, ListView<DeckCard> centerList) {
+    public CenterCell(String buttonText, ListView<DeckCard> centerList) {
         super(buttonText, centerList);
     }
 
