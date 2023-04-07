@@ -8,11 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Deck;
 import model.deckmanagement.RightCell;
 import model.deckmanagement.DeckCard;
-import model.deckmanagement.LeftCell;
+import model.deckmanagement.DeckCell;
 import model.deckmanagement.CenterCell;
 
 public class DeckManagement implements Initializable {
@@ -59,6 +60,7 @@ public class DeckManagement implements Initializable {
                 new DeckCard("Card 5", 20)
             );
             centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
-            leftList.setCellFactory(param -> new LeftCell("Remove", leftList));
+            ToggleGroup group = new ToggleGroup();
+            leftList.setCellFactory(param -> new DeckCell("Remove", leftList, group));
         }   
 }
