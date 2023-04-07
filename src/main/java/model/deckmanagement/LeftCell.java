@@ -7,13 +7,13 @@ import model.Deck;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class DeckCell extends ListCell<Deck> {
+public class LeftCell extends ListCell<Deck> {
 
     private VBox container;
     private Button deckButton;
     private Label label;
 
-    public DeckCell(String buttonText, ListView<Deck> leftList ) {
+    public LeftCell(String buttonText, ListView<Deck> leftList ) {
         label = new Label();
         deckButton = new Button(buttonText);
         container = new VBox(label, deckButton);
