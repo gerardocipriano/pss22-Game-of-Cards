@@ -2,7 +2,7 @@ package model.deckmanagement;
 
 import javafx.scene.control.ListView;
 
-public class AddCell extends DeckCell {
+public class AddCell extends Cell {
 
     
     public AddCell(String buttonText, ListView<DeckCard> centerList) {

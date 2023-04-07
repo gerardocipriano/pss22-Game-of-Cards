@@ -3,33 +3,36 @@ package model.deckmanagement;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import model.Deck;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-abstract class DeckCell extends ListCell<DeckCard> {
+public class DeckCell extends ListCell<Deck> {
 
     private VBox container;
-    private Button cardButton ;
+    private Button deckButton;
     private Label label;
 
-    public DeckCell(String buttonText, ListView<DeckCard> centerList ) {
+    public DeckCell(String buttonText, ListView<Deck> leftList ) {
         label = new Label();
-        cardButton = new Button(buttonText);
-        container = new VBox(label, cardButton);
-        cardButton.setOnAction(e -> {
-            DeckCard card = getItem();
-            this.handleCards(card, centerList);
+        deckButton = new Button(buttonText);
+        container = new VBox(label, deckButton);
+        deckButton.setOnAction(e -> {
+            Deck deck = getItem();
+            this.handleCards(deck, leftList);
         });
     }
     
-    protected abstract void handleCards(DeckCard card, ListView<DeckCard> centerList);
+    protected void handleCards(Deck deck, ListView<Deck> leftList){
+       leftList.getItems().remove(deck);
+    }   
 
-    protected void updateItem(DeckCard card, boolean empty) {
-        super.updateItem(card, empty);
-        if (empty || card == null) {
+    protected void updateItem(Deck deck, boolean empty) {
+        super.updateItem(deck, empty);
+        if (empty || deck == null) {
             setGraphic(null);
         } else {
-            label.setText(card.toString());
+            label.setText(deck.toString());
             setGraphic(container);
         }
     }

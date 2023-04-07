@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import model.Deck;
 import model.deckmanagement.AddCell;
 import model.deckmanagement.DeckCard;
+import model.deckmanagement.DeckCell;
 import model.deckmanagement.DeleteCell;
 
 public class DeckManagement implements Initializable {
@@ -25,6 +26,9 @@ public class DeckManagement implements Initializable {
 
     @FXML
     private ListView<DeckCard> centerList;
+
+    @FXML
+    private ListView<Deck> leftList;
 
     @FXML
         void backToMainMenu(final ActionEvent event) throws IOException {
@@ -43,6 +47,7 @@ public class DeckManagement implements Initializable {
                 deck.addCard(i);
             }
             deck.getCards();
+            leftList.getItems().add(deck);
         }
         
     @Override
@@ -56,9 +61,6 @@ public class DeckManagement implements Initializable {
                 new DeckCard("Card 5", 20)
             );
             centerList.setCellFactory(param -> new DeleteCell("Remove", centerList));
-        }
-
-    
-        
-    
+            leftList.setCellFactory(param -> new DeckCell("Remove", leftList));
+        }   
 }

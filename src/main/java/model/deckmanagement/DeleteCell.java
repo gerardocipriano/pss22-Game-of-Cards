@@ -2,7 +2,7 @@ package model.deckmanagement;
 
 import javafx.scene.control.ListView;
 
-public class DeleteCell extends DeckCell {
+public class DeleteCell extends Cell {
 
     
     public DeleteCell(String buttonText, ListView<DeckCard> centerList) {
@@ -16,7 +16,6 @@ public class DeleteCell extends DeckCell {
                 card.setMoved(! card.isMoved());
             } 
 
-        }
-        
+        }   
 }
 
