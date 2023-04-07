@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import model.Deck;
 import model.deckmanagement.AddCell;
 import model.deckmanagement.DeckCard;
 import model.deckmanagement.DeleteCell;
@@ -33,6 +34,17 @@ public class DeckManagement implements Initializable {
             sceneHandler.openMainMenu(event);
         }
     
+    @FXML
+        void saveDeck(final ActionEvent event) throws IOException{
+            System.out.println("tastosavepremuto");
+            Deck deck = new Deck();
+            for ( DeckCard i : centerList.getItems()){
+                //System.out.println(i.toString());
+                deck.addCard(i);
+            }
+            deck.getCards();
+        }
+        
     @Override
         public void initialize(URL location, ResourceBundle resources) {
             rightList.setCellFactory(param -> new AddCell("Add", centerList)); 
