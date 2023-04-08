@@ -1,0 +1,17 @@
+[  
+    {    
+        "name": "Card 1",    "attack": 10,    "defense": 5,    "image": "card1.png"  
+    },
+    {   
+         "name": "Card 2",    "attack": 5,    "defense": 10,    "image": "card2.png"  
+    },
+    {   
+         "name": "Card 3",    "attack": 8,    "defense": 11,    "image": "card3.png"  
+    },
+    {   
+         "name": "Card 4",    "attack": 7,    "defense": 12,    "image": "card4.png"  
+    },
+    {   
+         "name": "Card 5",    "attack": 9,    "defense": 13,    "image": "card5.png"  
+    }
+]
