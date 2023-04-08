@@ -60,31 +60,27 @@ public class DeckManagement implements Initializable {
         
     @Override
         public void initialize(URL location, ResourceBundle resources) {
-            rightList.setCellFactory(param -> new RightCell("Add", centerList));
-
+            ToggleGroup group = new ToggleGroup();
             Gson gson = new Gson();
             List<DeckCard> cards = new ArrayList<>();
+            String json = null;
+            
+            rightList.setCellFactory(param -> new RightCell("Add", centerList));
+            centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
+            leftList.setCellFactory(param -> new DeckCell(leftList, group));
 
             // Leggo il json file come stringa
-            String json = null;
             try (FileReader reader = new FileReader("./src/main/resources/cards/cards.json")) {
                 json = new BufferedReader(reader).lines().collect(Collectors.joining());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             // Converto il json in una lista di carte
             cards = gson.fromJson(json, new TypeToken<List<DeckCard>>() {}.getType());
-
             //Aggiungo alla lista di destra le carte
             for (DeckCard card : cards) {
                 rightList.getItems().addAll(card);
             }
-            centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
-            ToggleGroup group = new ToggleGroup();
-            leftList.setCellFactory(param -> new DeckCell(leftList, group));
-
-
             /* 
             Codice per salvare le carte nel json
             Gson gson = new Gson();
