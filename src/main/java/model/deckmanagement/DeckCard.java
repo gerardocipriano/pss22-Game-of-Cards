@@ -3,12 +3,13 @@ package model.deckmanagement;
 
 public class DeckCard {
     private String name;
-    private int value;
+    private int attack;
+    private int defense;
     private boolean moved;
 
-    public DeckCard(String name, int value) {
+    public DeckCard(String name, int attack) {
         this.name = name;
-        this.value = value;
+        this.attack = attack;
         this.moved = false;
     }
 
@@ -21,6 +22,6 @@ public class DeckCard {
     }
 
     public String toString() {
-        return this.name + " Attack: " + this.value;
+        return this.name + " Attack: " + this.attack + " Defense: " + this.defense;
     }
 }

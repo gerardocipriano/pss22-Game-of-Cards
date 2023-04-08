@@ -1,8 +1,18 @@
 package controller.fxml;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,16 +60,43 @@ public class DeckManagement implements Initializable {
         
     @Override
         public void initialize(URL location, ResourceBundle resources) {
-            rightList.setCellFactory(param -> new RightCell("Add", centerList)); 
-            rightList.getItems().addAll(
-                new DeckCard("Card 1", 10),
-                new DeckCard("Card 2", 5),
-                new DeckCard("Card 3", 8),
-                new DeckCard("Card 4", 13),
-                new DeckCard("Card 5", 20)
-            );
+            rightList.setCellFactory(param -> new RightCell("Add", centerList));
+
+            Gson gson = new Gson();
+            List<DeckCard> cards = new ArrayList<>();
+
+            // Leggo il json file come stringa
+            String json = null;
+            try (FileReader reader = new FileReader("./src/main/resources/cards/cards.json")) {
+                json = new BufferedReader(reader).lines().collect(Collectors.joining());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Converto il json in una lista di carte
+            cards = gson.fromJson(json, new TypeToken<List<DeckCard>>() {}.getType());
+
+            //Aggiungo alla lista di destra le carte
+            for (DeckCard card : cards) {
+                rightList.getItems().addAll(card);
+            }
             centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
             ToggleGroup group = new ToggleGroup();
             leftList.setCellFactory(param -> new DeckCell(leftList, group));
+
+
+            /* 
+            Codice per salvare le carte nel json
+            Gson gson = new Gson();
+            String json = gson.toJson(card1);
+            System.out.println(json);
+
+            try (FileWriter writer = new FileWriter("./src/main/resources/cards/cards.json")) {
+                writer.write(json);
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            */
         }   
 }
