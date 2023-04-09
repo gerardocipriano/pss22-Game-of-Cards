@@ -7,14 +7,11 @@ import controller.button.ChangeSceneCommand;
 import controller.button.ButtonCommand;
 import controller.button.MacroCommand;
 import controller.button.PlayClipCommand;
-import controller.sound.ButtonClipSound;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 
 public class MainMenu {
-    
-    private ButtonClipSound buttonClipSound;
 
     @FXML
     private Button settingsButton;
@@ -30,9 +27,6 @@ public class MainMenu {
 
 
     public void initialize() {
-
-
-        // Crea un'istanza della classe ButtonClipSound
         
 
         settingsButton.setOnAction(event -> {
