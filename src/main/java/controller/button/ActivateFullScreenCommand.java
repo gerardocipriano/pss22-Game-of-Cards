@@ -3,11 +3,9 @@ package controller.button;
 import controller.screen.FullScreenManager;
 
 public class ActivateFullScreenCommand implements ButtonCommand {
-    private FullScreenManager fullScreenManager;
+    private FullScreenManager fullScreenManager = FullScreenManager.getInstance();
 
-    public ActivateFullScreenCommand(FullScreenManager fullScreenManager) {
-        this.fullScreenManager = fullScreenManager;
-    }
+    public ActivateFullScreenCommand() {}
 
     @Override
     public void execute() {

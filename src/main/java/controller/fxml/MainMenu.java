@@ -7,17 +7,13 @@ import controller.button.ChangeSceneCommand;
 import controller.button.ButtonCommand;
 import controller.button.MacroCommand;
 import controller.button.PlayClipCommand;
-import controller.screen.FullScreenManager;
 import controller.sound.ButtonClipSound;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 
 public class MainMenu {
-
-    private final SceneHandler sceneHandler = SceneHandler.getInstance();
-    private FullScreenManager fullScreenManager;
+    
     private ButtonClipSound buttonClipSound;
 
     @FXML
@@ -37,14 +33,14 @@ public class MainMenu {
 
 
         // Crea un'istanza della classe ButtonClipSound
-        buttonClipSound = ButtonClipSound.getInstance();
+        
 
         settingsButton.setOnAction(event -> {
             List<ButtonCommand> settingsCommands = new ArrayList<>();
             // Passa l'istanza della classe SceneHandler al costruttore della classe ChangeSceneCommand
-            settingsCommands.add(new ChangeSceneCommand("Settings.fxml", sceneHandler));
+            settingsCommands.add(new ChangeSceneCommand("Settings.fxml"));
             // Passa l'istanza della classe ButtonClipSound al costruttore della classe PlayClipCommand
-            settingsCommands.add(new PlayClipCommand(buttonClipSound));
+            settingsCommands.add(new PlayClipCommand());
             MacroCommand settingsMacro = new MacroCommand(settingsCommands);
             settingsMacro.execute();
         });
@@ -52,9 +48,9 @@ public class MainMenu {
         rulesButton.setOnAction(event -> {
             List<ButtonCommand> rulesCommands = new ArrayList<>();
             // Passa l'istanza della classe SceneHandler al costruttore della classe ChangeSceneCommand
-            rulesCommands.add(new ChangeSceneCommand("Rules.fxml", sceneHandler));
+            rulesCommands.add(new ChangeSceneCommand("Rules.fxml"));
             // Passa l'istanza della classe ButtonClipSound al costruttore della classe PlayClipCommand
-            rulesCommands.add(new PlayClipCommand(buttonClipSound));
+            rulesCommands.add(new PlayClipCommand());
             MacroCommand rulesMacro = new MacroCommand(rulesCommands);
             rulesMacro.execute();
         });
@@ -62,9 +58,9 @@ public class MainMenu {
         decksButton.setOnAction(event -> {
             List<ButtonCommand> decksCommands = new ArrayList<>();
             // Passa l'istanza della classe SceneHandler al costruttore della classe ChangeSceneCommand
-            decksCommands.add(new ChangeSceneCommand("Decks.fxml", sceneHandler));
+            decksCommands.add(new ChangeSceneCommand("Decks.fxml"));
             // Passa l'istanza della classe ButtonClipSound al costruttore della classe PlayClipCommand
-            decksCommands.add(new PlayClipCommand(buttonClipSound));
+            decksCommands.add(new PlayClipCommand());
             MacroCommand decksMacro = new MacroCommand(decksCommands);
             decksMacro.execute();
         });
@@ -72,11 +68,11 @@ public class MainMenu {
         matchButton.setOnAction(event -> {
             List<ButtonCommand> matchCommands = new ArrayList<>();
             // Passa l'istanza della classe SceneHandler al costruttore della classe ChangeSceneCommand
-            matchCommands.add(new ChangeSceneCommand("Match.fxml", sceneHandler));
+            matchCommands.add(new ChangeSceneCommand("Match.fxml"));
             // Passa l'istanza della classe ButtonClipSound al costruttore della classe PlayClipCommand
-            matchCommands.add(new PlayClipCommand(buttonClipSound));
+            matchCommands.add(new PlayClipCommand());
             // Passa l'istanza della classe FullScreenManager al costruttore della classe ActivateFullScreenCommand
-            matchCommands.add(new ActivateFullScreenCommand(fullScreenManager));
+            matchCommands.add(new ActivateFullScreenCommand());
             MacroCommand matchMacro = new MacroCommand(matchCommands);
             matchMacro.execute();
         });

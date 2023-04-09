@@ -3,11 +3,9 @@ package controller.button;
 import controller.sound.ButtonClipSound;
 
 public class PlayClipCommand implements ButtonCommand {
-    private ButtonClipSound buttonClipSound;
+    ButtonClipSound buttonClipSound = ButtonClipSound.getInstance();
 
-    public PlayClipCommand(ButtonClipSound buttonClipSound) {
-        this.buttonClipSound = buttonClipSound;
-    }
+    public PlayClipCommand() {}
 
     @Override
     public void execute() {

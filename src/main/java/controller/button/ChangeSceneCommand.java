@@ -7,11 +7,10 @@ import javafx.event.ActionEvent;
 
 public class ChangeSceneCommand implements ButtonCommand {
     private String fxmlFile;
-    private SceneHandler sceneHandler;
+    private final SceneHandler sceneHandler = SceneHandler.getInstance();
 
-    public ChangeSceneCommand(String fxmlFile, SceneHandler sceneHandler) {
+    public ChangeSceneCommand(String fxmlFile) {
         this.fxmlFile = fxmlFile;
-        this.sceneHandler = sceneHandler;
     }
 
     @Override

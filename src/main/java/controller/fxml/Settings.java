@@ -35,7 +35,7 @@ public class Settings {
 
     @FXML
     void toggleFullScreen(final ActionEvent event) throws IOException {
-        FullScreenManager.getInstance((Stage) toggleFullScreenButton.getScene().getWindow()).toggleFullScreen();
+        FullScreenManager.getInstance().toggleFullScreen();
     }
 
     public void initialize() {

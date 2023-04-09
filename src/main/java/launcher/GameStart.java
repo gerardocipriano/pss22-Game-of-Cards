@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import controller.fxml.MainMenu;
 import controller.fxml.SceneHandler;
 import controller.screen.FullScreenManager;
 import controller.sound.*;
