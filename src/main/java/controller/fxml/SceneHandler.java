@@ -1,26 +1,29 @@
 package controller.fxml;
 
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
- * This class handles changing scenes using JavaFX and loading different layouts in FXML format.
+ * This class is a Singleton that handle the scenes of the game.
+ * It have methods to open different scenes and to set and get the primary stage.
+ * @author gerardocipriano
  */
 public class SceneHandler {
     private static SceneHandler instance;
     private Stage primaryStage;
 
+    /**
+     * Private constructor to prevent instantiation from outside the class.
+     */
     private SceneHandler() {}
 
     /**
-     * Returns the singleton instance of the SceneHandler class.
-     *
-     * @return the singleton instance of the SceneHandler class
+     * Get the instance of the SceneHandler.
+     * @return The instance of the SceneHandler.
      */
     public static SceneHandler getInstance() {
         if (instance == null) {
@@ -30,89 +33,83 @@ public class SceneHandler {
     }
 
     /**
-     * Sets the primary stage for this scene handler.
-     *
-     * @param primaryStage the primary stage
+     * Set the primary stage of the game.
+     * @param primaryStage The primary stage to set.
      */
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
+    /**
+     * Get the primary stage of the game.
+     * @return The primary stage of the game.
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
     /**
-     * Opens the settings scene.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
+     * Open the settings scene.
+     * @param event The ActionEvent that triggered this method.
+     * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openSettings(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/SettingsGui.fxml"));
-        primaryStage.getScene().setRoot(root);
-        primaryStage.show();
+        loadScene("layouts/SettingsGui.fxml");
     }
 
-        /**
-     * Opens the Main Menu scene.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
+    /**
+     * Open the main menu scene.
+     * @param event The ActionEvent that triggered this method.
+     * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openMainMenu(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MainMenuGui.fxml"));
-        primaryStage.getScene().setRoot(root);
-        primaryStage.show();
+        loadScene("layouts/MainMenuGui.fxml");
     }
-    
 
     /**
-     * Opens the card creation scene.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
+     * Open the card creation scene.
+     * @param event The ActionEvent that triggered this method.
+     * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openCardCreation(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/path/to/CardCreationGui.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        loadScene("path/to/CardCreationGui.fxml");
     }
 
     /**
-     * Opens the deck management scene.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
+     * Open the deck management scene.
+     * @param event The ActionEvent that triggered this method.
+     * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openDeckManagement(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/DeckManagementGui.fxml"));
-        primaryStage.getScene().setRoot(root);
-        primaryStage.show();
+        loadScene("layouts/DeckManagementGui.fxml");
     }
 
     /**
-     * Opens the match scene.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
+     * Open the match scene.
+     * @param event The ActionEvent that triggered this method.
+     * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openMatch(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MatchGui.fxml"));
-        primaryStage.getScene().setRoot(root);
-        primaryStage.show();
+        loadScene("layouts/MatchGui.fxml");
     }
 
     /**
-     * Opens the rules scene.
-     *
-     * @param event the action event
-     * @throws IOException if an I/O error occurs
+     * Open the rules scene.
+     * @param event The ActionEvent that triggered this method.
+     * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openRules(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/RulesGui.fxml"));
+        loadScene("layouts/RulesGui.fxml");
+    }
+
+    /**
+     * Load a new scene from an FXML file and display it on the primary stage.
+     * @param fxmlPath The path of the FXML file to load.
+     * @throws IOException If an error occurs while loading the FXML file.
+     */
+    private void loadScene(String fxmlPath) throws IOException {
+        Parent root = FXMLLoader.load(ClassLoader.getSystemResource(fxmlPath));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
-
 }
