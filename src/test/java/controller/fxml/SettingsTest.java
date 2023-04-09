@@ -34,6 +34,9 @@ public class SettingsTest extends ApplicationTest {
         Parent root = loader.load();
         settingsController = loader.getController();
 
+        SceneHandler.getInstance().setPrimaryStage(stage);
+        FullScreenManager.getInstance().setPrimaryStage(stage);
+
         BackgroundMusic.getInstance().playMainTheme();
         BackgroundMusic.getInstance().setVolume(0.5);
 
@@ -81,8 +84,7 @@ public class SettingsTest extends ApplicationTest {
     @Test
     public void testToggleFullScreen() {
         // Get the current full screen state of the stage
-        Stage stage = (Stage) settingsController.toggleFullScreenButton.getScene().getWindow();
-        FullScreenManager fullScreenManager = FullScreenManager.getInstance(stage);
+        FullScreenManager fullScreenManager = FullScreenManager.getInstance();
         boolean oldState = fullScreenManager.isFullScreen();
     
         // Simulate a click on the "toggleFullScreenButton"

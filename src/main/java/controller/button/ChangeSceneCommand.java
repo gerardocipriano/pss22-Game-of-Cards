@@ -29,6 +29,9 @@ public class ChangeSceneCommand implements ButtonCommand {
                 case "Match.fxml":
                     sceneHandler.openMatch(new ActionEvent());
                     break;
+                case "MainMenu.fxml":
+                    sceneHandler.openMainMenu(new ActionEvent());
+                    break;
             }
         } catch (IOException e) {
             e.printStackTrace();
