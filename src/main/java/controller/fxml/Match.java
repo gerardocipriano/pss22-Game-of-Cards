@@ -7,6 +7,7 @@ import controller.sound.SoundButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import model.Deck;
 
 public class Match {
 
@@ -24,6 +25,15 @@ public class Match {
         BackgroundMusic.getInstance().playMainTheme();
     }
 
+    void startMatch(Deck deck) {
+
+        createGameBoard();
+
+        getDeck();
+
+        createPlayer1();
+        createPlayer2();
+
+    }
+
 }
-
-
