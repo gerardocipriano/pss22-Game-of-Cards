@@ -50,7 +50,7 @@ public class DeckManagement {
             e.printStackTrace();
         }
 
-        //Convert json to card list and add them to the right listView
+        //Convert json to card list and add them to the listView on the right
         cards = gson.fromJson(json, new TypeToken<List<DeckCard>>() {}.getType());
         for (DeckCard card : cards) {
             rightList.getItems().addAll(card);
@@ -68,6 +68,8 @@ public class DeckManagement {
 
     @FXML
         void saveDeck(final ActionEvent event) throws IOException{
+            PlayClipCommand playSound = new PlayClipCommand();
+            playSound.execute();
             Deck deck = new Deck();
             for (DeckCard card : centerList.getItems()){
                 deck.addCard(card);
