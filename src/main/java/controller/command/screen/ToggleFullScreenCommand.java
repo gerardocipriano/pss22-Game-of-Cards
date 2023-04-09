@@ -1,5 +1,6 @@
-package controller.button;
+package controller.command.screen;
 
+import controller.command.ButtonCommand;
 import controller.screen.FullScreenManager;
 
 public class ToggleFullScreenCommand implements ButtonCommand {

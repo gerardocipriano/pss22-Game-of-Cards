@@ -1,4 +1,4 @@
-package controller.button;
+package controller.command;
 
 public interface ButtonCommand {
     void execute();

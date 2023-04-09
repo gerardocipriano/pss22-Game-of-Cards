@@ -1,4 +1,4 @@
-package controller.button;
+package controller.command;
 
 import java.util.List;
 

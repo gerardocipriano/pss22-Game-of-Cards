@@ -1,7 +1,8 @@
-package controller.button;
+package controller.command.scene;
 
 import java.io.IOException;
 
+import controller.command.ButtonCommand;
 import controller.fxml.SceneHandler;
 import javafx.event.ActionEvent;
 

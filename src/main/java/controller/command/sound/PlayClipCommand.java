@@ -1,5 +1,6 @@
-package controller.button;
+package controller.command.sound;
 
+import controller.command.ButtonCommand;
 import controller.sound.ButtonClipSound;
 
 public class PlayClipCommand implements ButtonCommand {

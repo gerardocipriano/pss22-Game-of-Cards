@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import controller.command.ButtonCommand;
+import controller.command.MacroCommand;
+import controller.command.scene.ChangeSceneCommand;
+import controller.command.sound.PlayClipCommand;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,10 +17,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import controller.button.ButtonCommand;
-import controller.button.ChangeSceneCommand;
-import controller.button.MacroCommand;
-import controller.button.PlayClipCommand;
 
 
 /**

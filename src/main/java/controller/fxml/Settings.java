@@ -4,11 +4,11 @@ package controller.fxml;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.button.ButtonCommand;
-import controller.button.ChangeSceneCommand;
-import controller.button.MacroCommand;
-import controller.button.PlayClipCommand;
-import controller.button.ToggleFullScreenCommand;
+import controller.command.ButtonCommand;
+import controller.command.MacroCommand;
+import controller.command.scene.ChangeSceneCommand;
+import controller.command.screen.ToggleFullScreenCommand;
+import controller.command.sound.PlayClipCommand;
 import controller.sound.BackgroundMusic;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
