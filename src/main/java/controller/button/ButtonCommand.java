@@ -1,5 +1,5 @@
 package controller.button;
 
-public interface Command {
+public interface ButtonCommand {
     void execute();
 }
