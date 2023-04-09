@@ -2,7 +2,7 @@ package model.match;
 
 import model.deckmanagement.DeckCard;
 
-public interface Player {
+public interface PlayerInt {
 
     int discard(DeckCard card);
 
