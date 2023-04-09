@@ -5,25 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import controller.sound.SoundButton?>
 
 <AnchorPane id="panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/SettingsGui.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxml.Settings">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cca9b4cc" height="500.0" layoutX="229.0" layoutY="110.0" opacity="0.59" stroke="BLACK" strokeType="INSIDE" width="822.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="229.0" AnchorPane.rightAnchor="229.0" AnchorPane.topAnchor="110.0" />
-      <Label id="settingsLabel" layoutX="520.0" layoutY="140.0" text="Settings">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
+      <Label id="settingsLabel" layoutX="520.0" layoutY="140.0" text="Settings"/>
       <Label layoutX="277.0" layoutY="200.0" text="Toggle Full Screen" />
-      <SoundButton id="toggleFullScreenButton" fx:factory="create" fx:id="toggleFullScreenButton" layoutX="277.0" layoutY="250.0" mnemonicParsing="false" onAction="#toggleFullScreen" prefHeight="32.0" prefWidth="150.0" text="Enable/Disable" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="250.0">
-          <font>
-              <Font size="12.0" />
-          </font>
-      </SoundButton>
+      <Button id="toggleFullScreenButton" fx:id="toggleFullScreenButton" layoutX="277.0" layoutY="250.0" mnemonicParsing="false"  prefHeight="32.0" prefWidth="150.0" text="Enable/Disable" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="250.0"/>
       <Label layoutX="277.0" layoutY="300.0" text="Music Audio Level" />
       <Slider id="musicAudioLevelSlider" fx:id="musicAudioLevelSlider" layoutX="277.0" layoutY="340.0" prefHeight="32.0" prefWidth="360.0" showTickMarks="true" value="50.0" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="340.0" />
-      <SoundButton id="backButton" fx:factory="create" fx:id="backButton" layoutX="575.0" layoutY="470.0" mnemonicParsing="false" onAction="#backToMainMenu" text="Back" textAlignment="CENTER">
-      </SoundButton>
+      <Button id="backButton" fx:id="backButton" layoutX="575.0" layoutY="470.0" mnemonicParsing="false"  text="Back" textAlignment="CENTER"/>
    </children>
 </AnchorPane>

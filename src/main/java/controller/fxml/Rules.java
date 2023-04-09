@@ -2,28 +2,30 @@ package controller.fxml;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import controller.command.ButtonCommand;
+import controller.command.MacroCommand;
+import controller.command.scene.ChangeSceneCommand;
+import controller.command.sound.PlayClipCommand;
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import controller.sound.SoundButton;
 
 /**
 * Controller for the Rules scene.
 */
 public class Rules  {
     
-    private final SceneHandler sceneHandler = SceneHandler.getInstance();
-    
     @FXML
-    private SoundButton backButton;
+    private Button backButton;
     
     @FXML
     private TabPane tabPane;
@@ -58,9 +60,6 @@ public class Rules  {
             tab.getContent().setOpacity(0);
         }
         
-        // Select the first tab
-        selectFirstTab();
-        
         // Add a listener to the selected item property of the tab pane
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (oldValue != null) {
@@ -84,27 +83,13 @@ public class Rules  {
                 fadeIn.play();
             }
         });
-    }
-    
-    /**
-    * Selects the first tab.
-    */
-    public void selectFirstTab() {
-        // Select the first tab
-        tabPane.getSelectionModel().selectFirst();
-    }
-    
-    /**
-    * Handles the action of going back to the main menu.
-    *
-    * @param event the action event
-    * @throws IOException if an I/O error occurs
-    */
-    @FXML
-    void backToMainMenu(final ActionEvent event) throws IOException {
-        if (sceneHandler.getPrimaryStage() == null) {
-            sceneHandler.setPrimaryStage((Stage) backButton.getScene().getWindow());
-        }
-        sceneHandler.openMainMenu(event);
+
+        backButton.setOnAction(event -> {
+            List<ButtonCommand> backCommands = new ArrayList<>();
+            backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
+            backCommands.add(new PlayClipCommand());
+            MacroCommand decksMacro = new MacroCommand(backCommands);
+            decksMacro.execute();
+        });
     }
 }

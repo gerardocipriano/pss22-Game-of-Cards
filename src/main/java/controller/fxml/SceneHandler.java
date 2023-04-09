@@ -2,7 +2,6 @@ package controller.fxml;
 
 import java.io.IOException;
 
-import controller.sound.BackgroundMusic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -101,7 +100,6 @@ public class SceneHandler {
     public void openMatch(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/MatchGui.fxml"));
         primaryStage.getScene().setRoot(root);
-        BackgroundMusic.getInstance().playMatchTheme();
         primaryStage.show();
     }
 
