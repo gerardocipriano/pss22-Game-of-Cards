@@ -4,6 +4,9 @@ import model.deckmanagement.DeckCard;
 
 public class PlayerImpl implements PlayerInt {
 
+    int health;
+    int maana;
+
     @Override
     public int discard(DeckCard card) {
         // TODO Auto-generated method stub
