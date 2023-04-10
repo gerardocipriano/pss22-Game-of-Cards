@@ -4,23 +4,34 @@ import javafx.stage.Stage;
 
 public class FullScreenManager {
     private static FullScreenManager instance;
-    private Stage stage;
+    private Stage primaryStage;
     private boolean isFullScreen = false;
 
-    private FullScreenManager(Stage stage) {
-        this.stage = stage;
-    }
+    private FullScreenManager() {}
 
-    public static FullScreenManager getInstance(Stage stage) {
+    public static FullScreenManager getInstance() {
         if (instance == null) {
-            instance = new FullScreenManager(stage);
+            instance = new FullScreenManager();
         }
         return instance;
     }
 
+    /**
+     * Sets the primary stage for this scene handler.
+     *
+     * @param primaryStage the primary stage
+     */
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     public void toggleFullScreen() {
         isFullScreen = !isFullScreen;
-        stage.setFullScreen(isFullScreen);
+        primaryStage.setFullScreen(isFullScreen);
     }
 
     public boolean isFullScreen() {

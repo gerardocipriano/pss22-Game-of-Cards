@@ -3,20 +3,25 @@ package model.deckmanagement;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import controller.command.sound.PlayClipCommand;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-abstract class Cell extends ListCell<DeckCard> {
+/*
+ * Here i use the Template method design pattern to handle the cells of the listViews
+ */
+public abstract class Cell extends ListCell<DeckCard> {
 
     private VBox container;
-    private Button cardButton ;
+    private Button cellButton ;
     private Label label;
+    private PlayClipCommand playSound = new PlayClipCommand();
 
     public Cell(String buttonText, ListView<DeckCard> centerList ) {
         label = new Label();
-        cardButton = new Button(buttonText);
-        container = new VBox(label, cardButton);
-        cardButton.setOnAction(e -> {
+        cellButton = new Button(buttonText);
+        container = new VBox(label, cellButton);
+        cellButton.setOnAction(e -> {
+            playSound.execute();
             DeckCard card = getItem();
             this.handleCards(card, centerList);
         });

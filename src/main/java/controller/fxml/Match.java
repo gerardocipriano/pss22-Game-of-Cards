@@ -1,27 +1,34 @@
 package controller.fxml;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import controller.sound.BackgroundMusic;
-import controller.sound.SoundButton;
-import javafx.event.ActionEvent;
+import controller.command.ButtonCommand;
+import controller.command.scene.ChangeSceneCommand;
+import controller.command.screen.ToggleFullScreenCommand;
+import controller.command.sound.PlayClipCommand;
+import controller.command.sound.SwitchToMainThemeCommand;
+import controller.command.MacroCommand;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
 
 public class Match {
 
-    private final SceneHandler sceneHandler = SceneHandler.getInstance();
-
     @FXML
-    private SoundButton backButton;
+    private Button backButton;
 
-    @FXML
-    void backToMainMenu(final ActionEvent event) throws IOException {
-        if (sceneHandler.getPrimaryStage() == null) {
-            sceneHandler.setPrimaryStage((Stage) backButton.getScene().getWindow());
-        }
-        sceneHandler.openMainMenu(event);
-        BackgroundMusic.getInstance().playMainTheme();
+    public void initialize() {
+        
+        backButton.setOnAction(event -> {
+            List<ButtonCommand> backCommands = new ArrayList<>();
+            backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
+            backCommands.add(new PlayClipCommand());
+            backCommands.add(new ToggleFullScreenCommand());
+            backCommands.add(new SwitchToMainThemeCommand());
+            MacroCommand settingsMacro = new MacroCommand(backCommands);
+            settingsMacro.execute();
+        });
     }
 
 }

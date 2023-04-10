@@ -26,15 +26,19 @@ public class BackgroundMusic {
     }
 
     public void playMainTheme() {
+        double currentVolume = mediaPlayer.getVolume();
         mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(mainTheme);
+        mediaPlayer.setVolume(currentVolume);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
-
+    
     public void playMatchTheme() {
+        double currentVolume = mediaPlayer.getVolume();
         mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(matchTheme);
+        mediaPlayer.setVolume(currentVolume);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
