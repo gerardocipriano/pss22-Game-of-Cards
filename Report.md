@@ -20,7 +20,7 @@ Il gioco si compone di partite disputate tra due giocatori su uno stesso schermo
 
 ### Requisiti non funzionali 
 
-- [ ] <b>Audio di gioco</b>: gestione dei livelli e dell’audio all’interno del gioco 
+- [ ] <b>Impostazioni</b>: gestione dell'audio e fullscreen dell'applicazione
 
 - [ ] <b>Sviluppo di una modalità di gioco player vs CPU</b>: implementazione di una seconda modalità di gioco in cui un singolo giocatore potrà sfidare il software 
 
@@ -106,7 +106,7 @@ Data la complessità di elaborare una strategia di gioco per il computer, la pri
 
 ## Architettura
 
-Il progetto Java che abbiamo sviluppato segue un pattern in cui ogni aspetto funziona in autonomia per garantire un'organizzazione efficiente. In particolare, l'intero modello si basa sulla classe Match che coordina tutte le funzionalità della partita che abbiamo aggiunto. Per la gestione dei componenti della view, abbiamo utilizzato JavaFX e creato dei file fxml, che contengono la struttura degli elementi grafici dell'interfaccia. Tutti questi elementi costituiscono la vera struttura del progetto e sono stati uniti e interconnessi dai vari controller. In questo modo, possiamo garantire il funzionamento dell'applicazione anche se si dovesse optare per una GUI diversa, senza essere vincolati ad una tecnologia specifica come JavaFX.
+L'architettura di Game of Cards segue il pattern architetturale MVC, in cui ogni aspetto funziona in autonomia per garantire un'organizzazione efficiente. In particolare, l'intero modello si basa sulla classe Match che coordina tutte le funzionalità della partita che abbiamo aggiunto. Ogni volta che si verificano eventi sul terreno di gioco, quest'ultimo notifica i cambiamenti al controller del Match; il controller si occuperà poi di aggiornare di conseguenza gli elementi grafici. In questo modo, possiamo garantire il funzionamento dell'applicazione anche se si dovesse optare per una GUI diversa, senza essere vincolati ad una libreria grafica specifica.
 
 ``` mermaid
 classDiagram
