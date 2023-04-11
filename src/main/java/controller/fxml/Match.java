@@ -1,5 +1,6 @@
 package controller.fxml;
 
+
 import java.io.IOException;
 
 import controller.fxml.SceneHandler;
@@ -18,18 +19,23 @@ public class Match implements Initializable {
 
     IMatchModel matchModel = MatchModel.getInstance();
 
-    private final SceneHandler sceneHandler = SceneHandler.getInstance();
+
+public class Match {
 
     @FXML
-    private SoundButton backButton;
+    private Button backButton;
 
-    @FXML
-    void backToMainMenu(final ActionEvent event) throws IOException {
-        if (sceneHandler.getPrimaryStage() == null) {
-            sceneHandler.setPrimaryStage((Stage) backButton.getScene().getWindow());
-        }
-        sceneHandler.openMainMenu(event);
-        BackgroundMusic.getInstance().playMainTheme();
+    public void initialize() {
+        
+        backButton.setOnAction(event -> {
+            List<ButtonCommand> backCommands = new ArrayList<>();
+            backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
+            backCommands.add(new PlayClipCommand());
+            backCommands.add(new ToggleFullScreenCommand());
+            backCommands.add(new SwitchToMainThemeCommand());
+            MacroCommand settingsMacro = new MacroCommand(backCommands);
+            settingsMacro.execute();
+        });
     }
 
     @Override

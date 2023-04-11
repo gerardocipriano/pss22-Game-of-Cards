@@ -12,7 +12,7 @@
       <AnchorPane layoutX="556.0" layoutY="592.0" prefHeight="94.0" prefWidth="169.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0">
          <children>
             <Button fx:id="saveButton" alignment="CENTER" layoutX="64.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveDeck" text="Save" />
-            <Button fx:id="backButton" alignment="CENTER" layoutX="64.0" layoutY="55.0" mnemonicParsing="false" onAction="#backToMainMenu" text="Back" />
+            <Button fx:id="backButton" alignment="CENTER" layoutX="64.0" layoutY="55.0" mnemonicParsing="false"  text="Back" />
          </children>
       </AnchorPane>
    </children>
