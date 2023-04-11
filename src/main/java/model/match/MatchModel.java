@@ -31,11 +31,11 @@ public class MatchModel implements IMatchModel {
         player1 = createPlayer();
         player2 = createPlayer();
 
-        IPlayer currentPlayer = starterPlayer(player1, player2);
+        //IPlayer currentPlayer = starterPlayer(player1, player2);
 
-        currentPlayer.getCards(deck);
+        //currentPlayer.getCards(deck);
 
-        board = createGameBoard(player1, player2);
+        //board = createGameBoard(player1, player2);
 
     }
 
