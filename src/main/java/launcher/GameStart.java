@@ -10,11 +10,17 @@ import javafx.stage.Stage;
 import controller.fxml.SceneHandler;
 import controller.screen.FullScreenManager;
 import controller.sound.*;
+import controller.fxml.*;
 
 /**
  * This class sets up the GUI for the Main Menu of the application.
+ * 
+ * Controller Class
  */
 public final class GameStart extends Application {
+
+    // GameViewInterface view;
+
     /**
      * 
      */
@@ -46,6 +52,7 @@ public final class GameStart extends Application {
         BackgroundMusic.getInstance().playMainTheme();
         BackgroundMusic.getInstance().setVolume(0.025);
     }
+
     /**
      * Main method.
      * 

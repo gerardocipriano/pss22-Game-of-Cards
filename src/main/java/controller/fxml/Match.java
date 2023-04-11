@@ -1,16 +1,23 @@
 package controller.fxml;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import controller.command.ButtonCommand;
-import controller.command.scene.ChangeSceneCommand;
-import controller.command.screen.ToggleFullScreenCommand;
-import controller.command.sound.PlayClipCommand;
-import controller.command.sound.SwitchToMainThemeCommand;
-import controller.command.MacroCommand;
+import java.io.IOException;
+
+import controller.fxml.SceneHandler;
+import controller.sound.BackgroundMusic;
+import controller.sound.SoundButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import model.Deck;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import model.match.*;
+
+public class Match implements Initializable {
+
+    IMatchModel matchModel = MatchModel.getInstance();
 
 
 public class Match {
@@ -31,6 +38,10 @@ public class Match {
         });
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        BackgroundMusic.getInstance().playMainTheme();
+
+        // matchModel->start();
+    }
 }
-
-
