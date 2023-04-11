@@ -14,11 +14,9 @@
 
   <p align="center">
     This is a Java-based software that allows players to enjoy the Game of Cards from the popular game Evoland 2. 
-    <br />
-    <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    ·
+    <br /><br />
+    <a href="https://www.codefactor.io/repository/github/gerardocipriano/pss22-game-of-cards"><img src="https://www.codefactor.io/repository/github/gerardocipriano/pss22-game-of-cards/badge" alt="CodeFactor" /></a>
+    <br /><br />
     <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards/issues">Report Bug</a>
     ·
     <a href="https://github.com/gerardocipriano/pss22-Game-of-Cards/issues">Request Feature</a>
@@ -149,7 +147,7 @@ Optional features:
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the CC BY-NC 4.0 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
