@@ -18,6 +18,8 @@ import controller.screen.FullScreenManager;
 import controller.sound.*;
 /**
  * Test class for the Settings controller.
+ * 
+ * @author gerardocipriano
  */
 public class SettingsTest extends ApplicationTest {
     private Settings settingsController;

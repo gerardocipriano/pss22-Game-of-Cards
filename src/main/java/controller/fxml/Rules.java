@@ -26,7 +26,7 @@ import javafx.util.Duration;
  * This class is the controller for the Rules scene.
  * It manages the logic for displaying the rules of the game.
  *
- * @author @gerardocipriano
+ * @author gerardocipriano
  */
 public class Rules {
     @FXML private Button backButton;

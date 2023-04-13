@@ -1,4 +1,5 @@
 package controller.fxml;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,24 +12,48 @@ import controller.command.sound.SwitchToMatchThemeCommand;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-
+/**
+ * 
+ * The MainMenu class represents the main menu of the game and manages its
+ * functionality.
+ * 
+ * @author gerardocipriano
+ * @version 2.0
+ */
 public class MainMenu {
 
+    /**
+     * 
+     * The button for accessing the settings.
+     */
     @FXML
     private Button settingsButton;
-
+    /**
+     * 
+     * The button for accessing the rules.
+     */
     @FXML
     private Button rulesButton;
-
+    /**
+     * 
+     * The button for accessing the decks.
+     */
     @FXML
     private Button decksButton;
-
+    /**
+     * 
+     * The button for accessing the match.
+     */
     @FXML
     private Button matchButton;
 
-
+    /**
+     * 
+     * Initializes the functionality of the buttons.
+     * 
+     * Each button has its own set of commands that are executed when it is clicked.
+     */
     public void initialize() {
-        
 
         settingsButton.setOnAction(event -> {
             List<ButtonCommand> settingsCommands = new ArrayList<>();

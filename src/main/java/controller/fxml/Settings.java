@@ -14,19 +14,37 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
+/**
+ * The Settings class represents the graphical user interface for the settings page of the application.
+ * @author gerardocipriano
+ */
 public class Settings {
 
+    /**
+     * The button to go back to the previous page.
+     */
     @FXML
     private Button backButton;
 
-    @FXML Button toggleFullScreenButton;
+    /**
+     * The button to toggle the full screen mode.
+     */
+    @FXML
+    private Button toggleFullScreenButton;
 
-    @FXML Slider musicAudioLevelSlider;
+    /**
+     * The slider to adjust the music volume.
+     */
+    @FXML 
+    private Slider musicAudioLevelSlider;
 
+    /**
+     * Initializes the settings page, setting the initial value of the music slider and adding change listeners to it.
+     */
     public void initialize() {
 
         musicAudioLevelSlider.setValue(BackgroundMusic.getInstance().getVolume() * 100);
-    
+
         musicAudioLevelSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100;
             BackgroundMusic.getInstance().setVolume(volume);
@@ -49,7 +67,10 @@ public class Settings {
         });
     }
 
-    //Used for testing in the SettingsTest class
+    /**
+     * Gets the value of the music slider for testing purposes.
+     * @return the value of the music slider
+     */
     public double getMusicAudioLevelSliderValue() {
         return musicAudioLevelSlider.getValue();
     }
