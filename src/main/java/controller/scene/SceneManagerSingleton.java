@@ -1,4 +1,4 @@
-package controller.fxml;
+package controller.scene;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,22 +12,22 @@ import java.io.IOException;
  * It have methods to open different scenes and to set and get the primary stage.
  * @author gerardocipriano
  */
-public class SceneHandler {
-    private static SceneHandler instance;
+public class SceneManagerSingleton implements ISceneManagerController {
+    private static SceneManagerSingleton instance;
     private Stage primaryStage;
 
     /**
      * Private constructor to prevent instantiation from outside the class.
      */
-    private SceneHandler() {}
+    private SceneManagerSingleton() {}
 
     /**
-     * Get the instance of the SceneHandler.
-     * @return The instance of the SceneHandler.
+     * Get the instance of the SceneManagerSingleton.
+     * @return The instance of the SceneManagerSingleton.
      */
-    public static SceneHandler getInstance() {
+    public static SceneManagerSingleton getInstance() {
         if (instance == null) {
-            instance = new SceneHandler();
+            instance = new SceneManagerSingleton();
         }
         return instance;
     }
@@ -107,7 +107,7 @@ public class SceneHandler {
      * @param fxmlPath The path of the FXML file to load.
      * @throws IOException If an error occurs while loading the FXML file.
      */
-    private void loadScene(String fxmlPath) throws IOException {
+    public void loadScene(String fxmlPath) throws IOException {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource(fxmlPath));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();

@@ -3,7 +3,8 @@ package controller.command.scene;
 import java.io.IOException;
 
 import controller.command.IButtonCommand;
-import controller.fxml.SceneHandler;
+import controller.scene.ISceneManagerController;
+import controller.scene.SceneManagerSingleton;
 import javafx.event.ActionEvent;
 
 /**
@@ -13,7 +14,7 @@ import javafx.event.ActionEvent;
  */
 public class ChangeSceneCommand implements IButtonCommand {
     private String fxmlFile;
-    private final SceneHandler sceneHandler = SceneHandler.getInstance();
+    private final ISceneManagerController sceneManager = SceneManagerSingleton.getInstance();
 
     /**
      * Constructor for ChangeSceneCommand.
@@ -33,19 +34,19 @@ public class ChangeSceneCommand implements IButtonCommand {
         try {
             switch (fxmlFile) {
                 case "Settings.fxml":
-                    sceneHandler.openSettings(new ActionEvent());
+                    sceneManager.openSettings(new ActionEvent());
                     break;
                 case "Rules.fxml":
-                    sceneHandler.openRules(new ActionEvent());
+                    sceneManager.openRules(new ActionEvent());
                     break;
                 case "Decks.fxml":
-                    sceneHandler.openDeckManagement(new ActionEvent());
+                    sceneManager.openDeckManagement(new ActionEvent());
                     break;
                 case "Match.fxml":
-                    sceneHandler.openMatch(new ActionEvent());
+                    sceneManager.openMatch(new ActionEvent());
                     break;
                 case "MainMenu.fxml":
-                    sceneHandler.openMainMenu(new ActionEvent());
+                    sceneManager.openMainMenu(new ActionEvent());
                     break;
             }
         } catch (IOException e) {
