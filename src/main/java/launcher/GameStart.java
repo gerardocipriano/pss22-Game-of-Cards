@@ -7,7 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import view.screen.WindowConfigurator;
-import controller.sound.BackgroundMusic;
+import controller.sound.BackgroundMusicSingleton;
+import controller.sound.IBackgroundMusicController;
 
 /**
  * This class sets up the GUI for the Main Menu of the application.
@@ -39,8 +40,10 @@ public final class GameStart extends Application {
         windowConfigurator.configure(stage);
         stage.setScene(scene);
         stage.show();
-        BackgroundMusic.getInstance().playMainTheme();
-        BackgroundMusic.getInstance().setVolume(0.025);
+        
+        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        bgMusic.play("main");
+        bgMusic.setVolume(0.025);
     }
 
     /**

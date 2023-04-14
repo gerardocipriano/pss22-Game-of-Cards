@@ -9,7 +9,7 @@ import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.screen.ToggleFullScreenCommand;
 import controller.command.sound.PlayClipCommand;
-import controller.sound.BackgroundMusic;
+import controller.sound.BackgroundMusicSingleton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
@@ -43,11 +43,11 @@ public class Settings {
      */
     public void initialize() {
 
-        musicAudioLevelSlider.setValue(BackgroundMusic.getInstance().getVolume() * 100);
+        musicAudioLevelSlider.setValue(BackgroundMusicSingleton.getInstance().getVolume() * 100);
 
         musicAudioLevelSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100;
-            BackgroundMusic.getInstance().setVolume(volume);
+            BackgroundMusicSingleton.getInstance().setVolume(volume);
         });
 
         backButton.setOnAction(event -> {

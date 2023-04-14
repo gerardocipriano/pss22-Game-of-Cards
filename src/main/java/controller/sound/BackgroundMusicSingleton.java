@@ -3,13 +3,13 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 
-public class BackgroundMusic {
-    private static BackgroundMusic instance;
+public class BackgroundMusicSingleton implements IBackgroundMusicController {
+    private static BackgroundMusicSingleton instance;
     private MediaPlayer mediaPlayer;
     private Media mainTheme;
     private Media matchTheme;
 
-    private BackgroundMusic() {
+    private BackgroundMusicSingleton() {
         URL resource1 = getClass().getResource("/sounds/music/MainTheme.mp3");
         URL resource2 = getClass().getResource("/sounds/music/MatchTheme.mp3");
         mainTheme = new Media(resource1.toString());
@@ -18,31 +18,25 @@ public class BackgroundMusic {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
     }
 
-    public static BackgroundMusic getInstance() {
+    public static BackgroundMusicSingleton getInstance() {
         if (instance == null) {
-            instance = new BackgroundMusic();
+            instance = new BackgroundMusicSingleton();
         }
         return instance;
     }
-
-    public void playMainTheme() {
-        double currentVolume = mediaPlayer.getVolume();
-        mediaPlayer.stop();
-        mediaPlayer = new MediaPlayer(mainTheme);
-        mediaPlayer.setVolume(currentVolume);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
-    }
     
-    public void playMatchTheme() {
+    public void play(String theme) {
         double currentVolume = mediaPlayer.getVolume();
         mediaPlayer.stop();
-        mediaPlayer = new MediaPlayer(matchTheme);
+        if (theme.equals("main")) {
+            mediaPlayer = new MediaPlayer(mainTheme);
+        } else if (theme.equals("match")) {
+            mediaPlayer = new MediaPlayer(matchTheme);
+        }
         mediaPlayer.setVolume(currentVolume);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
-
     public void setVolume(double volume) {
         mediaPlayer.setVolume(volume);
     }

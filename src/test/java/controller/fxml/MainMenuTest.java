@@ -10,7 +10,8 @@ import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.LabeledMatchers;
 
 import controller.screen.FullScreenManager;
-import controller.sound.BackgroundMusic;
+import controller.sound.BackgroundMusicSingleton;
+import controller.sound.IBackgroundMusicController;
 
 import java.io.IOException;
 /**
@@ -34,9 +35,10 @@ public class MainMenuTest extends ApplicationTest {
 
         SceneHandler.getInstance().setPrimaryStage(stage);
         FullScreenManager.getInstance().setPrimaryStage(stage);
-
-        BackgroundMusic.getInstance().playMainTheme();
-        BackgroundMusic.getInstance().setVolume(0.5);
+        
+        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        bgMusic.play("main");
+        bgMusic.setVolume(0.5);
 
         // Set the scene and show the stage
         Scene scene = new Scene(root);

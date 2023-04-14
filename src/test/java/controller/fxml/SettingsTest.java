@@ -39,8 +39,9 @@ public class SettingsTest extends ApplicationTest {
         SceneHandler.getInstance().setPrimaryStage(stage);
         FullScreenManager.getInstance().setPrimaryStage(stage);
 
-        BackgroundMusic.getInstance().playMainTheme();
-        BackgroundMusic.getInstance().setVolume(0.5);
+        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        bgMusic.play("main");
+        bgMusic.setVolume(0.5);
 
         // Set the scene and show the stage
         Scene scene = new Scene(root);
@@ -65,7 +66,7 @@ public class SettingsTest extends ApplicationTest {
         assertNotEquals(oldValue, newValue);
 
         // Verify that the music volume has changed accordingly
-        BackgroundMusic bgMusic = BackgroundMusic.getInstance();
+        BackgroundMusicSingleton bgMusic = BackgroundMusicSingleton.getInstance();
         assertEquals(newValue / 100, bgMusic.getVolume(), 0.01);
     }
     /**

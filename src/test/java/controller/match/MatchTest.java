@@ -12,7 +12,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.LabeledMatchers;
 
 import controller.fxml.Match;
-import controller.sound.BackgroundMusic;
+import controller.sound.BackgroundMusicSingleton;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,8 +37,8 @@ public class MatchTest extends ApplicationTest {
         Parent root = loader.load();
         matchController = loader.getController();
 
-        BackgroundMusic.getInstance().playMainTheme();
-        BackgroundMusic.getInstance().setVolume(0.5);
+        BackgroundMusicSingleton.getInstance().playMainTheme();
+        BackgroundMusicSingleton.getInstance().setVolume(0.5);
 
         // Set the scene and show the stage
         Scene scene = new Scene(root);

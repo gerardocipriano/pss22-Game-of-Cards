@@ -1,7 +1,8 @@
 package controller.command.sound;
 
 import controller.command.ButtonCommand;
-import controller.sound.BackgroundMusic;
+import controller.sound.BackgroundMusicSingleton;
+import controller.sound.IBackgroundMusicController;
 
 public class SwitchToMainThemeCommand implements ButtonCommand {
 
@@ -9,6 +10,7 @@ public class SwitchToMainThemeCommand implements ButtonCommand {
 
     @Override
     public void execute() {
-        BackgroundMusic.getInstance().playMainTheme();
+        IBackgroundMusicController backgroundMusicController = BackgroundMusicSingleton.getInstance();
+        backgroundMusicController.play("main");
     }
 }
