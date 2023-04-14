@@ -80,5 +80,5 @@ public class Settings {
      */
     public void setMusicAudioLevelSliderValue(double value) {
         musicAudioLevelSlider.setValue(value);
-    
+    }
 }
