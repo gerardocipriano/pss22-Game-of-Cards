@@ -4,6 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.screen.WindowConfigurator;
+
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationTest;
@@ -14,7 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.IOException;
 
-import controller.screen.FullScreenManager;
+import controller.screen.FullScreenManagerSingleton;
+import controller.screen.IFullScreenManagerController;
 import controller.sound.*;
 /**
  * Test class for the Settings controller.
@@ -23,7 +26,9 @@ import controller.sound.*;
  */
 public class SettingsTest extends ApplicationTest {
     private Settings settingsController;
-
+    private IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
+    private final WindowConfigurator windowConfigurator = new WindowConfigurator();
+    
     /**
      * Set up the test environment by loading the "Settings" scene and getting its controller.
      *
@@ -34,10 +39,6 @@ public class SettingsTest extends ApplicationTest {
         // Load the "Settings" scene and get its controller
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/SettingsGui.fxml"));
         Parent root = loader.load();
-        settingsController = loader.getController();
-
-        SceneHandler.getInstance().setPrimaryStage(stage);
-        FullScreenManager.getInstance().setPrimaryStage(stage);
 
         IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
         bgMusic.play("main");
@@ -45,9 +46,11 @@ public class SettingsTest extends ApplicationTest {
 
         // Set the scene and show the stage
         Scene scene = new Scene(root);
+        windowConfigurator.configure(stage);
         stage.setScene(scene);
-        stage.setAlwaysOnTop(true);
         stage.show();
+
+        settingsController = loader.getController();
     }
 
     /**
@@ -86,8 +89,8 @@ public class SettingsTest extends ApplicationTest {
      */
     @Test
     public void testToggleFullScreen() {
+        
         // Get the current full screen state of the stage
-        FullScreenManager fullScreenManager = FullScreenManager.getInstance();
         boolean oldState = fullScreenManager.isFullScreen();
     
         // Simulate a click on the "toggleFullScreenButton"

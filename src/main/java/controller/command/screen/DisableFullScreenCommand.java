@@ -1,15 +1,16 @@
 package controller.command.screen;
 
 import controller.command.IButtonCommand;
-import controller.screen.FullScreenManager;
+import controller.screen.FullScreenManagerSingleton;
+import controller.screen.IFullScreenManagerController;
 
 /**
  * A class that implements the IButtonCommand interface to disable full screen mode.
  * @author gerardocipriano
  */
 public class DisableFullScreenCommand implements IButtonCommand {
-    // instance of FullScreenManager
-    private FullScreenManager fullScreenManager = FullScreenManager.getInstance();
+    // instance of FullScreenManagerSingleton
+    private IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
 
     /**
      * Constructor for DisableFullScreenCommand.
