@@ -1,15 +1,15 @@
 package controller.command.screen;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.screen.FullScreenManager;
 
 /**
- * The ToggleFullScreenCommand class implements the ButtonCommand interface and allows toggling 
+ * The ToggleFullScreenCommand class implements the IButtonCommand interface and allows toggling 
  * the full screen mode of the application. 
  * 
  * @author gerardocipriano
  */
-public class ToggleFullScreenCommand implements ButtonCommand {
+public class ToggleFullScreenCommand implements IButtonCommand {
 
     /**
      * Constructs a new ToggleFullScreenCommand instance.

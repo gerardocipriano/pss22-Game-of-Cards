@@ -3,23 +3,23 @@ package controller.command;
 import java.util.List;
 
 /**
- * MacroCommand is an implementation of the ButtonCommand interface that allows a group of commands to be executed together.
+ * MacroCommand is an implementation of the IButtonCommand interface that allows a group of commands to be executed together.
  *
  * @author gerardocipriano
  */
-public class MacroCommand implements ButtonCommand {
+public class MacroCommand implements IButtonCommand {
 
     /**
      * The list of commands to be executed in sequence.
      */
-    private List<ButtonCommand> commands;
+    private List<IButtonCommand> commands;
 
     /**
-     * Constructs a new MacroCommand object with the given list of ButtonCommands.
+     * Constructs a new MacroCommand object with the given list of IButtonCommands.
      *
      * @param commands the commands to be executed
      */
-    public MacroCommand(List<ButtonCommand> commands) {
+    public MacroCommand(List<IButtonCommand> commands) {
         this.commands = commands;
     }
 
@@ -28,7 +28,7 @@ public class MacroCommand implements ButtonCommand {
      */
     @Override
     public void execute() {
-        for (ButtonCommand command : commands) {
+        for (IButtonCommand command : commands) {
             command.execute();
         }
     }

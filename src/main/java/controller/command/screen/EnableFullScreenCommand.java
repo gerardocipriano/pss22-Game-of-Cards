@@ -1,13 +1,13 @@
 package controller.command.screen;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.screen.FullScreenManager;
 
 /**
- * This class represents a command to enable full screen mode. It implements the ButtonCommand interface.
+ * This class represents a command to enable full screen mode. It implements the IButtonCommand interface.
  * @author gerardocipriano.
  */
-public class EnableFullScreenCommand implements ButtonCommand {
+public class EnableFullScreenCommand implements IButtonCommand {
     private FullScreenManager fullScreenManager = FullScreenManager.getInstance();
 
     /**

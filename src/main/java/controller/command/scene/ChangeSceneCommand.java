@@ -2,16 +2,16 @@ package controller.command.scene;
 
 import java.io.IOException;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.fxml.SceneHandler;
 import javafx.event.ActionEvent;
 
 /**
- * ChangeSceneCommand class implements ButtonCommand interface to handle button click events and perform scene changes.
+ * ChangeSceneCommand class implements IButtonCommand interface to handle button click events and perform scene changes.
  *
  * @author gerardocipriano
  */
-public class ChangeSceneCommand implements ButtonCommand {
+public class ChangeSceneCommand implements IButtonCommand {
     private String fxmlFile;
     private final SceneHandler sceneHandler = SceneHandler.getInstance();
 

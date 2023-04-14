@@ -3,7 +3,7 @@ package controller.fxml;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.screen.EnableFullScreenCommand;
@@ -56,7 +56,7 @@ public class MainMenu {
     public void initialize() {
 
         settingsButton.setOnAction(event -> {
-            List<ButtonCommand> settingsCommands = new ArrayList<>();
+            List<IButtonCommand> settingsCommands = new ArrayList<>();
             settingsCommands.add(new ChangeSceneCommand("Settings.fxml"));
             settingsCommands.add(new PlayClipCommand());
             MacroCommand settingsMacro = new MacroCommand(settingsCommands);
@@ -64,7 +64,7 @@ public class MainMenu {
         });
 
         rulesButton.setOnAction(event -> {
-            List<ButtonCommand> rulesCommands = new ArrayList<>();
+            List<IButtonCommand> rulesCommands = new ArrayList<>();
             rulesCommands.add(new ChangeSceneCommand("Rules.fxml"));
             rulesCommands.add(new PlayClipCommand());
             MacroCommand rulesMacro = new MacroCommand(rulesCommands);
@@ -72,7 +72,7 @@ public class MainMenu {
         });
 
         decksButton.setOnAction(event -> {
-            List<ButtonCommand> decksCommands = new ArrayList<>();
+            List<IButtonCommand> decksCommands = new ArrayList<>();
             decksCommands.add(new ChangeSceneCommand("Decks.fxml"));
             decksCommands.add(new PlayClipCommand());
             MacroCommand decksMacro = new MacroCommand(decksCommands);
@@ -80,7 +80,7 @@ public class MainMenu {
         });
 
         matchButton.setOnAction(event -> {
-            List<ButtonCommand> matchCommands = new ArrayList<>();
+            List<IButtonCommand> matchCommands = new ArrayList<>();
             matchCommands.add(new ChangeSceneCommand("Match.fxml"));
             matchCommands.add(new PlayClipCommand());
             matchCommands.add(new EnableFullScreenCommand());

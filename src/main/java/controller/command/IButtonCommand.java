@@ -7,7 +7,7 @@ package controller.command;
 *
 * @author gerardocipriano
 */
-public interface ButtonCommand {
+public interface IButtonCommand {
     /**
     * Executes the command implemented by the implementation class.
     */

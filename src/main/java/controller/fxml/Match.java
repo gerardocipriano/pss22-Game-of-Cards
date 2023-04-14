@@ -1,7 +1,7 @@
 package controller.fxml;
 
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.screen.ToggleFullScreenCommand;
@@ -28,7 +28,7 @@ public class Match {
 
     public void initialize() {
         backButton.setOnAction(event -> {
-            List<ButtonCommand> matchCommands = new ArrayList<>();
+            List<IButtonCommand> matchCommands = new ArrayList<>();
             matchCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
             matchCommands.add(new PlayClipCommand());
             matchCommands.add(new ToggleFullScreenCommand());

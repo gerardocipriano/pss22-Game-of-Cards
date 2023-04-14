@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.sound.PlayClipCommand;
@@ -44,7 +44,7 @@ public class Rules {
         deckManagementText.setText(properties.getProperty("deckManagement"));
         setupTabPane();
         backButton.setOnAction(event -> {
-            List<ButtonCommand> backCommands = new ArrayList<>();
+            List<IButtonCommand> backCommands = new ArrayList<>();
             backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
             backCommands.add(new PlayClipCommand());
             MacroCommand decksMacro = new MacroCommand(backCommands);
