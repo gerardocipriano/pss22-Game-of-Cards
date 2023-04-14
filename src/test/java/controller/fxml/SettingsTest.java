@@ -56,7 +56,7 @@ public class SettingsTest extends ApplicationTest {
     public void testMusicAudioLevelSlider() {
         // Get the current value of the slider
         double oldValue = settingsController.getMusicAudioLevelSliderValue();
-        settingsController.musicAudioLevelSlider.setValue(0);
+        settingsController.setMusicAudioLevelSliderValue(0);
         // Simulate a drag of the slider to change its value
         drag("#musicAudioLevelSlider").dropBy(20, 0);
 
