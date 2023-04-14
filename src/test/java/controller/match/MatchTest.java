@@ -1,18 +1,17 @@
 
 package controller.match;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 import java.io.IOException;
 
-import org.junit.jupiter.api.Test;
-import org.testfx.api.FxAssert;
+
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.matcher.control.LabeledMatchers;
+
 
 import controller.fxml.Match;
 import controller.sound.BackgroundMusicSingleton;
+import controller.sound.IBackgroundMusicController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,8 +36,9 @@ public class MatchTest extends ApplicationTest {
         Parent root = loader.load();
         matchController = loader.getController();
 
-        BackgroundMusicSingleton.getInstance().playMainTheme();
-        BackgroundMusicSingleton.getInstance().setVolume(0.5);
+        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        bgMusic.play("main");
+        bgMusic.setVolume(0.025);
 
         // Set the scene and show the stage
         Scene scene = new Scene(root);
