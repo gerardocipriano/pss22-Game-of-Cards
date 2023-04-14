@@ -69,14 +69,14 @@ public class Settings {
 
     /**
      * Gets the value of the music slider for testing purposes.
-     * @return the value of the music slider
+     * 
      */
     public double getMusicAudioLevelSliderValue() {
         return musicAudioLevelSlider.getValue();
     }
     /**
      * Sets the value of the music slider for testing purposes.
-     * @return the value of the music slider
+     * 
      */
     public void setMusicAudioLevelSliderValue(double value) {
         musicAudioLevelSlider.setValue(value);

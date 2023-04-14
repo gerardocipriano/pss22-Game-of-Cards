@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * MacroCommand is an implementation of the ButtonCommand interface that allows a group of commands to be executed together.
  *
- * @author @gerardocipriano
+ * @author gerardocipriano
  */
 public class MacroCommand implements ButtonCommand {
 
