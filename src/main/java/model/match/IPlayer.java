@@ -3,7 +3,7 @@ package model.match;
 import model.Card;
 
 public interface IPlayer {
-    int discard(Card card);
+    void discard(DeckCard card);
 
     void position(Card card, int position);
 }

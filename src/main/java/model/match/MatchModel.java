@@ -1,11 +1,13 @@
 package model.match;
 
+import java.util.Random;
+
 import model.Deck;
 import model.IDeck;
 
 public class MatchModel implements IMatchModel {
     private IBoard board;
-    private IDeck deck;
+    private model.match.Deck deck;
     private IPlayer player1;
     private IPlayer player2;
     private static MatchModel instance;
@@ -25,18 +27,33 @@ public class MatchModel implements IMatchModel {
         return new Player();
     }
 
-    public void start(IDeck deck) {
-        this.deck = deck;
+    @Override
+    public void start(model.match.IDeck deck) {
+
+        this.deck = (model.match.Deck) deck;
 
         player1 = createPlayer();
         player2 = createPlayer();
 
-        //IPlayer currentPlayer = starterPlayer(player1, player2);
+        IPlayer currentPlayer = starterPlayer(player1, player2);
 
-        //currentPlayer.getCards(deck);
+        // currentPlayer.getCards(deck);
 
-        //board = createGameBoard(player1, player2);
+        // board = createGameBoard(player1, player2);
 
+    }
+
+    @Override
+    public IPlayer starterPlayer(IPlayer player1, IPlayer player2) {
+
+        Random rand = new Random();
+
+        int randomNumber = (rand.nextInt(2) + 1);
+
+        if (randomNumber == 1)
+            return player1;
+        else
+            return player2;
     }
 
 }
