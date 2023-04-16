@@ -1,6 +1,7 @@
 package model.deckmanagement;
-
-
+/*
+ * This class represents a prototype of a card, since the class 'Card' has not yet been properly defined this is just an example
+ */
 public class DeckCard {
     private String name;
     private int attack;

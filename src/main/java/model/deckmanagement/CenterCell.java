@@ -1,7 +1,9 @@
 package model.deckmanagement;
 
 import javafx.scene.control.ListView;
-
+/*
+ * This class represents the cells in the list on the center of the page
+ */
 public class CenterCell extends Cell {
 
     
