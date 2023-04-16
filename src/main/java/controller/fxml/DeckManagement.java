@@ -1,14 +1,8 @@
 package controller.fxml;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
@@ -21,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import model.Deck;
 import model.deckmanagement.RightCell;
+import utilities.parser.Parser;
 import model.deckmanagement.DeckCard;
 import model.deckmanagement.DeckCell;
 import model.deckmanagement.CenterCell;
@@ -31,62 +26,51 @@ public class DeckManagement {
     @FXML private ListView<DeckCard> rightList;
     @FXML private ListView<DeckCard> centerList;
     @FXML private ListView<Deck> leftList;
-
-    public void initialize() {
-        List<DeckCard> cards = new ArrayList<>();
-        String json = null;
-        Gson gson = new Gson();
-        ToggleGroup group = new ToggleGroup();
-
-        //Render the data contained within each cell
-        rightList.setCellFactory(param -> new RightCell("Add", centerList));
-        centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
-        leftList.setCellFactory(param -> new DeckCell(leftList, group));
-
-        //Read json file as string
-        try (FileReader reader = new FileReader("./src/main/resources/cards/cards.json")) {
-            json = new BufferedReader(reader).lines().collect(Collectors.joining());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //Convert json to card list and add them to the listView on the right
-        cards = gson.fromJson(json, new TypeToken<List<DeckCard>>() {}.getType());
-        for (DeckCard card : cards) {
-            rightList.getItems().addAll(card);
-        }
-
-        backButton.setOnAction(event -> {
-            List<IButtonCommand> backCommands = new ArrayList<>();
-            backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
-            backCommands.add(new PlayClipCommand());
-            MacroCommand decksMacro = new MacroCommand(backCommands);
-            decksMacro.execute();
-        });
-
-    }  
-
     @FXML
-        void saveDeck(final ActionEvent event) throws IOException{
-            PlayClipCommand playSound = new PlayClipCommand();
-            playSound.execute();
-            Deck deck = new Deck();
+    void saveDeck(final ActionEvent event) throws IOException{
+        PlayClipCommand playSound = new PlayClipCommand();
+        Deck deck = new Deck();
+        List<Deck> deckList = new ArrayList<>();
+
+        if (!centerList.getItems().isEmpty()){
             for (DeckCard card : centerList.getItems()){
                 deck.addCard(card);
             }
             leftList.getItems().add(deck);
+            deckList = leftList.getItems();
+            Parser.writeDecks(deckList);
         }
-}
-        /* 
-        Codice per salvare le carte nel json
-        Gson gson = new Gson();
-        String json = gson.toJson(card1);
-        System.out.println(json);
+        playSound.execute();
+    }
 
-        try (FileWriter writer = new FileWriter("./src/main/resources/cards/cards.json")) {
-            writer.write(json);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
+    public void initialize() {
+        List<DeckCard> cards = Parser.parseCards();
+        List<Deck> decks = Parser.parseDecks();
+        ToggleGroup group = new ToggleGroup();
+        List<IButtonCommand> backCommands = new ArrayList<>();
+
+        // Setting up the custom 'ListCell' for the three listView
+        rightList.setCellFactory(param -> new RightCell("Add", centerList));
+        centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
+        leftList.setCellFactory(param -> new DeckCell(leftList, group));
+        
+        /* Add the data retrieved from json files to the appropriate listView,
+         * if the files are empty an error is raised, which is why the if statement
+         */
+        if (cards != null) {
+            rightList.getItems().addAll(cards);  
+        } 
+        if (decks != null) {
+            leftList.getItems().addAll(decks);
+        } 
+
+        // Commands for the back-to-mainmenu button
+        backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
+        backCommands.add(new PlayClipCommand());
+        MacroCommand backMacro = new MacroCommand(backCommands);
+        backButton.setOnAction(event -> {
+            backMacro.execute();
+        });
+
+    }  
+}
