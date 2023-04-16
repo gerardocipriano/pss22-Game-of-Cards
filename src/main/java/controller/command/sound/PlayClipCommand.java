@@ -1,10 +1,11 @@
 package controller.command.sound;
 
-import controller.command.ButtonCommand;
-import controller.sound.ButtonClipSound;
+import controller.command.IButtonCommand;
+import controller.sound.ButtonClipSoundSingleton;
+import controller.sound.IButtonClipSoundController;
 
-public class PlayClipCommand implements ButtonCommand {
-    ButtonClipSound buttonClipSound = ButtonClipSound.getInstance();
+public class PlayClipCommand implements IButtonCommand {
+    IButtonClipSoundController buttonClipSound = ButtonClipSoundSingleton.getInstance();
 
     public PlayClipCommand() {}
 

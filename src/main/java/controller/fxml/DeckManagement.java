@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.sound.PlayClipCommand;
@@ -57,7 +57,7 @@ public class DeckManagement {
         }
 
         backButton.setOnAction(event -> {
-            List<ButtonCommand> backCommands = new ArrayList<>();
+            List<IButtonCommand> backCommands = new ArrayList<>();
             backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
             backCommands.add(new PlayClipCommand());
             MacroCommand decksMacro = new MacroCommand(backCommands);

@@ -3,20 +3,20 @@ package controller.sound;
 import javafx.scene.media.AudioClip;
 import java.net.URL;
 
-public class ButtonClipSound {
-    private static ButtonClipSound instance;
+public class ButtonClipSoundSingleton implements IButtonClipSoundController {
+    private static ButtonClipSoundSingleton instance;
     private AudioClip buttonClipSound;
     
 
 
-    private ButtonClipSound() {
+    private ButtonClipSoundSingleton() {
         URL resource = getClass().getResource("/sounds/clip/buttonClipSound.mp3");
         buttonClipSound = new AudioClip(resource.toString());
     }
 
-    public static ButtonClipSound getInstance() {
+    public static ButtonClipSoundSingleton getInstance() {
         if (instance == null) {
-            instance = new ButtonClipSound();
+            instance = new ButtonClipSoundSingleton();
         }
         return instance;
     }

@@ -1,36 +1,42 @@
 package controller.fxml;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import controller.command.ButtonCommand;
+import controller.command.IButtonCommand;
+import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.screen.ToggleFullScreenCommand;
 import controller.command.sound.PlayClipCommand;
 import controller.command.sound.SwitchToMainThemeCommand;
-import controller.command.MacroCommand;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
+import model.Deck;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.scene.control.Button;
+import model.match.*;
 
 public class Match {
+
+    IMatchModel matchModel = MatchModel.getInstance();
 
     @FXML
     private Button backButton;
 
     public void initialize() {
-        
         backButton.setOnAction(event -> {
-            List<ButtonCommand> backCommands = new ArrayList<>();
-            backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
-            backCommands.add(new PlayClipCommand());
-            backCommands.add(new ToggleFullScreenCommand());
-            backCommands.add(new SwitchToMainThemeCommand());
-            MacroCommand settingsMacro = new MacroCommand(backCommands);
-            settingsMacro.execute();
+            List<IButtonCommand> matchCommands = new ArrayList<>();
+            matchCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
+            matchCommands.add(new PlayClipCommand());
+            matchCommands.add(new ToggleFullScreenCommand());
+            matchCommands.add(new SwitchToMainThemeCommand());
+            MacroCommand matchMacro = new MacroCommand(matchCommands);
+            matchMacro.execute();
         });
+        // matchModel->start();
+
     }
-
 }
-
-

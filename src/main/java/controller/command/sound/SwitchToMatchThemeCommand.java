@@ -1,15 +1,16 @@
 package controller.command.sound;
 
-import controller.command.ButtonCommand;
-import controller.sound.BackgroundMusic;
+import controller.command.IButtonCommand;
+import controller.sound.BackgroundMusicSingleton;
+import controller.sound.IBackgroundMusicController;
 
-public class SwitchToMatchThemeCommand implements ButtonCommand {
+public class SwitchToMatchThemeCommand implements IButtonCommand {
 
     public SwitchToMatchThemeCommand() {}
 
     @Override
     public void execute() {
-        BackgroundMusic.getInstance().playMatchTheme();
+        IBackgroundMusicController backgroundMusicController = BackgroundMusicSingleton.getInstance();
+        backgroundMusicController.play("match");
     }
-    
 }
