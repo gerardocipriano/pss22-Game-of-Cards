@@ -15,14 +15,16 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import model.Deck;
 import model.deckmanagement.RightCell;
-import utilities.parser.ParseCard;
-import utilities.parser.ParseDeck;
+import utilities.parser.CardParser;
+import utilities.parser.DeckParser;
 import model.deckmanagement.DeckCard;
 import model.deckmanagement.DeckCell;
 import model.deckmanagement.CenterCell;
 
 public class DeckManagement {
     
+    private Deck selectedDeck;
+
     @FXML private Button backButton;
     @FXML private ListView<DeckCard> rightList;
     @FXML private ListView<DeckCard> centerList;
@@ -40,14 +42,14 @@ public class DeckManagement {
             }
             leftList.getItems().add(deck);
             deckList = leftList.getItems();
-            ParseDeck.writeDecks(deckList);
+            DeckParser.writeDecks(deckList);
         }
         playSound.execute();
     }
 
     public void initialize() {
-        List<DeckCard> cards = ParseCard.parseCards();
-        List<Deck> decks = ParseDeck.parseDecks();
+        List<DeckCard> cards = CardParser.parseCards();
+        List<Deck> decks = DeckParser.parseDecks();
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<>();
 

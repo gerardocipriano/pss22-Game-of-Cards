@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken;
 
 import model.Deck;
 
-public class ParseDeck {
+public class DeckParser {
 
     public static void writeDecks(List<Deck> decks){
         Gson gson = new Gson();
