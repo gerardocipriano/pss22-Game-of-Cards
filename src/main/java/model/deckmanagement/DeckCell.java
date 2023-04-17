@@ -7,7 +7,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Deck;
+import utilities.parser.DeckParser;
 import controller.command.sound.PlayClipCommand;
+import controller.fxml.Match;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 /*
@@ -39,6 +41,10 @@ public class DeckCell extends ListCell<Deck> {
             playSound.execute();
             Deck deck = getItem();
             this.handleDecks(deck, leftList);
+            DeckParser.deleteDeck(deck);
+        });
+        radioButton.setOnAction(e -> {
+            Match.selectedDeck = getItem();
         });
     }
 

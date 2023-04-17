@@ -22,7 +22,7 @@ import model.match.*;
 public class Match {
 
     IMatchModel matchModel = MatchModel.getInstance();
-
+    public static Deck selectedDeck = new Deck();
     @FXML
     private Button backButton;
 
@@ -37,6 +37,5 @@ public class Match {
             matchMacro.execute();
         });
         // matchModel->start();
-
     }
 }

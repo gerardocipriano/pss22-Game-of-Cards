@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken;
 
 import model.deckmanagement.DeckCard;
 
-public class ParseCard {
+public class CardParser {
 
     public static  List<DeckCard> parseCards()  {
         List<DeckCard> cards = new ArrayList<>();
