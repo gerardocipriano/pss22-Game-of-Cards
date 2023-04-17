@@ -37,6 +37,5 @@ public class Match {
             matchMacro.execute();
         });
         // matchModel->start();
-        System.out.println(selectedDeck);
     }
 }
