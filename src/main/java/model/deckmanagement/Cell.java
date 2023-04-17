@@ -31,6 +31,7 @@ public abstract class Cell extends ListCell<DeckCard> {
     }
     
     protected abstract void handleCards(DeckCard card, ListView<DeckCard> centerList);
+    
     /* updateItem() is a JavaFX built-in function that is called
      * everytime an item in the list is modified 
      */

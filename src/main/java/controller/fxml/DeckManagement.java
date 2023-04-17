@@ -15,7 +15,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import model.Deck;
 import model.deckmanagement.RightCell;
-import utilities.parser.Parser;
+import utilities.parser.ParseCard;
+import utilities.parser.ParseDeck;
 import model.deckmanagement.DeckCard;
 import model.deckmanagement.DeckCell;
 import model.deckmanagement.CenterCell;
@@ -26,6 +27,7 @@ public class DeckManagement {
     @FXML private ListView<DeckCard> rightList;
     @FXML private ListView<DeckCard> centerList;
     @FXML private ListView<Deck> leftList;
+    
     @FXML
     void saveDeck(final ActionEvent event) throws IOException{
         PlayClipCommand playSound = new PlayClipCommand();
@@ -38,14 +40,14 @@ public class DeckManagement {
             }
             leftList.getItems().add(deck);
             deckList = leftList.getItems();
-            Parser.writeDecks(deckList);
+            ParseDeck.writeDecks(deckList);
         }
         playSound.execute();
     }
 
     public void initialize() {
-        List<DeckCard> cards = Parser.parseCards();
-        List<Deck> decks = Parser.parseDecks();
+        List<DeckCard> cards = ParseCard.parseCards();
+        List<Deck> decks = ParseDeck.parseDecks();
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<>();
 
