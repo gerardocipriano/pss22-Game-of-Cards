@@ -2,6 +2,10 @@ package model.deckmanagement;
 
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import controller.command.sound.PlayClipCommand;
 import javafx.scene.control.Button;
@@ -28,6 +32,12 @@ public abstract class Cell extends ListCell<DeckCard> {
             DeckCard card = getItem();
             this.handleCards(card, centerList);
         });
+        container.setBackground(new Background(new javafx.scene.layout.BackgroundImage(
+                new javafx.scene.image.Image("/images/Effect_Axe_1.jpg"),
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1, 1, true, true, false, false))));
     }
     
     protected abstract void handleCards(DeckCard card, ListView<DeckCard> centerList);
