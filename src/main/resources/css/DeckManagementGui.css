@@ -2,3 +2,24 @@
     -fx-background-image: url(/images/DeckManagement1c.jpg);
     -fx-background-size: 100% 100%;
 }
+
+ListView {
+    -fx-text-fill: black; /* Change the text color */
+    -fx-border-color: gray; /* Change the border color */
+    -fx-border-width: 2px; /* Set the border width */
+    -fx-border-radius: 5px;
+}
+
+#saveButton {
+    -fx-border-color: rgb(72, 38, 226);
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-font-size: 15px;
+    -fx-font: Verdana;
+    -fx-text-align: center;
+}
+
+#backButton {
+    -fx-font: Verdana;
+    -fx-text-align: center;
+}
