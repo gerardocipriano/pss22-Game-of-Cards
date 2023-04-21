@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="panel" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/DeckManagementGui.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxml.DeckManagement">
    <children>
-      <ListView fx:id="leftList" layoutX="-2.0" layoutY="-5.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ListView fx:id="rightList" layoutX="1111.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ListView fx:id="centerList" prefHeight="592.0" prefWidth="169.0" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="556.0" layoutY="592.0" prefHeight="94.0" prefWidth="169.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0">
+      <ListView fx:id="leftList" layoutX="-2.0" layoutY="-5.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ListView fx:id="rightList" layoutX="1111.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox alignment="TOP_CENTER" layoutX="555.0" maxWidth="169.0" minHeight="720.0" minWidth="169.0" prefHeight="720.0" prefWidth="169.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="555.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="saveButton" alignment="CENTER" layoutX="65.0" layoutY="35.0" mnemonicParsing="false" onAction="#saveDeck" text="Save" />
-            <Button fx:id="backButton" alignment="CENTER" layoutX="64.0" layoutY="68.0" mnemonicParsing="false" text="Back" />
-            <TextField fx:id="deckNameTextField" alignment="CENTER" layoutX="10.0" layoutY="2.0" />
+            <ListView fx:id="centerList" maxHeight="2000.0" maxWidth="169.0" prefHeight="720.0" prefWidth="169.0">
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin></ListView>
+            <TextField fx:id="deckNameTextField" alignment="CENTER" maxWidth="169.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveDeck" text="Save">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" text="Back">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
 </AnchorPane>

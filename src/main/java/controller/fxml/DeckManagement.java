@@ -75,6 +75,8 @@ public class DeckManagement {
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<>();
 
+        
+
         // Setting up the custom 'ListCell' for the three listView
         rightList.setCellFactory(param -> new RightCell("Add", centerList));
         centerList.setCellFactory(param -> new CenterCell("Remove", centerList));

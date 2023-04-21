@@ -2,12 +2,15 @@ package model.deckmanagement;
 
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import controller.command.sound.PlayClipCommand;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 /*
@@ -26,14 +29,18 @@ public abstract class Cell extends ListCell<DeckCard> {
     public Cell(String buttonText, ListView<DeckCard> centerList ) {
         label = new Label();
         cellButton = new Button(buttonText);
+        label.toFront();
         container = new VBox(label, cellButton);
         cellButton.setOnAction(e -> {
             playSound.execute();
             DeckCard card = getItem();
             this.handleCards(card, centerList);
         });
-        container.setBackground(new Background(new javafx.scene.layout.BackgroundImage(
-                new javafx.scene.image.Image("/images/Effect_Axe_1.jpg"),
+        //container.setPadding(new Insets(5));
+        container.setPrefHeight(90);
+        container.setPrefWidth(120);
+        container.setBackground(new Background(new BackgroundImage(
+                new Image("/images/Effect_Axe_1.jpg",120,90,false, true),
                 BackgroundRepeat.REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
