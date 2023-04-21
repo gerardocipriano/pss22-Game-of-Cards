@@ -57,33 +57,33 @@ public class MainMenu {
 
         settingsButton.setOnAction(event -> {
             List<IButtonCommand> settingsCommands = new ArrayList<>();
-            settingsCommands.add(new ChangeSceneCommand("Settings.fxml"));
             settingsCommands.add(new PlayClipCommand());
+            settingsCommands.add(new ChangeSceneCommand("Settings.fxml"));
             MacroCommand settingsMacro = new MacroCommand(settingsCommands);
             settingsMacro.execute();
         });
 
         rulesButton.setOnAction(event -> {
             List<IButtonCommand> rulesCommands = new ArrayList<>();
-            rulesCommands.add(new ChangeSceneCommand("Rules.fxml"));
             rulesCommands.add(new PlayClipCommand());
+            rulesCommands.add(new ChangeSceneCommand("Rules.fxml"));
             MacroCommand rulesMacro = new MacroCommand(rulesCommands);
             rulesMacro.execute();
         });
 
         decksButton.setOnAction(event -> {
             List<IButtonCommand> decksCommands = new ArrayList<>();
-            decksCommands.add(new ChangeSceneCommand("Decks.fxml"));
             decksCommands.add(new PlayClipCommand());
+            decksCommands.add(new ChangeSceneCommand("Decks.fxml"));
             MacroCommand decksMacro = new MacroCommand(decksCommands);
             decksMacro.execute();
         });
 
         matchButton.setOnAction(event -> {
             List<IButtonCommand> matchCommands = new ArrayList<>();
-            matchCommands.add(new ChangeSceneCommand("Match.fxml"));
             matchCommands.add(new PlayClipCommand());
             matchCommands.add(new EnableFullScreenCommand());
+            matchCommands.add(new ChangeSceneCommand("Match.fxml"));
             matchCommands.add(new SwitchToMatchThemeCommand());
             MacroCommand matchMacro = new MacroCommand(matchCommands);
             matchMacro.execute();
