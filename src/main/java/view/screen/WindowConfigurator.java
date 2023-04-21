@@ -18,6 +18,7 @@ public class WindowConfigurator {
     private static final int SCENE_HEIGHT = 720;
     private final IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
     private final ISceneManagerController sceneManager = SceneManagerSingleton.getInstance();
+    private StageSizeTracker stageSizeTracker;
 
     /**
      * Configures the given stage.
@@ -27,6 +28,7 @@ public class WindowConfigurator {
     public void configure(Stage stage) {
         sceneManager.setPrimaryStage(stage);
         fullScreenManager.setPrimaryStage(stage);
+        stageSizeTracker = new StageSizeTracker(stage);
 
         stage.getIcons().add(new Image("/images/logo.png"));
         stage.setTitle("Game of Cards");

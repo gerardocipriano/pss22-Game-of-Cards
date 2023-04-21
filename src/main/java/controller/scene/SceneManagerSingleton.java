@@ -3,7 +3,9 @@ package controller.scene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import view.screen.StageSizeTracker;
 
 import java.io.IOException;
 
@@ -15,6 +17,7 @@ import java.io.IOException;
 public class SceneManagerSingleton implements ISceneManagerController {
     private static SceneManagerSingleton instance;
     private Stage primaryStage;
+    private double screenWidth;
 
     /**
      * Private constructor to prevent instantiation from outside the class.
@@ -90,7 +93,14 @@ public class SceneManagerSingleton implements ISceneManagerController {
      * @throws IOException If an error occurs while loading the FXML file.
      */
     public void openMatch(ActionEvent event) throws IOException {
-        loadScene("layouts/MatchGui.fxml");
+        String fxmlPath;
+    
+        if (StageSizeTracker.getStageWidth() == 1920.0 && StageSizeTracker.getStageHeight() == 1080.0) {
+            fxmlPath = "layouts/MatchGui1920x1080.fxml";
+        } else {
+            fxmlPath = "layouts/SettingsGui.fxml";
+        }
+        loadScene(fxmlPath);
     }
 
     /**
@@ -111,5 +121,9 @@ public class SceneManagerSingleton implements ISceneManagerController {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource(fxmlPath));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
+    }
+
+    public void setScreenWidth(double screenWidth) {
+        this.screenWidth = screenWidth;
     }
 }
