@@ -1,13 +1,16 @@
 package controller.scene;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import view.screen.StageSizeTracker;
 
 import java.io.IOException;
+
+import exceptions.ErrorDialogHandler;
+import exceptions.UnsupportedResolutionException;
 
 /**
  * This class is a Singleton that handle the scenes of the game.
@@ -17,7 +20,6 @@ import java.io.IOException;
 public class SceneManagerSingleton implements ISceneManagerController {
     private static SceneManagerSingleton instance;
     private Stage primaryStage;
-    private double screenWidth;
 
     /**
      * Private constructor to prevent instantiation from outside the class.
@@ -87,21 +89,26 @@ public class SceneManagerSingleton implements ISceneManagerController {
         loadScene("layouts/DeckManagementGui.fxml");
     }
 
-    /**
-     * Open the match scene.
-     * @param event The ActionEvent that triggered this method.
-     * @throws IOException If an error occurs while loading the FXML file.
-     */
-    public void openMatch(ActionEvent event) throws IOException {
-        String fxmlPath;
-    
-        if (StageSizeTracker.getStageWidth() == 1920.0 && StageSizeTracker.getStageHeight() == 1080.0) {
-            fxmlPath = "layouts/MatchGui1920x1080.fxml";
-        } else {
-            fxmlPath = "layouts/SettingsGui.fxml";
-        }
+/**
+ * Opens the match scene. If the screen resolution is not supported, an error message is shown to the user and the application is closed.
+ * @param event The event that triggered this method.
+ * @throws IOException If an error occurs while loading the FXML file for the match scene.
+ */
+public void openMatch(ActionEvent event) throws IOException {
+    try {
+        MatchSceneSelector selector = new MatchSceneSelector();
+        double screenWidth = StageSizeTracker.getStageWidth();
+        double screenHeight = StageSizeTracker.getStageHeight();
+        String fxmlPath = selector.getMatchSceneFxmlPath(screenWidth, screenHeight);
         loadScene(fxmlPath);
+    } catch (UnsupportedResolutionException e) {
+        // Show an error dialog to the user with the message from the exception
+        ErrorDialogHandler errorHandler = new ErrorDialogHandler();
+        errorHandler.showErrorDialog(e.getMessage());
+        // Close the application
+        Platform.exit();
     }
+}
 
     /**
      * Open the rules scene.
@@ -121,9 +128,5 @@ public class SceneManagerSingleton implements ISceneManagerController {
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource(fxmlPath));
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
-    }
-
-    public void setScreenWidth(double screenWidth) {
-        this.screenWidth = screenWidth;
     }
 }
