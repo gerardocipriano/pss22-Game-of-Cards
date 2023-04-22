@@ -17,7 +17,6 @@ public class StageSizeTracker {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
                 stageWidth = (double) newSceneWidth;
-                System.out.println(stageWidth);
             }
         });
 
@@ -25,7 +24,6 @@ public class StageSizeTracker {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneHeight, Number newSceneHeight) {
                 stageHeight = (double) newSceneHeight;
-                System.out.println(stageHeight);
             }
         });
     }
