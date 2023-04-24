@@ -23,21 +23,21 @@ import javafx.util.Duration;
 * Controller for the Rules scene.
 */
 /**
- * This class is the controller for the Rules scene.
- * It manages the logic for displaying the rules of the game.
- *
- * @author gerardocipriano
- */
+* This class is the controller for the Rules scene.
+* It manages the logic for displaying the rules of the game.
+*
+* @author gerardocipriano
+*/
 public class Rules {
     @FXML private Button backButton;
     @FXML private TabPane tabPane;
     @FXML private Text cardCreationText;
     @FXML private Text deckManagementText;
-
+    
     /**
-     * Initializes the controller.
-     * Loads the properties from the file and sets up the TabPane and backButton.
-     */
+    * Initializes the controller.
+    * Loads the properties from the file and sets up the TabPane and backButton.
+    */
     public void initialize() {
         Properties properties = loadProperties();
         cardCreationText.setText(properties.getProperty("cardCreation"));
@@ -51,12 +51,12 @@ public class Rules {
             decksMacro.execute();
         });
     }
-
+    
     /**
-     * Loads the properties from the file.
-     *
-     * @return The loaded properties.
-     */
+    * Loads the properties from the file.
+    *
+    * @return The loaded properties.
+    */
     private Properties loadProperties() {
         Properties properties = new Properties();
         try (InputStream inputStream = getClass().getResourceAsStream("/rules/rules.properties")) {
@@ -66,11 +66,11 @@ public class Rules {
         }
         return properties;
     }
-
+    
     /**
-     * Sets up the TabPane by setting the opacity of the tabs and adding a listener to the selectedItem property.
-     */
-    private void setupTabPane() {
+    * Sets up the TabPane by setting the opacity of the tabs and adding a listener to the selectedItem property.
+    */
+    void setupTabPane() {
         for (int i = 1; i < tabPane.getTabs().size(); i++) {
             Tab tab = tabPane.getTabs().get(i);
             tab.getContent().setOpacity(0);
@@ -94,5 +94,14 @@ public class Rules {
                 fadeIn.play();
             }
         });
+    }
+    
+    /**
+    * Returns the tabPane property.
+    *
+    * @return the tabPane property
+    */
+    public TabPane getTabPane() {
+        return tabPane;
     }
 }
