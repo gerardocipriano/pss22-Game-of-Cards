@@ -11,7 +11,6 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import model.Card;
 import controller.command.sound.PlayClipCommand;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 /*
@@ -33,8 +32,8 @@ public abstract class CardCell extends ListCell<Card> {
         label.toFront();
 
         container = new VBox(label, cellButton);
-        container.setPrefHeight(90);
-        container.setPrefWidth(120);
+        container.setPrefHeight(120);
+        container.setPrefWidth(152);
 
         cellButton.setOnAction(e -> {
             playSound.execute();

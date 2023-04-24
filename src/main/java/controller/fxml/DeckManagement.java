@@ -39,22 +39,26 @@ public class DeckManagement {
         List<Deck> deckList, jsonDecks = new ArrayList<>();
         
         deck.setName(deckNameTextField.getText());
-        jsonDecks = DeckParser.parseDecks();
+        
+        if(!leftList.getItems().isEmpty()){
+            jsonDecks = DeckParser.parseDecks();
         /* Check in the json if a deck with the same name already exist
          * in which case raise an alert 
          */
-        for (Deck existingDeck : jsonDecks) {
-            if (existingDeck.getName().equals(deck.getName())) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.initOwner(backButton.getScene().getWindow());
-                alert.setTitle("Error");
-                alert.setHeaderText("Deck already exists");
-                alert.setContentText("A deck with the name '" + deck.getName() + "' already exists. Please choose a different name.");
-                alert.initModality(Modality.APPLICATION_MODAL);
-                alert.show();
-                return;
+            for (Deck existingDeck : jsonDecks) {
+                if (existingDeck.getName().equals(deck.getName())) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.initOwner(backButton.getScene().getWindow());
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Deck already exists");
+                    alert.setContentText("A deck with the name '" + deck.getName() + "' already exists. Please choose a different name.");
+                    alert.initModality(Modality.APPLICATION_MODAL);
+                    alert.show();
+                    return;
+                }
             }
         }
+        
         /* Add chosen cards to the deck, the deck to his list
          * and to the json file
          */

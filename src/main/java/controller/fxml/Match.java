@@ -8,11 +8,8 @@ import controller.command.screen.ToggleFullScreenCommand;
 import controller.command.sound.PlayClipCommand;
 import controller.command.sound.SwitchToMainThemeCommand;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 import model.Deck;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

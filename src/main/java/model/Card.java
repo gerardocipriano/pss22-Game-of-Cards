@@ -1,6 +1,6 @@
 package model;
 /*
- * This class represents a prototype of a card, since the class 'Card' has not yet been properly defined this is just an example
+ * This class represents a prototype of a card, since the Card-creation part has not yet been properly defined this is just an example
  */
 public class Card {
     private String name;

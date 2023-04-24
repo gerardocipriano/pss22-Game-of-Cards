@@ -8,4 +8,6 @@ public interface IDeck {
 
     public void printCards();
 
+    public String getImage();
+
 }
