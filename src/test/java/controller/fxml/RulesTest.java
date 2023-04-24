@@ -10,6 +10,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.text.Text;
 import java.lang.reflect.Field;
 
+import java.util.Properties;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -79,6 +80,19 @@ public class RulesTest extends ApplicationTest{
             assertEquals(0, tab.getContent().getOpacity(), 0.001, "Expected tab content opacity to be 0");
         }
     }
-
-    
+    /**
+    * Tests the loadProperties method.
+    */
+    @Test
+    public void testLoadProperties() {
+        // Create a new instance of the Rules class
+        Rules rules = new Rules();
+        
+        // Call the loadProperties method
+        Properties properties = rules.loadProperties();
+        
+        // Verify that the properties have been loaded correctly
+        assertEquals("Card Creation is composed of the following phases...", properties.getProperty("cardCreation"));
+        assertEquals("Deck Management is composed of the following phases...", properties.getProperty("deckManagement"));
+    }
 }

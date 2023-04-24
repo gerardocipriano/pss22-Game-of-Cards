@@ -57,7 +57,7 @@ public class Rules {
     *
     * @return The loaded properties.
     */
-    private Properties loadProperties() {
+    public Properties loadProperties() {
         Properties properties = new Properties();
         try (InputStream inputStream = getClass().getResourceAsStream("/rules/rules.properties")) {
             properties.load(inputStream);
