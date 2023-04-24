@@ -1,18 +1,19 @@
 package model.deckmanagement;
 
 import javafx.scene.control.ListView;
+import model.Card;
 /*
  * This class represents the cells in the list on the right side
  */
 public class RightCell extends Cell {
 
     
-    public RightCell(String buttonText, ListView<DeckCard> centerList) {
+    public RightCell(String buttonText, ListView<Card> centerList) {
         super(buttonText, centerList);
     }
     
     @Override
-    protected void handleCards(DeckCard card, ListView<DeckCard> centerList) {
+    protected void handleCards(Card card, ListView<Card> centerList) {
         if (!card.isMoved()) {
                 centerList.getItems().add(card);
                 card.setMoved(! card.isMoved());

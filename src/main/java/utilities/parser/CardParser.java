@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import model.deckmanagement.DeckCard;
+import model.Card;
 
 public class CardParser {
 
-    public static  List<DeckCard> parseCards()  {
-        List<DeckCard> cards = new ArrayList<>();
+    public static  List<Card> parseCards()  {
+        List<Card> cards = new ArrayList<>();
         String json = null;
         Gson gson = new Gson();
 
@@ -25,11 +25,11 @@ public class CardParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cards = gson.fromJson(json, new TypeToken<List<DeckCard>>() {});
+        cards = gson.fromJson(json, new TypeToken<List<Card>>() {});
         return cards;
     }
 
-    public static void writeCards(List<DeckCard> cards) {
+    public static void writeCards(List<Card> cards) {
         Gson gson = new Gson();
         String json = gson.toJson(cards);
         System.out.println(json);

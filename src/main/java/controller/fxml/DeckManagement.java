@@ -17,18 +17,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
+import model.Card;
 import model.Deck;
 import model.deckmanagement.RightCell;
 import utilities.parser.CardParser;
 import utilities.parser.DeckParser;
-import model.deckmanagement.DeckCard;
 import model.deckmanagement.DeckCell;
 import model.deckmanagement.CenterCell;
 
 public class DeckManagement {
 
     @FXML private Button backButton;
-    @FXML private ListView<DeckCard> rightList, centerList;
+    @FXML private ListView<Card> rightList, centerList;
     @FXML private ListView<Deck> leftList;
     @FXML private TextField deckNameTextField;
     
@@ -59,7 +59,7 @@ public class DeckManagement {
          * and to the json file
          */
         if (!centerList.getItems().isEmpty()){
-            for (DeckCard card : centerList.getItems()){
+            for (Card card : centerList.getItems()){
                 deck.addCard(card);
             }
             leftList.getItems().add(deck);
@@ -70,7 +70,7 @@ public class DeckManagement {
     }
 
     public void initialize() {
-        List<DeckCard> cards = CardParser.parseCards();
+        List<Card> cards = CardParser.parseCards();
         List<Deck> decks = DeckParser.parseDecks();
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<>();

@@ -1,10 +1,8 @@
 package model;
 
-import model.deckmanagement.DeckCard;
-
 public interface IDeck {
 
-    public void addCard(DeckCard Card);
+    public void addCard(Card Card);
 
     public String toString();
 

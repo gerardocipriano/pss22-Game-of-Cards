@@ -2,13 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.deckmanagement.DeckCard;
 
 public class Deck
         implements IDeck {
             
     private String name = "Name";
-    private List<DeckCard> cards;
+    private List<Card> cards;
 
     public Deck() {
         this.cards = new ArrayList<>();
@@ -18,12 +17,12 @@ public class Deck
         this.name = name;
     }
     
-    public void addCard(DeckCard Card) {
+    public void addCard(Card Card) {
         this.cards.add(Card);
     }
 
     public void printCards() {
-        for (DeckCard i : this.cards) {
+        for (Card i : this.cards) {
             System.out.println(i.toString());
         }
     }

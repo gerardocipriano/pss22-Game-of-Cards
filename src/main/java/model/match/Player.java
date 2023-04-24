@@ -1,19 +1,19 @@
 package model.match;
 
-import model.deckmanagement.DeckCard;
+import model.Card;
 
 public class Player implements IPlayer {
     int health;
     int maana;
 
     @Override
-    public int discard(DeckCard card) {
+    public int discard(Card card) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'discard'");
     }
 
     @Override
-    public void position(DeckCard card, int position) {
+    public void position(Card card, int position) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'position'");
     }

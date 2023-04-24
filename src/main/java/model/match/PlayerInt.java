@@ -1,10 +1,10 @@
 package model.match;
 
-import model.deckmanagement.DeckCard;
+import model.Card;
 
 public interface PlayerInt {
 
-    int discard(DeckCard card);
+    int discard(Card card);
 
-    void position(DeckCard card, int position);
+    void position(Card card, int position);
 }
