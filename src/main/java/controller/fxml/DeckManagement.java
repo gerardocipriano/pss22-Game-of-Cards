@@ -19,11 +19,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import model.Card;
 import model.Deck;
-import model.deckmanagement.RightCell;
+import model.deckmanagement.RightCardCell;
 import utilities.parser.CardParser;
 import utilities.parser.DeckParser;
 import model.deckmanagement.DeckCell;
-import model.deckmanagement.CenterCell;
+import model.deckmanagement.CenterCardCell;
 
 public class DeckManagement {
 
@@ -75,11 +75,9 @@ public class DeckManagement {
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<>();
 
-        
-
         // Setting up the custom 'ListCell' for the three listView
-        rightList.setCellFactory(param -> new RightCell("Add", centerList));
-        centerList.setCellFactory(param -> new CenterCell("Remove", centerList));
+        rightList.setCellFactory(param -> new RightCardCell("Add", centerList));
+        centerList.setCellFactory(param -> new CenterCardCell("Remove", centerList));
         leftList.setCellFactory(param -> new DeckCell(leftList, group));
         
         /* Add the data retrieved from json files to the appropriate listView,

@@ -5,10 +5,10 @@ import model.Card;
 /*
  * This class represents the cells in the list on the center of the page
  */
-public class CenterCell extends Cell {
+public class CenterCardCell extends CardCell {
 
     
-    public CenterCell(String buttonText, ListView<Card> centerList) {
+    public CenterCardCell(String buttonText, ListView<Card> centerList) {
         super(buttonText, centerList);
     }
 

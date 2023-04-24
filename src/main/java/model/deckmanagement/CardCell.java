@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
  * This class represents a cell within the 2 listViews(center and right of the layout), given that each cell differs in some feature 
  * e.g. functionality and number of buttons, i implemented an abstract class that will be extended for each cell type (Template Method)
  */
-public abstract class Cell extends ListCell<Card> {
+public abstract class CardCell extends ListCell<Card> {
 
     private VBox container;
     private Button cellButton ;
@@ -27,25 +27,20 @@ public abstract class Cell extends ListCell<Card> {
     /* Each cell is created with a label and a button,
      * the button functionality is defined in the classes that extends this one (handleCards())
      */
-    public Cell(String buttonText, ListView<Card> centerList ) {
+    public CardCell(String buttonText, ListView<Card> centerList ) {
         label = new Label();
         cellButton = new Button(buttonText);
         label.toFront();
+
         container = new VBox(label, cellButton);
+        container.setPrefHeight(90);
+        container.setPrefWidth(120);
+
         cellButton.setOnAction(e -> {
             playSound.execute();
             Card card = getItem();
             this.handleCards(card, centerList);
         });
-        //container.setPadding(new Insets(5));
-        container.setPrefHeight(90);
-        container.setPrefWidth(120);
-        container.setBackground(new Background(new BackgroundImage(
-                new Image("/images/Effect_Axe_1.jpg",120,90,false, true),
-                BackgroundRepeat.REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(1, 1, true, true, false, false))));
     }
     
     protected abstract void handleCards(Card card, ListView<Card> centerList);
@@ -59,6 +54,12 @@ public abstract class Cell extends ListCell<Card> {
             setGraphic(null);
         } else {
             label.setText(card.toString());
+            container.setBackground(new Background(new BackgroundImage(
+                new Image(card.getImage(), 120, 90, false, true),
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1, 1, true, true, false, false))));
             setGraphic(container);
         }
     }

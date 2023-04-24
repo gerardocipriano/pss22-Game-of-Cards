@@ -5,10 +5,10 @@ import model.Card;
 /*
  * This class represents the cells in the list on the right side
  */
-public class RightCell extends Cell {
+public class RightCardCell extends CardCell {
 
     
-    public RightCell(String buttonText, ListView<Card> centerList) {
+    public RightCardCell(String buttonText, ListView<Card> centerList) {
         super(buttonText, centerList);
     }
     
