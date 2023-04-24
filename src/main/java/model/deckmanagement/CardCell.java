@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
  * This class represents a cell within the 2 listViews(center and right of the layout), given that each cell differs in some feature 
  * e.g. functionality and number of buttons, i implemented an abstract class that will be extended for each cell type (Template Method)
  */
-public abstract class CardCell extends ListCell<Card> {
+public  class CardCell extends ListCell<Card> {
 
     private VBox container;
     private Button cellButton ;
@@ -26,9 +26,9 @@ public abstract class CardCell extends ListCell<Card> {
     /* Each cell is created with a label and a button,
      * the button functionality is defined in the classes that extends this one (handleCards())
      */
-    public CardCell(String buttonText, ListView<Card> centerList ) {
+    public CardCell(ListView<Card> centerList ) {
         label = new Label();
-        cellButton = new Button(buttonText);
+        cellButton = new Button("Move");
         label.toFront();
 
         container = new VBox(label, cellButton);
@@ -42,7 +42,16 @@ public abstract class CardCell extends ListCell<Card> {
         });
     }
     
-    protected abstract void handleCards(Card card, ListView<Card> centerList);
+    protected void handleCards(Card card, ListView<Card> centerList){
+        if (!card.isMoved()) {
+            centerList.getItems().add(card);
+            card.setMoved(! card.isMoved());
+        } 
+        else {
+            centerList.getItems().remove(card);
+            card.setMoved(! card.isMoved());
+        }
+    }
     
     /* updateItem() is a JavaFX built-in function that is called
      * everytime an item in the list is modified 
