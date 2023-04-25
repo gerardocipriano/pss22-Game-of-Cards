@@ -4,7 +4,7 @@ import model.deckmanagement.DeckCard;
 
 public interface IDeck {
 
-    public void addCard(DeckCard Card);
+    public void addCard(ICard Card);
 
     public String toString();
 

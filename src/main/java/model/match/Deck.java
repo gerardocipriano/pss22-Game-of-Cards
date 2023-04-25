@@ -2,18 +2,17 @@ package model.match;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.deckmanagement.DeckCard;
 
 public class Deck
         implements IDeck {
 
-    private List<DeckCard> cards;
+    private List<ICard> cards;
 
     public Deck() {
         this.cards = new ArrayList<>();
     }
 
-    public void addCard(DeckCard Card) {
+    public void addCard(ICard Card) {
         this.cards.add(Card);
     }
 
@@ -22,7 +21,7 @@ public class Deck
     }
 
     public void printCards() {
-        for (DeckCard i : this.cards) {
+        for (ICard i : this.cards) {
             System.out.println(i.toString());
         }
     }
