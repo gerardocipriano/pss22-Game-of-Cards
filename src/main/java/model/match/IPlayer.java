@@ -1,9 +1,9 @@
 package model.match;
 
-import model.Card;
-
 public interface IPlayer {
-    void discard(DeckCard card);
+    void discard(ICard card);
 
-    void position(Card card, int position);
+    void position(ICard card, int position);
+
+    void getCards(IDeck deck);
 }

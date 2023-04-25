@@ -37,7 +37,7 @@ public class MatchModel implements IMatchModel {
 
         IPlayer currentPlayer = starterPlayer(player1, player2);
 
-        // currentPlayer.getCards(deck);
+        currentPlayer.getCards(deck);
 
         // board = createGameBoard(player1, player2);
 
