@@ -21,8 +21,7 @@ import model.Card;
 import model.Deck;
 import utilities.parser.CardParser;
 import utilities.parser.DeckParser;
-import model.deckmanagement.DeckCell;
-import model.deckmanagement.CardCell;
+import model.deckmanagement.CellFactory;
 
 public class DeckManagement {
 
@@ -79,9 +78,10 @@ public class DeckManagement {
         List<IButtonCommand> backCommands = new ArrayList<>();
 
         // Setting up the custom 'ListCell' for the three listView
-        rightList.setCellFactory(param -> new CardCell(centerList));
-        centerList.setCellFactory(param -> new CardCell(centerList));
-        leftList.setCellFactory(param -> new DeckCell(leftList, group));
+        CellFactory cellFactory = new CellFactory(group, leftList, centerList);
+        leftList.setCellFactory(view -> cellFactory.createDeckCell());
+        centerList.setCellFactory(view -> cellFactory.createCardCell());
+        rightList.setCellFactory(view -> cellFactory.createCardCell());
         
         /* Add the data retrieved from json files to the appropriate listView,
          * if the files are empty an error is raised, which is why the if statement
@@ -100,6 +100,5 @@ public class DeckManagement {
         backButton.setOnAction(event -> {
             backMacro.execute();
         });
-
     }  
 }
