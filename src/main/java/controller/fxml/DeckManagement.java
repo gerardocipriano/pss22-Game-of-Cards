@@ -10,15 +10,14 @@ import controller.command.scene.ChangeSceneCommand;
 import controller.command.sound.PlayClipCommand;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Modality;
+import javafx.stage.Window;
 import model.Card;
 import model.Deck;
+import utilities.InputValidator;
 import utilities.parser.CardParser;
 import utilities.parser.DeckParser;
 import model.deckmanagement.CellFactory;
@@ -33,34 +32,22 @@ public class DeckManagement {
     @FXML
     void saveDeck(final ActionEvent event) throws IOException{
         PlayClipCommand playSound = new PlayClipCommand();
+        Window currentWindow = backButton.getScene().getWindow();
         Deck deck = new Deck();
-        List<Deck> deckList, jsonDecks = new ArrayList<>();
-        
-        deck.setName(deckNameTextField.getText());
+        List<Deck> deckList, jsonDecks = new ArrayList<Deck>();
+        String deckName = deckNameTextField.getText();
         
         if(!leftList.getItems().isEmpty()){
             jsonDecks = DeckParser.parseDecks();
-        /* Check in the json if a deck with the same name already exist
-         * in which case raise an alert 
-         */
             for (Deck existingDeck : jsonDecks) {
-                if (existingDeck.getName().equals(deck.getName())) {
-                    Alert alert = new Alert(AlertType.ERROR);
-                    alert.initOwner(backButton.getScene().getWindow());
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Deck already exists");
-                    alert.setContentText("A deck with the name '" + deck.getName() + "' already exists. Please choose a different name.");
-                    alert.initModality(Modality.APPLICATION_MODAL);
-                    alert.show();
+                if (!InputValidator.validateDeckName(deckName, existingDeck.getName(), currentWindow)) {
                     return;
                 }
             }
         }
         
-        /* Add chosen cards to the deck, the deck to his list
-         * and to the json file
-         */
         if (!centerList.getItems().isEmpty()){
+            deck.setName(deckNameTextField.getText());
             for (Card card : centerList.getItems()){
                 deck.addCard(card);
             }
@@ -76,9 +63,8 @@ public class DeckManagement {
         List<Deck> decks = DeckParser.parseDecks();
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<>();
-
-        // Setting up the custom 'ListCell' for the three listView
         CellFactory cellFactory = new CellFactory(group, leftList, centerList);
+        
         leftList.setCellFactory(view -> cellFactory.createDeckCell());
         centerList.setCellFactory(view -> cellFactory.createCardCell());
         rightList.setCellFactory(view -> cellFactory.createCardCell());
