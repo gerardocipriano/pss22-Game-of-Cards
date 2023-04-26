@@ -14,10 +14,12 @@ public class Player implements IPlayer {
     @Override
     public void position(ICard card, int position) {
 
-        if (position == true) {
+        /*if (position == true) {
             int cardMaana = card.getMaana();
             this.maana -= (cardMaana / 2);
-        }
+        }*/
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCards'");
     }
 
     @Override

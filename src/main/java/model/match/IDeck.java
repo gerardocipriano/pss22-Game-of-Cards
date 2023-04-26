@@ -1,6 +1,6 @@
 package model.match;
 
-import model.deckmanagement.DeckCard;
+//import model.deckmanagement.DeckCard;
 
 public interface IDeck {
 
