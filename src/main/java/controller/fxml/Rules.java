@@ -1,5 +1,13 @@
 package controller.fxml;
 
+import javafx.animation.FadeTransition;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.util.Duration;
+import view.rules.TabViewFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -10,38 +18,24 @@ import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.sound.PlayClipCommand;
-import javafx.animation.FadeTransition;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.text.Text;
-import javafx.util.Duration;
-
 
 /**
-* Controller for the Rules scene.
-*/
-/**
-* This class is the controller for the Rules scene.
-* It manages the logic for displaying the rules of the game.
-*
-* @author gerardocipriano
-*/
+ * Controller for the rules scene.
+ * Dynamically creates tabs based on entries in the properties file.
+ *
+ * @author gerardocipriano
+ */
 public class Rules {
-    @FXML private Button backButton;
-    @FXML private TabPane tabPane;
-    @FXML private Text cardCreationText;
-    @FXML private Text deckManagementText;
-    
+    @FXML
+    private Button backButton;
+    @FXML
+    private TabPane tabPane;
+
     /**
-    * Initializes the controller.
-    * Loads the properties from the file and sets up the TabPane and backButton.
-    */
+     * Initializes the controller.
+     * Sets up the tab pane and the back button.
+     */
     public void initialize() {
-        Properties properties = loadProperties();
-        cardCreationText.setText(properties.getProperty("cardCreation"));
-        deckManagementText.setText(properties.getProperty("deckManagement"));
         setupTabPane();
         backButton.setOnAction(event -> {
             List<IButtonCommand> backCommands = new ArrayList<>();
@@ -51,12 +45,12 @@ public class Rules {
             decksMacro.execute();
         });
     }
-    
+
     /**
-    * Loads the properties from the file.
-    *
-    * @return The loaded properties.
-    */
+     * Loads the properties from the properties file.
+     *
+     * @return the loaded properties
+     */
     public Properties loadProperties() {
         Properties properties = new Properties();
         try (InputStream inputStream = getClass().getResourceAsStream("/rules/rules.properties")) {
@@ -66,14 +60,16 @@ public class Rules {
         }
         return properties;
     }
-    
+
     /**
-    * Sets up the TabPane by setting the opacity of the tabs and adding a listener to the selectedItem property.
-    */
+     * Sets up the tab pane by creating tabs dynamically based on entries in the properties file.
+     */
     void setupTabPane() {
-        for (int i = 1; i < tabPane.getTabs().size(); i++) {
-            Tab tab = tabPane.getTabs().get(i);
-            tab.getContent().setOpacity(0);
+        Properties properties = loadProperties();
+        TabViewFactory tabViewFactory = new TabViewFactory(properties);
+        for (String key : properties.stringPropertyNames()) {
+            Tab tab = tabViewFactory.createTab(key);
+            tabPane.getTabs().add(tab);
         }
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (oldValue != null) {
@@ -95,7 +91,7 @@ public class Rules {
             }
         });
     }
-    
+
     /**
     * Returns the tabPane property.
     *
