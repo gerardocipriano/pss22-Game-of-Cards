@@ -1,23 +1,25 @@
 package controller.fxml;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.stage.Stage;
-import view.screen.WindowConfigurator;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.text.Text;
+import javafx.scene.control.SplitPane;
+import javafx.scene.layout.AnchorPane;
 import java.lang.reflect.Field;
-
 import java.util.Properties;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import controller.sound.BackgroundMusicSingleton;
 import controller.sound.IBackgroundMusicController;
+import view.screen.WindowConfigurator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 
@@ -51,18 +53,8 @@ public class RulesTest extends ApplicationTest{
     */
     @Test
     public void testSetupTabPane() {
-        // Create a new instance of the Rules class
         Rules rules = new Rules();
-        
-        // Set up the tabPane with some test data
         TabPane tabPane = new TabPane();
-        for (int i = 0; i < 3; i++) {
-            Tab tab = new Tab();
-            tab.setContent(new Text("Tab " + i));
-            tabPane.getTabs().add(tab);
-        }
-        
-        // Use reflection to set the value of the private tabPane field
         try {
             Field tabPaneField = Rules.class.getDeclaredField("tabPane");
             tabPaneField.setAccessible(true);
@@ -70,14 +62,15 @@ public class RulesTest extends ApplicationTest{
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        
-        // Call the setupTabPane method
         rules.setupTabPane();
-        
-        // Verify that the tabs have been set up correctly
-        for (int i = 1; i < rules.getTabPane().getTabs().size(); i++) {
+        Properties properties = rules.loadProperties();
+        assertEquals(properties.size(), rules.getTabPane().getTabs().size(), "Expected number of tabs to match number of properties");
+        for (int i = 0; i < rules.getTabPane().getTabs().size(); i++) {
             Tab tab = rules.getTabPane().getTabs().get(i);
-            assertEquals(0, tab.getContent().getOpacity(), 0.001, "Expected tab content opacity to be 0");
+            String key = tab.getText();
+            assertTrue(properties.containsKey(key), "Expected properties to contain key: " + key);
+            Text text = (Text) ((AnchorPane) ((SplitPane) tab.getContent()).getItems().get(0)).getChildren().get(0);
+            assertEquals(properties.getProperty(key), text.getText(), "Expected text to match property value");
         }
     }
     /**
@@ -92,7 +85,7 @@ public class RulesTest extends ApplicationTest{
         Properties properties = rules.loadProperties();
         
         // Verify that the properties have been loaded correctly
-        assertEquals("Card Creation is composed of the following phases...", properties.getProperty("cardCreation"));
-        assertEquals("Deck Management is composed of the following phases...", properties.getProperty("deckManagement"));
+        assertEquals("Card Creation is composed of the following phases...", properties.getProperty("CardCreation"));
+        assertEquals("Deck Management is composed of the following phases...", properties.getProperty("DeckManagement"));
     }
 }
