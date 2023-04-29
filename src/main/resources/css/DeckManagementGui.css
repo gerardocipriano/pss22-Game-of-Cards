@@ -15,11 +15,9 @@ ListView {
     -fx-border-radius: 5px;
     -fx-border-width: 2px;
     -fx-font-size: 15px;
-    -fx-font: Verdana;
     -fx-text-align: center;
 }
 
 #backButton {
-    -fx-font: Verdana;
     -fx-text-align: center;
 }
