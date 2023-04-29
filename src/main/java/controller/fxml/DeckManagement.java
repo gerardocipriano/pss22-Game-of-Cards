@@ -62,13 +62,12 @@ public class DeckManagement {
         List<Card> cards = CardParser.parseCards();
         List<Deck> decks = DeckParser.parseDecks();
         ToggleGroup group = new ToggleGroup();
-        List<IButtonCommand> backCommands = new ArrayList<>();
+        List<IButtonCommand> backCommands = new ArrayList<IButtonCommand>();
         CellFactory cellFactory = new CellFactory(group, leftList, centerList);
         
         leftList.setCellFactory(view -> cellFactory.createDeckCell());
         centerList.setCellFactory(view -> cellFactory.createCardCell());
         rightList.setCellFactory(view -> cellFactory.createCardCell());
-        
         /* Add the data retrieved from json files to the appropriate listView,
          * if the files are empty an error is raised, which is why the if statement
          */
@@ -78,7 +77,6 @@ public class DeckManagement {
         if (decks != null) {
             leftList.getItems().addAll(decks);
         } 
-
         // Commands for the back-to-mainmenu button
         backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
         backCommands.add(new PlayClipCommand());
