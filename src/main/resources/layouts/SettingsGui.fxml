@@ -18,7 +18,7 @@
       <Button id="backButton" fx:id="backButton" layoutX="563.0" layoutY="511.0" mnemonicParsing="false" text="Back" textAlignment="CENTER" />
       <Label layoutX="275.0" layoutY="287.0" text="Select Main Music" />
       <Label layoutX="275.0" layoutY="389.0" text="Select Battle Music " />
-      <ChoiceBox fx:id="choiceMainTheme" layoutX="275.0" layoutY="331.0" prefHeight="1.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choicheBattleTheme" layoutX="275.0" layoutY="427.0" prefHeight="1.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceMainTheme" layoutX="275.0" layoutY="331.0" prefHeight="58.0" prefWidth="341.0" />
+      <ChoiceBox fx:id="choicheBattleTheme" layoutX="275.0" layoutY="427.0" prefHeight="58.0" prefWidth="341.0" />
    </children>
 </AnchorPane>
