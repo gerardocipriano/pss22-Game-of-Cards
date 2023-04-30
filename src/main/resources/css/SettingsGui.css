@@ -24,3 +24,7 @@
     -fx-font-weight: bold;
     -fx-font: 54px Verdana;
 }
+
+.choice-box .menu-item .label { 
+    -fx-text-fill: black; 
+    }
