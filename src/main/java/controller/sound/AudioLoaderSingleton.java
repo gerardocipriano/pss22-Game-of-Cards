@@ -50,7 +50,7 @@ public class AudioLoaderSingleton {
     }
 
     private void loadMatchThemes() throws AudioLoadingException {
-        // Caricamento delle tracce audio dalla cartella delle risorse MatchTheme
+        // Loading of the audio tracks from the MatchTheme
         File matchThemeFolder = new File(getClass().getResource("/sounds/music/MatchThemes").getFile());
         for (File file : matchThemeFolder.listFiles()) {
             if (file.isFile() && file.getName().endsWith(".mp3")) {
