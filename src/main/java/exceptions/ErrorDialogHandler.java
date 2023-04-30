@@ -2,6 +2,7 @@ package exceptions;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 /**
  * This class is responsible for showing error messages to the user using a dialog.
@@ -17,6 +18,9 @@ public class ErrorDialogHandler {
         alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
         alert.showAndWait();
     }
 }
