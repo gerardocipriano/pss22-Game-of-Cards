@@ -63,14 +63,6 @@ public class AudioLoaderSingleton {
         }
     }
 
-    public void setCurrentMainThemeIndex(int index) {
-        int currentMainThemeIndex = index;
-    }
-    
-    public void setCurrentMatchThemeIndex(int index) {
-        int currentMatchThemeIndex = index;
-    }
-
     public List<Media> getMainThemeMediaList() {
         return mainThemeMediaList;
     }

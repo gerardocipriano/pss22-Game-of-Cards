@@ -1,7 +1,7 @@
 package view.settings;
 
 import controller.sound.AudioLoaderSingleton;
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.media.Media;
 
@@ -24,14 +24,14 @@ public class ChoiceBoxView {
             String themeName = "Main Theme " + (i + 1);
             choiceMainTheme.getItems().add(themeName);
         }
-        int currentMainThemeIndex = BackgroundMusicSingleton.getInstance().getCurrentMainThemeIndex();
+        int currentMainThemeIndex = BackgroundMusicControllerSingleton.getInstance().getCurrentMainThemeIndex();
         choiceMainTheme.getSelectionModel().select(currentMainThemeIndex);
 
         for (int i = 0; i < matchThemes.size(); i++) {
             String themeName = "Match Theme " + (i + 1);
             choicheBattleTheme.getItems().add(themeName);
         }
-        int currentMatchThemeIndex = BackgroundMusicSingleton.getInstance().getCurrentMatchThemeIndex();
+        int currentMatchThemeIndex = BackgroundMusicControllerSingleton.getInstance().getCurrentMatchThemeIndex();
         choicheBattleTheme.getSelectionModel().select(currentMatchThemeIndex);
     }
 }

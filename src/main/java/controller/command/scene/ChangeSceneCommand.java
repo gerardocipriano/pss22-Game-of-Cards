@@ -3,8 +3,8 @@ package controller.command.scene;
 import java.io.IOException;
 
 import controller.command.IButtonCommand;
-import controller.scene.ISceneManagerController;
-import controller.scene.SceneManagerSingleton;
+import controller.scene.ISceneController;
+import controller.scene.SceneControllerSingleton;
 import javafx.event.ActionEvent;
 
 /**
@@ -14,7 +14,7 @@ import javafx.event.ActionEvent;
  */
 public class ChangeSceneCommand implements IButtonCommand {
     private String fxmlFile;
-    private final ISceneManagerController sceneManager = SceneManagerSingleton.getInstance();
+    private final ISceneController sceneManager = SceneControllerSingleton.getInstance();
 
     /**
      * Constructor for ChangeSceneCommand.

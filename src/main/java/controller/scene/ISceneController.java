@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * Interface for managing scenes in a JavaFX application.
  * @author gerardocipriano
  */
-public interface ISceneManagerController {
+public interface ISceneController {
 
     /**
      * Sets the primary stage for the application.

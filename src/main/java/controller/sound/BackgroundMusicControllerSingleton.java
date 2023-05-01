@@ -10,8 +10,8 @@ import java.util.List;
  * It allows to play different themes and to change the volume of the music.
  * @author gerardocipriano
  */
-public class BackgroundMusicSingleton implements IBackgroundMusicController {
-    private static BackgroundMusicSingleton instance;
+public class BackgroundMusicControllerSingleton implements IBackgroundMusicController {
+    private static BackgroundMusicControllerSingleton instance;
     private MediaPlayer mediaPlayer;
     private List<Media> mainThemeMediaList;
     private List<Media> matchThemeMediaList;
@@ -22,7 +22,7 @@ public class BackgroundMusicSingleton implements IBackgroundMusicController {
     /**
      * Private constructor to prevent instantiation from outside the class.
      */
-    private BackgroundMusicSingleton() {
+    private BackgroundMusicControllerSingleton() {
         // empty initialization
     }
 
@@ -30,9 +30,9 @@ public class BackgroundMusicSingleton implements IBackgroundMusicController {
      * Returns the singleton instance of this class.
      * @return The singleton instance of this class.
      */
-    public static BackgroundMusicSingleton getInstance() {
+    public static BackgroundMusicControllerSingleton getInstance() {
         if (instance == null) {
-            instance = new BackgroundMusicSingleton();
+            instance = new BackgroundMusicControllerSingleton();
         }
         return instance;
     }

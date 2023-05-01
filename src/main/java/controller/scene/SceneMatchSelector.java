@@ -7,7 +7,7 @@ import exceptions.UnsupportedResolutionException;
  * If the screen resolution is not supported, an UnsupportedResolutionException is thrown.
  * @author gerardocipriano
  */
-public class MatchSceneSelector {
+public class SceneMatchSelector {
     /**
      * Returns the path to the FXML file for the match scene based on the screen resolution.
      * @param screenWidth The width of the screen.

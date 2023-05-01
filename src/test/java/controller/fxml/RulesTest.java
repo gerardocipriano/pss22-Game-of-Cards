@@ -14,7 +14,7 @@ import java.util.Properties;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import controller.sound.IBackgroundMusicController;
 import view.screen.WindowConfigurator;
 
@@ -44,7 +44,7 @@ public class RulesTest extends ApplicationTest{
         stage.setScene(scene);
         stage.show();
         
-        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        IBackgroundMusicController bgMusic = BackgroundMusicControllerSingleton.getInstance();
         bgMusic.play("main");
         bgMusic.setVolume(0.5);
     }

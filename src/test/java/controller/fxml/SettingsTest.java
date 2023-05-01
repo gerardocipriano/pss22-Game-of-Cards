@@ -40,7 +40,7 @@ public class SettingsTest extends ApplicationTest {
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/SettingsGui.fxml"));
         Parent root = loader.load();
 
-        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        IBackgroundMusicController bgMusic = BackgroundMusicControllerSingleton.getInstance();
         bgMusic.play("main");
         bgMusic.setVolume(0.5);
 
@@ -69,7 +69,7 @@ public class SettingsTest extends ApplicationTest {
         assertNotEquals(oldValue, newValue);
 
         // Verify that the music volume has changed accordingly
-        BackgroundMusicSingleton bgMusic = BackgroundMusicSingleton.getInstance();
+        BackgroundMusicControllerSingleton bgMusic = BackgroundMusicControllerSingleton.getInstance();
         assertEquals(newValue / 100, bgMusic.getVolume(), 0.01);
     }
     /**

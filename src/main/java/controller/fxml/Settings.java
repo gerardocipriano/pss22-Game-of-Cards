@@ -9,7 +9,7 @@ import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.screen.ToggleFullScreenCommand;
 import controller.command.sound.PlayClipCommand;
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -52,10 +52,10 @@ public class Settings {
      */
     public void initialize() {
 
-        musicAudioLevelSlider.setValue(BackgroundMusicSingleton.getInstance().getVolume() * 100);
+        musicAudioLevelSlider.setValue(BackgroundMusicControllerSingleton.getInstance().getVolume() * 100);
         musicAudioLevelSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100;
-            BackgroundMusicSingleton.getInstance().setVolume(volume);
+            BackgroundMusicControllerSingleton.getInstance().setVolume(volume);
         });
 
         choiceBoxView = new ChoiceBoxView(choiceMainTheme, choicheBattleTheme);
@@ -63,13 +63,13 @@ public class Settings {
 
         choiceMainTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             int index = choiceMainTheme.getSelectionModel().getSelectedIndex();
-            BackgroundMusicSingleton.getInstance().setCurrentMainThemeIndex(index);
-            BackgroundMusicSingleton.getInstance().play("main");
+            BackgroundMusicControllerSingleton.getInstance().setCurrentMainThemeIndex(index);
+            BackgroundMusicControllerSingleton.getInstance().play("main");
         });
 
         choicheBattleTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             int index = choicheBattleTheme.getSelectionModel().getSelectedIndex();
-            BackgroundMusicSingleton.getInstance().setCurrentMatchThemeIndex(index);
+            BackgroundMusicControllerSingleton.getInstance().setCurrentMatchThemeIndex(index);
         });
 
         backButton.setOnAction(event -> {

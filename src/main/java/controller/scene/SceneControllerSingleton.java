@@ -17,22 +17,22 @@ import exceptions.UnsupportedResolutionException;
  * It have methods to open different scenes and to set and get the primary stage.
  * @author gerardocipriano
  */
-public class SceneManagerSingleton implements ISceneManagerController {
-    private static SceneManagerSingleton instance;
+public class SceneControllerSingleton implements ISceneController {
+    private static SceneControllerSingleton instance;
     private Stage primaryStage;
 
     /**
      * Private constructor to prevent instantiation from outside the class.
      */
-    private SceneManagerSingleton() {}
+    private SceneControllerSingleton() {}
 
     /**
-     * Get the instance of the SceneManagerSingleton.
-     * @return The instance of the SceneManagerSingleton.
+     * Get the instance of the SceneControllerSingleton.
+     * @return The instance of the SceneControllerSingleton.
      */
-    public static SceneManagerSingleton getInstance() {
+    public static SceneControllerSingleton getInstance() {
         if (instance == null) {
-            instance = new SceneManagerSingleton();
+            instance = new SceneControllerSingleton();
         }
         return instance;
     }
@@ -96,7 +96,7 @@ public class SceneManagerSingleton implements ISceneManagerController {
  */
 public void openMatch(ActionEvent event) throws IOException {
     try {
-        MatchSceneSelector selector = new MatchSceneSelector();
+        SceneMatchSelector selector = new SceneMatchSelector();
         double screenWidth = StageSizeTracker.getStageWidth();
         double screenHeight = StageSizeTracker.getStageHeight();
         String fxmlPath = selector.getMatchSceneFxmlPath(screenWidth, screenHeight);

@@ -10,7 +10,7 @@ import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.control.LabeledMatchers;
 
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import controller.sound.IBackgroundMusicController;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class MainMenuTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
 
-        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        IBackgroundMusicController bgMusic = BackgroundMusicControllerSingleton.getInstance();
         bgMusic.play("main");
         bgMusic.setVolume(0.5);
     }
