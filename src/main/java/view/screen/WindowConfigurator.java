@@ -18,6 +18,7 @@ public class WindowConfigurator {
     private static final int SCENE_HEIGHT = 720;
     private final IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
     private final ISceneController sceneManager = SceneControllerSingleton.getInstance();
+    @SuppressWarnings("unused")
     private StageSizeTracker stageSizeTracker;
 
     /**
