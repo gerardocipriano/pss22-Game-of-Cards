@@ -29,28 +29,28 @@ public class SaveDeckCommand implements IButtonCommand {
     
     @Override
     public void execute() {
-            Window currentWindow = saveButton.getScene().getWindow();
-            Deck deck = new Deck();
-            List<Deck> deckList, jsonDecks = new ArrayList<Deck>();
-            String deckName = deckNameTextField.getText();
-            
-            if(!leftList.getItems().isEmpty()){
-                jsonDecks = DeckParser.parseDecks();
-                for (Deck existingDeck : jsonDecks) {
-                    if (!InputValidator.validateDeckName(deckName, existingDeck.getName(), currentWindow)) {
-                        return;
-                    }
+        Window currentWindow = saveButton.getScene().getWindow();
+        Deck deck = new Deck();
+        List<Deck> deckList, jsonDecks = new ArrayList<Deck>();
+        String deckName = deckNameTextField.getText();
+        
+        if(!leftList.getItems().isEmpty()){
+            jsonDecks = DeckParser.parseDecks();
+            for (Deck existingDeck : jsonDecks) {
+                if (!InputValidator.validateDeckName(deckName, existingDeck.getName(), currentWindow)) {
+                    return;
                 }
             }
-            
-            if (!centerList.getItems().isEmpty()){
-                deck.setName(deckNameTextField.getText());
-                for (Card card : centerList.getItems()){
-                    deck.addCard(card);
-                }
-                leftList.getItems().add(deck);
-                deckList = leftList.getItems();
-                DeckParser.writeDecks(deckList);
+        }
+        
+        if (!centerList.getItems().isEmpty()){
+            deck.setName(deckNameTextField.getText());
+            for (Card card : centerList.getItems()){
+                deck.addCard(card);
             }
+            leftList.getItems().add(deck);
+            deckList = leftList.getItems();
+            DeckParser.writeDecks(deckList);
+        }
     }   
 }

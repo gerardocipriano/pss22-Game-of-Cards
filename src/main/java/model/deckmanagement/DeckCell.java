@@ -3,6 +3,7 @@ package model.deckmanagement;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -12,6 +13,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import model.Card;
 import model.Deck;
 import utilities.parser.DeckParser;
 
@@ -22,6 +24,7 @@ import controller.command.IButtonCommand;
 import controller.command.MacroCommand;
 import controller.command.deckmanagement.DeleteDeckCommand;
 import controller.command.deckmanagement.SelectDeckCommand;
+import controller.command.deckmanagement.ShowDeckCommand;
 import controller.command.sound.PlayClipCommand;
 import controller.fxml.Match;
 import javafx.scene.control.Button;
@@ -36,11 +39,15 @@ public class DeckCell extends ListCell<Deck> {
     private VBox container;
     private Button showButton, deleteButton;
     private RadioButton selectButton;
-    private PlayClipCommand playSound = new PlayClipCommand();
     private List<IButtonCommand> deleteCommands = new ArrayList<IButtonCommand>();
     private List<IButtonCommand> selectCommands = new ArrayList<IButtonCommand>();
+    private List<IButtonCommand> showCommands = new ArrayList<IButtonCommand>();
+    private ListView<Card> centerList;
+    private TextField deckNameTextField;
 
-    public DeckCell(ListView<Deck> leftList, ToggleGroup group  ) {
+    public DeckCell(ListView<Deck> leftList, ListView<Card> centerList, ToggleGroup group, TextField deckNameTextField) {
+        this.centerList = centerList;
+        this.deckNameTextField = deckNameTextField;
         label = new Label();
         showButton = new Button("Show");
         deleteButton = new Button("Delete");
@@ -51,9 +58,16 @@ public class DeckCell extends ListCell<Deck> {
         container = new VBox(label, buttonContainer, selectButton);
         container.setPrefHeight(120);
         container.setPrefWidth(152);
-
+        /*
         showButton.setOnAction(e ->{
             playSound.execute();
+        });
+        */
+        showCommands.add(new ShowDeckCommand(this, this.centerList, this.deckNameTextField));
+        showCommands.add(new PlayClipCommand());
+        MacroCommand showMacro = new MacroCommand(showCommands);
+        showButton.setOnAction(event -> {
+            showMacro.execute();
         });
 
         deleteCommands.add(new DeleteDeckCommand(this, leftList));

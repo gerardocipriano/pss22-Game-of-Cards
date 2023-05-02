@@ -33,7 +33,7 @@ public class DeckManagement {
         ToggleGroup group = new ToggleGroup();
         List<IButtonCommand> backCommands = new ArrayList<IButtonCommand>();
         List<IButtonCommand> saveCommands = new ArrayList<IButtonCommand>();
-        CellFactory cellFactory = new CellFactory(group, leftList, centerList);
+        CellFactory cellFactory = new CellFactory(group, leftList, centerList, deckNameTextField);
         
         leftList.setCellFactory(view -> cellFactory.createDeckCell());
         centerList.setCellFactory(view -> cellFactory.createCardCell());
