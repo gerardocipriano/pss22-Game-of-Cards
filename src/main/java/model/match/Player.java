@@ -1,21 +1,31 @@
 package model.match;
 
-import model.deckmanagement.DeckCard;
-
 public class Player implements IPlayer {
     int health;
     int maana;
 
     @Override
-    public int discard(DeckCard card) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'discard'");
+    public void discard(ICard card) {
+
+        int cardMaana = card.getMaana();
+        this.maana += (cardMaana / 2);
     }
 
     @Override
-    public void position(DeckCard card, int position) {
+    public void position(ICard card, int position) {
+
+        /*if (position == true) {
+            int cardMaana = card.getMaana();
+            this.maana -= (cardMaana / 2);
+        }*/
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'position'");
+        throw new UnsupportedOperationException("Unimplemented method 'getCards'");
+    }
+
+    @Override
+    public void getCards(IDeck deck) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCards'");
     }
 
 }

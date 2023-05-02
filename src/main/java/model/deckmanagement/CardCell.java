@@ -9,15 +9,15 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import model.Card;
 import controller.command.sound.PlayClipCommand;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 /*
  * This class represents a cell within the 2 listViews(center and right of the layout), given that each cell differs in some feature 
  * e.g. functionality and number of buttons, i implemented an abstract class that will be extended for each cell type (Template Method)
  */
-public abstract class Cell extends ListCell<DeckCard> {
+public  class CardCell extends ListCell<Card> {
 
     private VBox container;
     private Button cellButton ;
@@ -26,38 +26,48 @@ public abstract class Cell extends ListCell<DeckCard> {
     /* Each cell is created with a label and a button,
      * the button functionality is defined in the classes that extends this one (handleCards())
      */
-    public Cell(String buttonText, ListView<DeckCard> centerList ) {
+    public CardCell(ListView<Card> centerList ) {
         label = new Label();
-        cellButton = new Button(buttonText);
+        cellButton = new Button("Move");
         label.toFront();
+
         container = new VBox(label, cellButton);
+        container.setPrefHeight(120);
+        container.setPrefWidth(152);
+
         cellButton.setOnAction(e -> {
             playSound.execute();
-            DeckCard card = getItem();
+            Card card = getItem();
             this.handleCards(card, centerList);
         });
-        //container.setPadding(new Insets(5));
-        container.setPrefHeight(90);
-        container.setPrefWidth(120);
-        container.setBackground(new Background(new BackgroundImage(
-                new Image("/images/Effect_Axe_1.jpg",120,90,false, true),
-                BackgroundRepeat.REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(1, 1, true, true, false, false))));
     }
     
-    protected abstract void handleCards(DeckCard card, ListView<DeckCard> centerList);
+    protected void handleCards(Card card, ListView<Card> centerList){
+        if (!card.isMoved()) {
+            centerList.getItems().add(card);
+            card.setMoved(! card.isMoved());
+        } 
+        else {
+            centerList.getItems().remove(card);
+            card.setMoved(! card.isMoved());
+        }
+    }
     
     /* updateItem() is a JavaFX built-in function that is called
      * everytime an item in the list is modified 
      */
-    protected void updateItem(DeckCard card, boolean empty) {
+    protected void updateItem(Card card, boolean empty) {
         super.updateItem(card, empty);
         if (empty || card == null) {
             setGraphic(null);
         } else {
             label.setText(card.toString());
+            container.setBackground(new Background(new BackgroundImage(
+                new Image(card.getImage(), 120, 90, false, true),
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1, 1, true, true, false, false))));
             setGraphic(container);
         }
     }

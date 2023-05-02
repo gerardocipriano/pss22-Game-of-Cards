@@ -10,7 +10,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 
 
 import controller.fxml.Match;
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import controller.sound.IBackgroundMusicController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,7 +36,7 @@ public class MatchTest extends ApplicationTest {
         Parent root = loader.load();
         matchController = loader.getController();
 
-        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        IBackgroundMusicController bgMusic = BackgroundMusicControllerSingleton.getInstance();
         bgMusic.play("main");
         bgMusic.setVolume(0.025);
 

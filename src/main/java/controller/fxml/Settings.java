@@ -9,10 +9,12 @@ import controller.command.MacroCommand;
 import controller.command.scene.ChangeSceneCommand;
 import controller.command.screen.ToggleFullScreenCommand;
 import controller.command.sound.PlayClipCommand;
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
+import view.settings.ChoiceBoxView;
 
 /**
  * The Settings class represents the graphical user interface for the settings page of the application.
@@ -38,16 +40,36 @@ public class Settings {
     @FXML 
     private Slider musicAudioLevelSlider;
 
+    private ChoiceBoxView choiceBoxView;
+
+    @FXML
+    private ChoiceBox<String> choiceMainTheme;
+    @FXML
+    private ChoiceBox<String> choicheBattleTheme;
+
     /**
      * Initializes the settings page, setting the initial value of the music slider and adding change listeners to it.
      */
     public void initialize() {
 
-        musicAudioLevelSlider.setValue(BackgroundMusicSingleton.getInstance().getVolume() * 100);
-
+        musicAudioLevelSlider.setValue(BackgroundMusicControllerSingleton.getInstance().getVolume() * 100);
         musicAudioLevelSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             double volume = newValue.doubleValue() / 100;
-            BackgroundMusicSingleton.getInstance().setVolume(volume);
+            BackgroundMusicControllerSingleton.getInstance().setVolume(volume);
+        });
+
+        choiceBoxView = new ChoiceBoxView(choiceMainTheme, choicheBattleTheme);
+        choiceBoxView.populateChoiceBoxes();
+
+        choiceMainTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = choiceMainTheme.getSelectionModel().getSelectedIndex();
+            BackgroundMusicControllerSingleton.getInstance().setCurrentMainThemeIndex(index);
+            BackgroundMusicControllerSingleton.getInstance().play("main");
+        });
+
+        choicheBattleTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = choicheBattleTheme.getSelectionModel().getSelectedIndex();
+            BackgroundMusicControllerSingleton.getInstance().setCurrentMatchThemeIndex(index);
         });
 
         backButton.setOnAction(event -> {

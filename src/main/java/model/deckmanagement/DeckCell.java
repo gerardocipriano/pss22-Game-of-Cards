@@ -4,6 +4,12 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Deck;
@@ -32,7 +38,10 @@ public class DeckCell extends ListCell<Deck> {
         radioButton = new RadioButton("Select");
         radioButton.setToggleGroup(group);
         buttonContainer = new HBox(showButton, deleteButton);
+        
         container = new VBox(label, buttonContainer, radioButton);
+        container.setPrefHeight(120);
+        container.setPrefWidth(152);
 
         showButton.setOnAction(e ->{
             playSound.execute();
@@ -58,6 +67,13 @@ public class DeckCell extends ListCell<Deck> {
             setGraphic(null);
         } else {
             label.setText(deck.toString());
+            setGraphic(container);
+            container.setBackground(new Background(new BackgroundImage(
+                new Image(deck.getImage(), 120, 90, false, true),
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1, 1, true, true, false, false))));
             setGraphic(container);
         }
     }

@@ -7,7 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import view.screen.WindowConfigurator;
-import controller.sound.BackgroundMusicSingleton;
+import controller.sound.AudioLoaderSingleton;
+import controller.sound.BackgroundMusicControllerSingleton;
 import controller.sound.IBackgroundMusicController;
 
 /**
@@ -41,7 +42,9 @@ public final class GameStart extends Application {
         stage.setScene(scene);
         stage.show();
         
-        IBackgroundMusicController bgMusic = BackgroundMusicSingleton.getInstance();
+        AudioLoaderSingleton audioLoader = AudioLoaderSingleton.getInstance();
+        IBackgroundMusicController bgMusic = BackgroundMusicControllerSingleton.getInstance();
+        bgMusic.init(audioLoader.getMainThemeMediaList(), audioLoader.getMatchThemeMediaList());
         bgMusic.play("main");
         bgMusic.setVolume(0.025);
     }

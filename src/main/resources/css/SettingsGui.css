@@ -4,15 +4,13 @@
 }
 
 .button {
-    -fx-font-size: 38px;
-    -fx-font: Verdana;
+    -fx-font: 38px Verdana;
 }
 
 .label {
-    -fx-font: Verdana;
-    -fx-font-size: 30px;
+    -fx-font: 30px Verdana;
     -fx-color: black;
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
 }
 
 #toggleFullScreenButton {
@@ -23,7 +21,10 @@
 
 #settingsLabel{
     -fx-text-fill: #953205;
-    -fx-font-size: 54px;
-    -fx-font-style: bold;
-    -fx-font: Verdana;
+    -fx-font-weight: bold;
+    -fx-font: 54px Verdana;
 }
+
+.choice-box .menu-item .label { 
+    -fx-text-fill: black; 
+    }
