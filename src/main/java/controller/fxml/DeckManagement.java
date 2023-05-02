@@ -36,8 +36,8 @@ public class DeckManagement {
         CellFactory cellFactory = new CellFactory(group, leftList, centerList, deckNameTextField);
         
         leftList.setCellFactory(view -> cellFactory.createDeckCell());
-        centerList.setCellFactory(view -> cellFactory.createCardCell());
-        rightList.setCellFactory(view -> cellFactory.createCardCell());
+        centerList.setCellFactory(view -> cellFactory.createCenterListCell());
+        rightList.setCellFactory(view -> cellFactory.createRightListCell());
         /* Add the data retrieved from json files to the appropriate listView,
          * if the files are empty an error is raised, which is why the if statement
          */

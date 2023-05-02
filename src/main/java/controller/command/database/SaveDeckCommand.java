@@ -31,7 +31,7 @@ public class SaveDeckCommand implements IButtonCommand {
     public void execute() {
         Window currentWindow = saveButton.getScene().getWindow();
         Deck deck = new Deck();
-        List<Deck> deckList, jsonDecks = new ArrayList<Deck>();
+        List<Deck> jsonDecks = new ArrayList<Deck>();
         String deckName = deckNameTextField.getText();
         
         if(!leftList.getItems().isEmpty()){
@@ -48,9 +48,20 @@ public class SaveDeckCommand implements IButtonCommand {
             for (Card card : centerList.getItems()){
                 deck.addCard(card);
             }
-            leftList.getItems().add(deck);
-            deckList = leftList.getItems();
-            DeckParser.writeDecks(deckList);
+            boolean deckFound = false;
+            List<Deck> leftListItems = leftList.getItems();
+            for (int i = 0; i < leftListItems.size(); i++) {
+                Deck existingDeck = leftListItems.get(i);
+                if (existingDeck.getName().equals(deck.getName())) {
+                    leftListItems.set(i, deck);
+                    deckFound = true;
+                    break;
+                }
+            }
+            if (!deckFound) {
+                leftList.getItems().add(deck);
+            }
+            DeckParser.writeDecks(leftList.getItems());
         }
     }   
 }

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.util.Duration;
+import view.rules.TabPaneSetupView;
 import view.rules.TabViewFactory;
 
 import java.io.IOException;
@@ -36,7 +37,8 @@ public class Rules {
      * Sets up the tab pane and the back button.
      */
     public void initialize() {
-        setupTabPane();
+        TabPaneSetupView tabPaneSetup = new TabPaneSetupView("/rules/rules.properties");
+        tabPaneSetup.setup(tabPane);
         backButton.setOnAction(event -> {
             List<IButtonCommand> backCommands = new ArrayList<>();
             backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
@@ -62,41 +64,10 @@ public class Rules {
     }
 
     /**
-     * Sets up the tab pane by creating tabs dynamically based on entries in the properties file.
+     * Returns the tabPane property.
+     *
+     * @return the tabPane property
      */
-    void setupTabPane() {
-        Properties properties = loadProperties();
-        TabViewFactory tabViewFactory = new TabViewFactory(properties);
-        for (String key : properties.stringPropertyNames()) {
-            Tab tab = tabViewFactory.createTab(key);
-            tabPane.getTabs().add(tab);
-        }
-        tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (oldValue != null) {
-                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), oldValue.getContent());
-                fadeOut.setFromValue(1.0);
-                fadeOut.setToValue(0.0);
-                fadeOut.setOnFinished(event -> {
-                    FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newValue.getContent());
-                    fadeIn.setFromValue(0.0);
-                    fadeIn.setToValue(1.0);
-                    fadeIn.play();
-                });
-                fadeOut.play();
-            } else {
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newValue.getContent());
-                fadeIn.setFromValue(0.0);
-                fadeIn.setToValue(1.0);
-                fadeIn.play();
-            }
-        });
-    }
-
-    /**
-    * Returns the tabPane property.
-    *
-    * @return the tabPane property
-    */
     public TabPane getTabPane() {
         return tabPane;
     }

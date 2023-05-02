@@ -15,7 +15,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Card;
 import model.Deck;
-import utilities.parser.DeckParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ import controller.command.deckmanagement.DeleteDeckCommand;
 import controller.command.deckmanagement.SelectDeckCommand;
 import controller.command.deckmanagement.ShowDeckCommand;
 import controller.command.sound.PlayClipCommand;
-import controller.fxml.Match;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 /*
@@ -58,11 +56,7 @@ public class DeckCell extends ListCell<Deck> {
         container = new VBox(label, buttonContainer, selectButton);
         container.setPrefHeight(120);
         container.setPrefWidth(152);
-        /*
-        showButton.setOnAction(e ->{
-            playSound.execute();
-        });
-        */
+       
         showCommands.add(new ShowDeckCommand(this, this.centerList, this.deckNameTextField));
         showCommands.add(new PlayClipCommand());
         MacroCommand showMacro = new MacroCommand(showCommands);
@@ -83,11 +77,7 @@ public class DeckCell extends ListCell<Deck> {
         selectButton.setOnAction(e -> {
             selectMacro.execute();
         });
-    }
-
-    protected void handleDecks(Deck deck, ListView<Deck> leftList){
-       leftList.getItems().remove(deck);
-    }   
+    }  
 
     protected void updateItem(Deck deck, boolean empty) {
         super.updateItem(deck, empty);
