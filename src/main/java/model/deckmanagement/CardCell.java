@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
  * This class represents a cell within the 2 listViews(center and right of the layout), given that each cell differs in some feature 
  * e.g. functionality and number of buttons, i implemented an abstract class that will be extended for each cell type (Template Method)
  */
-public  class CardCell extends ListCell<Card> {
+public class CardCell extends ListCell<Card> {
 
     private VBox container;
     private Button cellButton ;
@@ -26,7 +26,7 @@ public  class CardCell extends ListCell<Card> {
     /* Each cell is created with a label and a button,
      * the button functionality is defined in the classes that extends this one (handleCards())
      */
-    public CardCell(ListView<Card> centerList ) {
+    public CardCell(ListView<Card> centerList) {
         label = new Label();
         cellButton = new Button("Move");
         label.toFront();
