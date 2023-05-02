@@ -14,6 +14,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Deck;
 import utilities.parser.DeckParser;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import controller.command.IButtonCommand;
+import controller.command.MacroCommand;
+import controller.command.deckmanagement.DeleteDeckCommand;
+import controller.command.deckmanagement.SelectDeckCommand;
 import controller.command.sound.PlayClipCommand;
 import controller.fxml.Match;
 import javafx.scene.control.Button;
@@ -26,34 +34,40 @@ public class DeckCell extends ListCell<Deck> {
     private Label label;
     private HBox buttonContainer;
     private VBox container;
-    private Button showButton;
-    private Button deleteButton;
-    private RadioButton radioButton;
+    private Button showButton, deleteButton;
+    private RadioButton selectButton;
     private PlayClipCommand playSound = new PlayClipCommand();
-    
+    private List<IButtonCommand> deleteCommands = new ArrayList<IButtonCommand>();
+    private List<IButtonCommand> selectCommands = new ArrayList<IButtonCommand>();
+
     public DeckCell(ListView<Deck> leftList, ToggleGroup group  ) {
         label = new Label();
         showButton = new Button("Show");
         deleteButton = new Button("Delete");
-        radioButton = new RadioButton("Select");
-        radioButton.setToggleGroup(group);
+        selectButton = new RadioButton("Select");
+        selectButton.setToggleGroup(group);
         buttonContainer = new HBox(showButton, deleteButton);
         
-        container = new VBox(label, buttonContainer, radioButton);
+        container = new VBox(label, buttonContainer, selectButton);
         container.setPrefHeight(120);
         container.setPrefWidth(152);
 
         showButton.setOnAction(e ->{
             playSound.execute();
         });
-        deleteButton.setOnAction(e -> {
-            playSound.execute();
-            Deck deck = getItem();
-            this.handleDecks(deck, leftList);
-            DeckParser.deleteDeck(deck);
+
+        deleteCommands.add(new DeleteDeckCommand(this, leftList));
+        deleteCommands.add(new PlayClipCommand());
+        MacroCommand deleteMacro = new MacroCommand(deleteCommands);
+        deleteButton.setOnAction(event -> {
+            deleteMacro.execute();
         });
-        radioButton.setOnAction(e -> {
-            Match.selectedDeck = getItem();
+
+        selectCommands.add(new SelectDeckCommand(this));
+        selectCommands.add(new PlayClipCommand());
+        MacroCommand selectMacro = new MacroCommand(selectCommands);
+        selectButton.setOnAction(e -> {
+            selectMacro.execute();
         });
     }
 
