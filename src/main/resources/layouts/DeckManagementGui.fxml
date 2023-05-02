@@ -22,7 +22,7 @@
                   <Insets />
                </VBox.margin>
             </TextField>
-            <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveDeck" text="Save">
+            <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" text="Save">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
