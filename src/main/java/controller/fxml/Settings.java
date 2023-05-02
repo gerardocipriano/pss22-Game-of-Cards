@@ -33,7 +33,7 @@ public class Settings {
     @FXML
     private ChoiceBox<String> choiceMainTheme;
     @FXML
-    private ChoiceBox<String> choicheBattleTheme;
+    private ChoiceBox<String> choiceMatchTheme;
 
     private IBackgroundMusicController bgMusic;
 
@@ -52,7 +52,7 @@ public class Settings {
             bgMusic.setVolume(volume);
         });
 
-        choiceBoxView = new ChoiceBoxView(choiceMainTheme, choicheBattleTheme);
+        choiceBoxView = new ChoiceBoxView(choiceMainTheme, choiceMatchTheme);
         choiceBoxView.populateChoiceBoxes();
 
         // restore the selected values when returning to this scene
@@ -61,7 +61,7 @@ public class Settings {
             choiceMainTheme.getSelectionModel().select(currentMainThemeIndex);
 
             int currentMatchThemeIndex = bgMusic.getCurrentMatchThemeIndex();
-            choicheBattleTheme.getSelectionModel().select(currentMatchThemeIndex);
+            choiceMatchTheme.getSelectionModel().select(currentMatchThemeIndex);
         });
 
         choiceMainTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -70,8 +70,8 @@ public class Settings {
             bgMusic.playMainTheme();
         });
 
-        choicheBattleTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            int index = choicheBattleTheme.getSelectionModel().getSelectedIndex();
+        choiceMatchTheme.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = choiceMatchTheme.getSelectionModel().getSelectedIndex();
             bgMusic.setCurrentMatchThemeIndex(index);
         });
 
@@ -106,6 +106,14 @@ public class Settings {
             MacroCommand decksMacro = new MacroCommand(backCommands);
             decksMacro.execute();
         });
+    }
+
+    public ChoiceBox<String> getChoiceMainTheme() {
+        return choiceMainTheme;
+    }
+
+    public ChoiceBox<String> getChoiceMatchTheme() {
+        return choiceMatchTheme;
     }
 
     /**

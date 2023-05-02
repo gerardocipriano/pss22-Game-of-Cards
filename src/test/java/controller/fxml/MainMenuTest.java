@@ -30,7 +30,7 @@ public class MainMenuTest extends ApplicationTest {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        // Load the "MainMenu" scene and get its controller
+
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/MainMenuGui.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);

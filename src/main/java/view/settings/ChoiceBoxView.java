@@ -9,13 +9,13 @@ import java.util.List;
 
 public class ChoiceBoxView {
     private ChoiceBox<String> choiceMainTheme;
-    private ChoiceBox<String> choicheBattleTheme;
+    private ChoiceBox<String> choiceMatchTheme;
     private IBackgroundMusicController bgMusic = 
         BackgroundMusicControllerMonostate.createInstance();
 
-    public ChoiceBoxView(ChoiceBox<String> choiceMainTheme, ChoiceBox<String> choicheBattleTheme) {
+    public ChoiceBoxView(ChoiceBox<String> choiceMainTheme, ChoiceBox<String> choiceMatchTheme) {
         this.choiceMainTheme = choiceMainTheme;
-        this.choicheBattleTheme = choicheBattleTheme;
+        this.choiceMatchTheme = choiceMatchTheme;
     }
 
     public void populateChoiceBoxes() {
@@ -34,10 +34,10 @@ public class ChoiceBoxView {
         if (matchThemes != null) {
             for (int i = 0; i < matchThemes.size(); i++) {
                 String themeName = "Match Theme " + (i + 1);
-                choicheBattleTheme.getItems().add(themeName);
+                choiceMatchTheme.getItems().add(themeName);
             }
             int currentMatchThemeIndex = bgMusic.getCurrentMatchThemeIndex();
-            choicheBattleTheme.getSelectionModel().select(currentMatchThemeIndex);
+            choiceMatchTheme.getSelectionModel().select(currentMatchThemeIndex);
         }
     }
 }
