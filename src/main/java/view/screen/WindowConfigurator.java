@@ -22,7 +22,7 @@ public class WindowConfigurator {
     private StageSizeTracker stageSizeTracker;
 
     /**
-     * Configures the given stage.
+     * Configures the given stage for the application.
      * 
      * @param stage the stage to configure
      */
