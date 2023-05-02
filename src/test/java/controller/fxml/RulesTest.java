@@ -14,8 +14,6 @@ import java.util.Properties;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import controller.sound.BackgroundMusicControllerSingleton;
-import controller.sound.IBackgroundMusicController;
 import view.screen.WindowConfigurator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,34 +21,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 
-public class RulesTest extends ApplicationTest{
-    
+public class RulesTest extends ApplicationTest {
+
     private final WindowConfigurator windowConfigurator = new WindowConfigurator();
+
     /**
-    * Set up the test environment by loading the "Rules" scene and getting its controller.
-    *
-    * @param stage the primary stage for this test
-    */
+     * Set up the test environment by loading the "Rules" scene and getting its
+     * controller.
+     *
+     * @param stage the primary stage for this test
+     */
     @Override
     public void start(Stage stage) throws IOException {
-        
+
         FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/RulesGui.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        
+
         windowConfigurator.configure(stage);
-        
+
         // Set the scene and show the stage
         stage.setScene(scene);
         stage.show();
-        
-        IBackgroundMusicController bgMusic = BackgroundMusicControllerSingleton.getInstance();
-        bgMusic.play("main");
-        bgMusic.setVolume(0.5);
+
     }
+
     /**
-    * Tests the setupTabPane method.
-    */
+     * Tests the setupTabPane method.
+     */
     @Test
     public void testSetupTabPane() {
         Rules rules = new Rules();
@@ -64,7 +62,8 @@ public class RulesTest extends ApplicationTest{
         }
         rules.setupTabPane();
         Properties properties = rules.loadProperties();
-        assertEquals(properties.size(), rules.getTabPane().getTabs().size(), "Expected number of tabs to match number of properties");
+        assertEquals(properties.size(), rules.getTabPane().getTabs().size(),
+                "Expected number of tabs to match number of properties");
         for (int i = 0; i < rules.getTabPane().getTabs().size(); i++) {
             Tab tab = rules.getTabPane().getTabs().get(i);
             String key = tab.getText();
@@ -73,19 +72,21 @@ public class RulesTest extends ApplicationTest{
             assertEquals(properties.getProperty(key), text.getText(), "Expected text to match property value");
         }
     }
+
     /**
-    * Tests the loadProperties method.
-    */
+     * Tests the loadProperties method.
+     */
     @Test
     public void testLoadProperties() {
         // Create a new instance of the Rules class
         Rules rules = new Rules();
-        
+
         // Call the loadProperties method
         Properties properties = rules.loadProperties();
-        
+
         // Verify that the properties have been loaded correctly
         assertEquals("Card Creation is composed of the following phases...", properties.getProperty("CardCreation"));
-        assertEquals("Deck Management is composed of the following phases...", properties.getProperty("DeckManagement"));
+        assertEquals("Deck Management is composed of the following phases...",
+                properties.getProperty("DeckManagement"));
     }
 }
