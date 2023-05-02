@@ -56,19 +56,3 @@ public class DeckManagementTest extends ApplicationTest {
         FxAssert.verifyThat("#decksButton", LabeledMatchers.hasText("Decks"));
     }
 }
-
-/* 
-// Test save deck with invalid deck name
-    clickOn("#rightList").clickOn(button);
-    clickOn("#deckNameTextField").write("TestDeck");
-    clickOn("#saveButton");
-    clickOn("#deckNameTextField").write("TestDeck");
-    clickOn("#saveButton");
-    Window currentWindow = ((Button) lookup("#backButton").query()).getScene().getWindow();
-    InputValidator.validateDeckName("TestDeck", "TestDeck", currentWindow);
-    assertTrue(((ListView<Deck>) lookup("#leftList").query()).getItems().size() == 0);
-// Test save deck with no cards selected
-        clickOn("#deckNameTextField").write("TestDeck2");
-        clickOn("#saveDeckButton");
-        assertTrue(((ListView<Deck>) lookup("#leftList").query()).getItems().size() == deckNumber);
-*/

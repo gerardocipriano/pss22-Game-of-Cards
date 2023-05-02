@@ -10,7 +10,11 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import model.Card;
-import controller.command.sound.PlayClipCommand;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import controller.command.IButtonCommand;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 /*
@@ -19,10 +23,11 @@ import javafx.scene.control.Label;
  */
 public class CardCell extends ListCell<Card> {
 
-    private VBox container;
-    private Button cellButton ;
-    private Label label;
-    private PlayClipCommand playSound = new PlayClipCommand();
+    protected VBox container;
+    protected Button cellButton ;
+    protected Label label;
+    protected List<IButtonCommand> buttonCommands = new ArrayList<IButtonCommand>();
+    protected Card card;
     /* Each cell is created with a label and a button,
      * the button functionality is defined in the classes that extends this one (handleCards())
      */
@@ -30,32 +35,11 @@ public class CardCell extends ListCell<Card> {
         label = new Label();
         cellButton = new Button("Move");
         label.toFront();
-
         container = new VBox(label, cellButton);
         container.setPrefHeight(120);
         container.setPrefWidth(152);
-
-        cellButton.setOnAction(e -> {
-            playSound.execute();
-            Card card = getItem();
-            this.handleCards(card, centerList);
-        });
     }
     
-    protected void handleCards(Card card, ListView<Card> centerList){
-        if (!card.isMoved()) {
-            centerList.getItems().add(card);
-            card.setMoved(! card.isMoved());
-        } 
-        else {
-            centerList.getItems().remove(card);
-            card.setMoved(! card.isMoved());
-        }
-    }
-    
-    /* updateItem() is a JavaFX built-in function that is called
-     * everytime an item in the list is modified 
-     */
     protected void updateItem(Card card, boolean empty) {
         super.updateItem(card, empty);
         if (empty || card == null) {

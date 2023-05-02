@@ -23,7 +23,11 @@ public class CellFactory {
         return new DeckCell(leftList, centerList, group, deckNameTextField);
     }
     
-    public CardCell createCardCell() {
-        return new CardCell(centerList);
+    public CardCell createRightListCell() {
+        return new RightListCell(centerList);
+    }
+
+    public CardCell createCenterListCell() {
+        return new CenterListCell(centerList);
     }
 }
