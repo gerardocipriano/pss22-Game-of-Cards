@@ -21,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 
-import controller.screen.FullScreenManagerSingleton;
-import controller.screen.IFullScreenManagerController;
+import controller.screen.FullScreenSingleton;
+import controller.screen.IFullScreenController;
 import controller.sound.*;
 
 /**
@@ -35,7 +35,7 @@ public class SettingsTest extends ApplicationTest {
     private Settings settingsController;
     private final WindowConfigurator windowConfigurator = new WindowConfigurator();
     private IBackgroundMusicController bgMusic = BackgroundMusicControllerMonostate.createInstance();
-    private IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
+    private IFullScreenController fullScreenManager = FullScreenSingleton.getInstance();
 
     @BeforeAll
     public static void initToolkit() {
