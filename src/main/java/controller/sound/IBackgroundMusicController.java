@@ -6,9 +6,15 @@ import javafx.scene.media.Media;
 
 public interface IBackgroundMusicController {
 
-    void play(String theme);
-    void init (List<Media> mainThemeMediaList, List<Media> matchThemeMediaList);
+    void playMainTheme();
+    void playMatchTheme();
     void setVolume(double volume);
     double getVolume();
+    int getCurrentMainThemeIndex();
+    void setCurrentMainThemeIndex(int index);
+    void setCurrentMatchThemeIndex(int index);
+    int getCurrentMatchThemeIndex();
+    List<Media> getMainThemeMediaList();
+    List<Media> getMatchThemeMediaList();
 
 }
