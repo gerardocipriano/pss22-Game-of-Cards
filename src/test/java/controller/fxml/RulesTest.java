@@ -14,6 +14,7 @@ import java.util.Properties;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import view.rules.TabPaneSetupView;
 import view.screen.WindowConfigurator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -53,6 +54,8 @@ public class RulesTest extends ApplicationTest {
     public void testSetupTabPane() {
         Rules rules = new Rules();
         TabPane tabPane = new TabPane();
+        TabPaneSetupView tabPaneSetup = new TabPaneSetupView("/rules/rules.properties");
+        tabPaneSetup.setup(tabPane);
         try {
             Field tabPaneField = Rules.class.getDeclaredField("tabPane");
             tabPaneField.setAccessible(true);
@@ -60,7 +63,6 @@ public class RulesTest extends ApplicationTest {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        rules.setupTabPane();
         Properties properties = rules.loadProperties();
         assertEquals(properties.size(), rules.getTabPane().getTabs().size(),
                 "Expected number of tabs to match number of properties");
