@@ -60,6 +60,13 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks.withType<Javadoc> {
+    options {
+        encoding = "UTF-8"
+        memberLevel = JavadocMemberLevel.PRIVATE
+    }
+}
+
 application {
     // Define the main class for the application
     mainClass.set("launcher.Launcher")
