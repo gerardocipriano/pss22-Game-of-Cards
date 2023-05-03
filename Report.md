@@ -278,7 +278,7 @@ classDiagram
 **Problema**  
 L'interfaccia presenta 3 liste verticali per visualizzare i mazzi, 
 le carte del mazzo selezionato, e le carte totali disponibili.
-Ognuna di esse dovrà avere un'implementazione della propria cella,
+Ognuna di esse deve avere un'implementazione della propria cella,
 diversa per ogni lista.
 
 **Soluzione**
@@ -289,7 +289,7 @@ controller principale dell'interfaccia e reinderizza le suddette celle di ogni l
 
 **Celle nelle liste di carte**
 
-Rappresentazione UML del pattern Template Method per le celle delle carte
+Rappresentazione UML del pattern Template per le celle delle carte
 ```mermaid
 classDiagram
     class CenterListCell {
@@ -309,7 +309,7 @@ l'altro l'aggiunge al mazzo.
 
 **Soluzione**
 Creare una classe padre CardCell che contiente le funzionalità comuni
-alle due celle che poi verrà estesa tramite il pattern _Template Method_
+alle due celle che poi verrà estesa tramite il pattern _Template Method_.
  
 In questa sezione si possono approfondire alcuni elementi del design con
 maggior dettaglio. Mentre ci attendiamo principalmente (o solo)
