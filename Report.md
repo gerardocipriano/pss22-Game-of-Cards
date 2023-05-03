@@ -246,64 +246,70 @@ In è esemplificato il diagramma UML architetturale.
 ### Massimiliano Battelli
 Il mio ruolo all'interno del gruppo prevedeva principalmente di sviluppare
 la sezione riguardante la gestione dei mazzi, ovvero creazione cancellazione 
-e modifica e la relativa GUI. In aggiunta ho implementato la lettura
-e il salvataggio di essi nel file JSON.  
+e modifica e la relativa GUI. In aggiunta ho implementato la lettura e il 
+salvataggio di essi nel file JSON. L'interfaccia dovrà mostrare le carte
+e i mazzi disponibili, dare la possibilità all'utente di selezionare 
+le carte e salvarle in un mazzo. I mazzi possono venire cancellati
+e interagiti per visualizzarne le carte.  
+Ho utilizzato 3 liste verticali per visualizzare i mazzi, le carte contenute
+in ogni mazzo e le carte disponibili, dando modo all'utente di interagire con ogni 
+elemento.
 
-**Problema**  Mostrare le carte e i mazzi disponibili, dare la possibilità
-all'utente di selezionare le carte e salvarle in un mazzo. I mazzi possono
-venire cancellati interagiti per visualizzare le proprie carte.  
+**Creazione celle nelle liste**
 
-**Soluzione** Utilizzare 3 liste per visualizzare i mazzi, le carte disponibili, 
-e le carte contenute in ogni mazzo, dando modo all'utente di interagire con ogni 
-elemento di ciascuna lista: spostare le carte, mostrare ed eliminare le carte 
-da un mazzo, e selezionarlo. Una classe controller gestisce tutta la pagina,
-creando le celle di ogni lista tramite il Factory pattern. Essendo che 2 liste
-contengono celle di Carta ma differenziano per qualche funzionalità è stato usato
-il Template Method partendo da una classe principale CardCell.
+Rappresentazione UML del pattern Factory per le celle
 ```mermaid
 classDiagram
-    class DeckManagement {
-        -rightList
-        -centerList
-        -leftList
-        -void initialize()
-    }
-
     class CellFactory {
-        +createDeckCell()
-        +createCenterListCell()
-        +createRightListCell()
+        +createDeckCell() DeckCell
+        +createCenterListCell() CenterListCell
+        +createRightListCell() RightListCell
     }
-
-    class CardParser {
-        +parseCards()
-    }
-
-    class DeckParser {
-        +parseDecks()
-    }
-
     class DeckCell {
     }
-
     class CenterListCell {
     }
-
     class RightListCell {
     }
+    CellFactory --> DeckCell
+    CellFactory --> CenterListCell
+    CellFactory --> RightListCell
+```
+**Problema**  
+L'interfaccia presenta 3 liste verticali per visualizzare i mazzi, 
+le carte del mazzo selezionato, e le carte totali disponibili.
+Ognuna di esse dovrà avere un'implementazione della propria cella,
+diversa per ogni lista.
 
+**Soluzione**
+Utilizzare il _pattern Factory Method_ per creare automaticamente
+le celle corrette per ogni lista di oggetti.
+Il metodo della classe factory implementato viene chiamato dalla classe
+controller principale dell'interfaccia e reinderizza le suddette celle di ogni lista.
+
+**Celle nelle liste di carte**
+
+Rappresentazione UML del pattern Template Method per le celle delle carte
+```mermaid
+classDiagram
+    class CenterListCell {
+    }
+    class RightListCell {
+    }
     class CardCell {
     }
-
-    DeckManagement --> CellFactory
-    DeckManagement --> CardParser
-    DeckManagement --> DeckParser
-    DeckCell --> CellFactory
-    CenterListCell --> CellFactory
-    RightListCell --> CellFactory
     CardCell <|-- CenterListCell
     CardCell <|-- RightListCell
 ```
+
+**Problema**
+Sia la lista centrale che quella sulla destra contengono delle celle di carte che
+però differiscono per la funzionalità del pulsante, uno elimina la cella
+l'altro l'aggiunge al mazzo.
+
+**Soluzione**
+Creare una classe padre CardCell che contiente le funzionalità comuni
+alle due celle che poi verrà estesa tramite il pattern _Template Method_
  
 In questa sezione si possono approfondire alcuni elementi del design con
 maggior dettaglio. Mentre ci attendiamo principalmente (o solo)
