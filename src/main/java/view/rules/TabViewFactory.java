@@ -43,8 +43,8 @@ public class TabViewFactory {
         anchorPane1.getChildren().add(text);
         AnchorPane anchorPane2 = new AnchorPane();
         ImageView imageView = new ImageView();
-        imageView.setFitHeight(150.0);
-        imageView.setFitWidth(200.0);
+        imageView.setFitHeight(450.0);
+        imageView.setFitWidth(600.0);
         imageView.setLayoutX(14.0);
         imageView.setLayoutY(14.0);
         imageView.setPickOnBounds(true);
