@@ -253,8 +253,58 @@ e il salvataggio di essi nel file JSON.
 all'utente di selezionare le carte e salvarle in un mazzo. I mazzi possono
 venire cancellati interagiti per visualizzare le proprie carte.  
 
-**Soluzione** 
+**Soluzione** Utilizzare 3 liste per visualizzare i mazzi, le carte disponibili, 
+e le carte contenute in ogni mazzo, dando modo all'utente di interagire con ogni 
+elemento di ciascuna lista: spostare le carte, mostrare ed eliminare le carte 
+da un mazzo, e selezionarlo. Una classe controller gestisce tutta la pagina,
+creando le celle di ogni lista tramite il Factory pattern. Essendo che 2 liste
+contengono celle di Carta ma differenziano per qualche funzionalità è stato usato
+il Template Method partendo da una classe principale CardCell.
+```mermaid
+classDiagram
+    class DeckManagement {
+        -rightList
+        -centerList
+        -leftList
+        -void initialize()
+    }
 
+    class CellFactory {
+        +createDeckCell()
+        +createCenterListCell()
+        +createRightListCell()
+    }
+
+    class CardParser {
+        +parseCards()
+    }
+
+    class DeckParser {
+        +parseDecks()
+    }
+
+    class DeckCell {
+    }
+
+    class CenterListCell {
+    }
+
+    class RightListCell {
+    }
+
+    class CardCell {
+    }
+
+    DeckManagement --> CellFactory
+    DeckManagement --> CardParser
+    DeckManagement --> DeckParser
+    DeckCell --> CellFactory
+    CenterListCell --> CellFactory
+    RightListCell --> CellFactory
+    CardCell <|-- CenterListCell
+    CardCell <|-- RightListCell
+```
+ 
 In questa sezione si possono approfondire alcuni elementi del design con
 maggior dettaglio. Mentre ci attendiamo principalmente (o solo)
 interfacce negli schemi UML delle sezioni precedenti, in questa sezione
