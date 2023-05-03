@@ -243,6 +243,18 @@ In è esemplificato il diagramma UML architetturale.
 
 ## Design dettagliato
 
+### Massimiliano Battelli
+Il mio ruolo all'interno del gruppo prevedeva principalmente di sviluppare
+la sezione riguardante la gestione dei mazzi, ovvero creazione cancellazione 
+e modifica e la relativa GUI. In aggiunta ho implementato la lettura
+e il salvataggio di essi nel file JSON.  
+
+**Problema**  Mostrare le carte e i mazzi disponibili, dare la possibilità
+all'utente di selezionare le carte e salvarle in un mazzo. I mazzi possono
+venire cancellati interagiti per visualizzare le proprie carte.  
+
+**Soluzione** 
+
 In questa sezione si possono approfondire alcuni elementi del design con
 maggior dettaglio. Mentre ci attendiamo principalmente (o solo)
 interfacce negli schemi UML delle sezioni precedenti, in questa sezione
