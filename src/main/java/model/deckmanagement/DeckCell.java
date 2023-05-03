@@ -27,9 +27,10 @@ import controller.command.deckmanagement.ShowDeckCommand;
 import controller.command.sound.PlayClipCommand;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-/*
- * This class represents the cells in the list on the left side aka the Deck class,
- * being too different from the card cells a dedicated class was used
+/**
+ * Class that represents the cell of a Deck which will be showed in the left listView
+ *
+ * @author massimilianobattelli
  */
 public class DeckCell extends ListCell<Deck> {
     private Label label;

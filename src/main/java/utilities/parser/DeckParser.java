@@ -12,7 +12,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import model.Deck;
-
+/**
+ * Class that has the task of reading and writing the decks in its own json file
+ *
+ * @author massimilianobattelli
+ */
 public class DeckParser {
 
     public static void writeDecks(List<Deck> decks){

@@ -17,9 +17,10 @@ import java.util.List;
 import controller.command.IButtonCommand;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-/*
- * This class represents a cell within the 2 listViews(center and right of the layout), given that each cell differs in some feature 
- * e.g. functionality and number of buttons, i implemented an abstract class that will be extended for each cell type (Template Method)
+/**
+ * Class that represents the cell of a Card which will be extended in cells of the right and left listView, Template Method implementation
+ *
+ * @author massimilianobattelli
  */
 public class CardCell extends ListCell<Card> {
 
@@ -28,9 +29,7 @@ public class CardCell extends ListCell<Card> {
     protected Label label;
     protected List<IButtonCommand> buttonCommands = new ArrayList<IButtonCommand>();
     protected Card card;
-    /* Each cell is created with a label and a button,
-     * the button functionality is defined in the classes that extends this one (handleCards())
-     */
+    
     public CardCell(ListView<Card> centerList) {
         label = new Label();
         cellButton = new Button("Move");

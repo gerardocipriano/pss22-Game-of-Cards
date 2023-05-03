@@ -12,7 +12,11 @@ import model.Card;
 import model.Deck;
 import utilities.InputValidator;
 import utilities.parser.DeckParser;
-
+/**
+ * Class responsible for saving the deck in the json file
+ *
+ * @author massimilianobattelli
+ */
 public class SaveDeckCommand implements IButtonCommand {
 
     private ListView<Card> centerList;
@@ -26,7 +30,10 @@ public class SaveDeckCommand implements IButtonCommand {
         this.saveButton = saveButton;
         this.leftList = leftList;
     }
-    
+    /**
+     * Instruction to save the deck, it uses {@link utilities.InputValidator} to validate the deck name
+     * and {@link utilities.parser.DeckParser} to retrieve the decks and save it in the json
+     */
     @Override
     public void execute() {
         Window currentWindow = saveButton.getScene().getWindow();

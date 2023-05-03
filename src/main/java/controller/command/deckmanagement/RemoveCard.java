@@ -5,7 +5,11 @@ import controller.command.IButtonCommand;
 import javafx.scene.control.ListView;
 import model.Card;
 import model.deckmanagement.CenterListCell;
-
+/**
+ * Class responsible for removing a Card from the listView of the screen center
+ *
+ * @author massimilianobattelli
+ */
 public class RemoveCard implements IButtonCommand {
     private ListView<Card> centerList;
     private Card card;

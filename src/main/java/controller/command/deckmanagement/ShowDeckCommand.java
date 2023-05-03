@@ -6,7 +6,11 @@ import javafx.scene.control.TextField;
 import model.Card;
 import model.Deck;
 import model.deckmanagement.DeckCell;
-
+/**
+ * Class responsible for showing the Deck cards in the center listView
+ *
+ * @author massimilianobattelli
+ */
 public class ShowDeckCommand implements IButtonCommand {
 
     private ListView<Card> centerList;

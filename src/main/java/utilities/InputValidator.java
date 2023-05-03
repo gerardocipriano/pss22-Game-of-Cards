@@ -7,7 +7,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Window;
-
+/**
+ * Class that has the task of checking the input from the user in the deck and card creation sections
+ *
+ * @author massimilianobattelli
+ */
 public class InputValidator {
 
     private static final String[] ILLEGAL_CHARS = new String[] {"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "{", "}", "[", "]", "|", ";", ":", "'", "\"", ",", ".", "/", "<", ">", "?", "~"};
