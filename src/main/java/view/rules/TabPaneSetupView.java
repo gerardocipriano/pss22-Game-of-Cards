@@ -2,10 +2,7 @@ package view.rules;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.Map;
 import java.util.Properties;
-import java.util.TreeMap;
 
 import javafx.animation.FadeTransition;
 import javafx.scene.control.Tab;
@@ -34,7 +31,7 @@ public class TabPaneSetupView {
         this.properties = loadProperties(propertiesPath);
     }
 
-    private Properties loadProperties(String propertiesPath) {
+    public Properties loadProperties(String propertiesPath) {
         Properties properties = new Properties();
         try (InputStream inputStream = getClass().getResourceAsStream(propertiesPath)) {
             properties.load(inputStream);

@@ -2,8 +2,8 @@ package view.screen;
 
 import controller.scene.ISceneController;
 import controller.scene.SceneControllerSingleton;
-import controller.screen.FullScreenManagerSingleton;
-import controller.screen.IFullScreenManagerController;
+import controller.screen.FullScreenSingleton;
+import controller.screen.IFullScreenController;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -16,7 +16,7 @@ public class WindowConfigurator {
 
     private static final int SCENE_WIDTH = 1280;
     private static final int SCENE_HEIGHT = 720;
-    private final IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
+    private final IFullScreenController fullScreenManager = FullScreenSingleton.getInstance();
     private final ISceneController sceneManager = SceneControllerSingleton.getInstance();
     @SuppressWarnings("unused")
     private StageSizeTracker stageSizeTracker;

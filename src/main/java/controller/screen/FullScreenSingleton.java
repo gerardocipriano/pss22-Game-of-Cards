@@ -2,16 +2,16 @@ package controller.screen;
 
 import javafx.stage.Stage;
 
-public class FullScreenManagerSingleton implements IFullScreenManagerController {
-    private static FullScreenManagerSingleton instance;
+public class FullScreenSingleton implements IFullScreenController {
+    private static FullScreenSingleton instance;
     private Stage primaryStage;
     private boolean isFullScreen = false;
 
-    private FullScreenManagerSingleton() {}
+    private FullScreenSingleton() {}
 
-    public static FullScreenManagerSingleton getInstance() {
+    public static FullScreenSingleton getInstance() {
         if (instance == null) {
-            instance = new FullScreenManagerSingleton();
+            instance = new FullScreenSingleton();
         }
         return instance;
     }

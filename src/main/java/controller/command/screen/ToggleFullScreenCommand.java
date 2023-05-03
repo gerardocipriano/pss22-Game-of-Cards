@@ -1,8 +1,8 @@
 package controller.command.screen;
 
 import controller.command.IButtonCommand;
-import controller.screen.FullScreenManagerSingleton;
-import controller.screen.IFullScreenManagerController;
+import controller.screen.FullScreenSingleton;
+import controller.screen.IFullScreenController;
 
 /**
  * The ToggleFullScreenCommand class implements the IButtonCommand interface and allows toggling 
@@ -12,7 +12,7 @@ import controller.screen.IFullScreenManagerController;
  */
 public class ToggleFullScreenCommand implements IButtonCommand {
 
-    private IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
+    private IFullScreenController fullScreenManager = FullScreenSingleton.getInstance();
     /**
      * Constructs a new ToggleFullScreenCommand instance.
      */
