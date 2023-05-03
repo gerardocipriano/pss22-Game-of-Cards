@@ -1,8 +1,8 @@
 package controller.command.screen;
 
 import controller.command.IButtonCommand;
-import controller.screen.FullScreenManagerSingleton;
-import controller.screen.IFullScreenManagerController;
+import controller.screen.FullScreenSingleton;
+import controller.screen.IFullScreenController;
 
 /**
  * This class represents a command to enable full screen mode. It implements the IButtonCommand interface.
@@ -10,7 +10,7 @@ import controller.screen.IFullScreenManagerController;
  */
 public class EnableFullScreenCommand implements IButtonCommand {
     // instance of FullScreenManagerSingleton
-    private IFullScreenManagerController fullScreenManager = FullScreenManagerSingleton.getInstance();
+    private IFullScreenController fullScreenManager = FullScreenSingleton.getInstance();
 
     /**
      * Constructs an instance of the EnableFullScreenCommand class.

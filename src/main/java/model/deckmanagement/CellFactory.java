@@ -5,7 +5,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import model.Card;
 import model.Deck;
-
+/**
+ * Create a custom Cell based on which listView is called with Factory pattern
+ *
+ * @author massimilianobattelli
+ */
 public class CellFactory {
     private ToggleGroup group;
     private ListView<Deck> leftList;
@@ -18,15 +22,21 @@ public class CellFactory {
         this.centerList = centerList;
         this.deckNameTextField = deckNameTextField;
     }
-    
+    /**
+     * Create a Cell for the Deck
+     */
     public DeckCell createDeckCell() {
         return new DeckCell(leftList, centerList, group, deckNameTextField);
     }
-    
+    /**
+     * Create a Cell for the Card in the listView on the right
+     */
     public CardCell createRightListCell() {
         return new RightListCell(centerList);
     }
-
+    /**
+     * Create a Cell for the Card in the listView on the center
+     */
     public CardCell createCenterListCell() {
         return new CenterListCell(centerList);
     }

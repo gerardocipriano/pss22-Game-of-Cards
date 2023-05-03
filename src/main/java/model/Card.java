@@ -1,6 +1,8 @@
 package model;
-/*
- * This class represents a prototype of a card, since the Card-creation part has not yet been properly defined this is just an example
+/**
+ * Class that represents card
+ *
+ * @author massimilianobattelli
  */
 public class Card {
     private String name;

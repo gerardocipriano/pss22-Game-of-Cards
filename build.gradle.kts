@@ -59,6 +59,13 @@ tasks.withType<Test> {
     // Enables JUnit 5 Jupiter module
     useJUnitPlatform()
 }
+//run ./gradlew javadoc to generate the docs in build/docs/javadoc/index.html
+tasks.withType<Javadoc> {
+    options {
+        encoding = "UTF-8"
+        memberLevel = JavadocMemberLevel.PRIVATE
+    }
+}
 
 application {
     // Define the main class for the application

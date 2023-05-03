@@ -12,7 +12,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import model.Card;
-
+/**
+ * Class that has the task of reading and writing the cards in its own json file
+ *
+ * @author massimilianobattelli
+ */
 public class CardParser {
 
     public static  List<Card> parseCards()  {

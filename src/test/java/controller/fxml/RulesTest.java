@@ -63,7 +63,7 @@ public class RulesTest extends ApplicationTest {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        Properties properties = rules.loadProperties();
+        Properties properties = tabPaneSetup.loadProperties("/rules/rules.properties");
         assertEquals(properties.size(), rules.getTabPane().getTabs().size(),
                 "Expected number of tabs to match number of properties");
         for (int i = 0; i < rules.getTabPane().getTabs().size(); i++) {
@@ -81,10 +81,10 @@ public class RulesTest extends ApplicationTest {
     @Test
     public void testLoadProperties() {
         // Create a new instance of the Rules class
-        Rules rules = new Rules();
+        TabPaneSetupView tabPaneSetup = new TabPaneSetupView("/rules/rules.properties");
 
         // Call the loadProperties method
-        Properties properties = rules.loadProperties();
+        Properties properties = tabPaneSetup.loadProperties("/rules/rules.properties");
 
         // Verify that the properties have been loaded correctly
         assertEquals("Card Creation is composed of the following phases...", properties.getProperty("CardCreation"));

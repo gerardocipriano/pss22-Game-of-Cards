@@ -2,7 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class that represents the deck
+ *
+ * @author massimilianobattelli
+ */
 public class Deck
         implements IDeck {
     

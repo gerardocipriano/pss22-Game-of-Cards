@@ -2,7 +2,7 @@ package controller.screen;
 
 import javafx.stage.Stage;
 
-public interface IFullScreenManagerController {
+public interface IFullScreenController {
 
     void toggleFullScreen();
     boolean  isFullScreen();

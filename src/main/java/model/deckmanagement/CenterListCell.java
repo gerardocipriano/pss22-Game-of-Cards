@@ -6,7 +6,11 @@ import controller.command.deckmanagement.RemoveCard;
 import controller.command.sound.PlayClipCommand;
 import javafx.scene.control.ListView;
 import model.Card;
-
+/**
+ * Class that represents the cell of a Card located in the center listView
+ *
+ * @author massimilianobattelli
+ */
 public class CenterListCell extends CardCell {
 
     private ListView<Card> centerList;
