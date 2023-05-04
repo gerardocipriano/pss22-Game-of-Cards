@@ -225,7 +225,7 @@ pulsante per tornare alla pagina precedente funzionino.
 carte e dei mazzi la quale permette di convertire degli oggetti nella loro 
 rappresentazione JSON e viceversa tramite semplici metodi: .toJson e .fromJson.
 
-####
+#### Passare l'oggetto Carta corretto al comando AddCard
 
 **Dove**: classi RightListCell, CenterListCell, `package model.deckmanagement.RightListCell`, `package model.deckmanagement.CenterListCell`  
 
