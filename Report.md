@@ -225,6 +225,7 @@ pulsante per tornare alla pagina precedente funzionino.
 carte e dei mazzi la quale permette di convertire degli oggetti nella loro 
 rappresentazione JSON e viceversa tramite semplici metodi: .toJson e .fromJson.
 
+
 #### Passare l'oggetto Carta corretto al comando AddCard
 
 **Dove**: classi RightListCell, CenterListCell, `package model.deckmanagement.RightListCell`, `package model.deckmanagement.CenterListCell`  
@@ -254,7 +255,33 @@ rappresentazione JSON e viceversa tramite semplici metodi: .toJson e .fromJson.
     }
 ```
 **Descrizione**: Per passare correttamente la carta selezionata
-al comando di salvataggio era necessario apprendere l'oggetto
-della cella di cui viene premuto il pulsante, e utilizzare un 
-metodo del comando per settare la carta, avendo più comandi
-nella macro è stato usato in ciclo for.
+al comando di AddCard(aggiunta alla lista centrale) era necessario
+apprendere l'oggetto della cella di cui viene premuto il pulsante, 
+e utilizzare un metodo del comando per settare la carta, avendo più comandi
+nella macro è stato usato in ciclo for. Non era possibile passare la carta
+al costruttore di AddCard perchè non avrebbe avuto nessun riferimento.
+
+#### Uso di Optional per il confirmation dialog
+
+**Dove**: classi InputValidator `package utilities.InputValidator`
+
+**Permalink**: https://github.com/gerardocipriano/pss22-Game-of-Cards/blob/30a3dd52d2a7e33a9c805707d98ba794a631d687/src/main/java/utilities/InputValidator.java
+
+**Snippet** 
+
+```java
+    if (deckName.equals(existingDeckName)){
+            Optional<ButtonType> result = showConfirmationDialog("Do you want to overwrite the existing deck?", window);
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+```
+**Descrizione**: Nel caso esista già un mazzo con lo stesso nome 
+appare un dialog di conferma, il return di tipo Optional serve
+a gestire il caso che l'utente non accetti il dialog e quindi
+la variabile result conterrà un null value.
