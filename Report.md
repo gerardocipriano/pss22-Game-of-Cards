@@ -26,27 +26,6 @@ Il gioco si compone di partite disputate tra due giocatori su uno stesso schermo
 
 - [ ] <b>Animazioni</b> di pescata e attivazione effetto delle carte durante la partita 
 
-### Elementi positivi
-
--   Si fornisce una descrizione in linguaggio naturale di ciò che il
-    software dovrà fare.
--   Gli obiettivi sono spiegati con chiarezza, per punti.
--   Se vi sono termini il cui significato non è immediatamente
-    intuibile, essi vengono spiegati.
--   Considerato a un paio di pagine un limite ragionevole alla lunghezza
-    della parte sui requisiti, in quello spazio si deve cercare di
-    chiarire *tutti* gli aspetti dell'applicazione, non lasciando
-    decisioni che impattano la parte "esterna" alla discussione del
-    design (che dovrebbe solo occuparsi della parte "interna").
-
-### Elementi negativi
-
--   Si forniscono indicazioni circa le soluzioni che si vogliono
-    adottare.
--   Si forniscono dettagli di tipo tecnico o implementativo (parlando di
-    classi, linguaggi di programmazione, librerie, eccetera).
-
-
 ## Analisi e modello del dominio
 
 All’interno della partita entrano in gioco diverse entità. I giocatori si affrontano con lo stesso mazzo. I mazzi sono composti da diverse carte. Le carte sono posizionate sul terreno di gioco. 
@@ -216,6 +195,30 @@ pulsante per tornare alla pagina precedente funzionino.
 - **RulesTest**: 
 - **SettingsTest**:
 
+## Note di sviluppo  
 
+### Massimiliano Battelli
 
+#### Utilizzo della libreria Gson
 
+**Dove**: classi DeckParser, CardParser, `package utilities.parser.DeckParser`, `package utilities.parser.CardParser`
+
+**Permalink**: https://github.com/gerardocipriano/pss22-Game-of-Cards/blob/9ccbfa3aa27f65917c18ceb1fb6756621f138c89/src/main/java/utilities/parser/DeckParser.java
+
+**Snippet**
+
+```java
+    public static void writeDecks(List<Deck> decks){
+        Gson gson = new Gson();
+        String json = gson.toJson(decks);
+        System.out.println(json);
+    
+        try (FileWriter writer = new FileWriter("./src/main/resources/json/decks.json")) {
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+```
+**Descrizione**: 
