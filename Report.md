@@ -221,4 +221,40 @@ pulsante per tornare alla pagina precedente funzionino.
         }
     }
 ```
-**Descrizione**: 
+**Descrizione**: Ho utilizzato questa libreria per gestire il parsing delle 
+carte e dei mazzi la quale permette di convertire degli oggetti nella loro 
+rappresentazione JSON e viceversa tramite semplici metodi: .toJson e .fromJson.
+
+####
+
+**Dove**: classi RightListCell, CenterListCell, `package model.deckmanagement.RightListCell`, `package model.deckmanagement.CenterListCell`  
+
+**Permalink**: https://github.com/gerardocipriano/pss22-Game-of-Cards/blob/282c0d81c1d18a6558a7ff7e4f7958ec46918217/src/main/java/model/deckmanagement/RightListCell.java
+
+**Snippet** 
+
+```java
+    public RightListCell(ListView<Card> centerList) {
+        super(centerList);
+        this.centerList = centerList;
+        
+        buttonCommands.add(new AddCard(this, this.centerList));
+        buttonCommands.add(new PlayClipCommand());
+        MacroCommand buttonMacro = new MacroCommand(buttonCommands);
+        
+        cellButton.setOnAction(event -> {
+            Card card = getItem();
+            for (IButtonCommand command : buttonCommands) {
+                if (command instanceof AddCard) {
+                    ((AddCard) command).setCard(card);
+                }
+            }
+            buttonMacro.execute();
+        });
+    }
+```
+**Descrizione**: Per passare correttamente la carta selezionata
+al comando di salvataggio era necessario apprendere l'oggetto
+della cella di cui viene premuto il pulsante, e utilizzare un 
+metodo del comando per settare la carta, avendo più comandi
+nella macro è stato usato in ciclo for.
