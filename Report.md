@@ -173,7 +173,7 @@ diversa per ogni lista.
 Utilizzare il _pattern Factory Method_ per creare automaticamente
 le celle corrette per ogni lista di oggetti.
 Il metodo della classe factory implementato viene chiamato dalla classe
-controller principale dell'interfaccia e reinderizza le suddette celle di ogni lista.
+controller dell'interfaccia e renderizza le suddette celle in ogni lista.
 
 **Celle nelle liste di carte**
 
@@ -199,4 +199,23 @@ l'altro l'aggiunge al mazzo.
 Creare una classe padre CardCell che contiente le funzionalità comuni
 alle due celle che poi verrà estesa tramite il pattern _Template Method_.
  
+# Sviluppo
+
+## Testing automatizzato  
+
+Per testare la nostra applicazione abbiamo usato dei test automatizzati 
+che comprendevano tutte le interfaccie dell'applicazione tramite le
+librerie jUnit e TestFX. In ogni test veniva controllato che l'interfaccia
+considerata eseguiva le corrette funzionalità principali:
+
+- **MainMenuTest**: verifica che ogni pulsante del menu principale apra la 
+propria interfaccia.
+- **DeckManagementTest**: verifica che le carte siano state caricate nella 
+propria lista, controlla che il processo di salvataggio di un deck e il
+pulsante per tornare alla pagina precedente funzionino.
+- **RulesTest**: 
+- **SettingsTest**:
+
+
+
 
