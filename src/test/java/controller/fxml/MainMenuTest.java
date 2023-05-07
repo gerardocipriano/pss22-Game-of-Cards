@@ -3,7 +3,7 @@ package controller.fxml;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-import view.screen.WindowConfigurator;
+import view.screen.StageInitializer;
 import javafx.scene.Scene;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxAssert;
@@ -20,7 +20,7 @@ import java.io.IOException;
  */
 public class MainMenuTest extends ApplicationTest {
 
-    private final WindowConfigurator windowConfigurator = new WindowConfigurator();
+    private final StageInitializer stageInitializer = new StageInitializer();
 
     /**
      * Set up the test environment by loading the "MainMenu" scene and getting its
@@ -35,7 +35,7 @@ public class MainMenuTest extends ApplicationTest {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        windowConfigurator.configure(stage);
+        stageInitializer.configureStage(stage);
 
         // Set the scene and show the stage
         stage.setScene(scene);

@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import view.screen.WindowConfigurator;
+import view.screen.StageInitializer;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ import controller.sound.*;
 public class SettingsTest extends ApplicationTest {
 
     private Settings settingsController;
-    private final WindowConfigurator windowConfigurator = new WindowConfigurator();
+    private final StageInitializer stageInitializer = new StageInitializer();
     private IBackgroundMusicController bgMusic = BackgroundMusicControllerMonostate.createInstance();
     private IFullScreenController fullScreenManager = FullScreenSingleton.getInstance();
 
@@ -52,7 +52,7 @@ public class SettingsTest extends ApplicationTest {
         Scene scene = new Scene(root);
 
         // Set the scene and show the stage
-        windowConfigurator.configure(stage);
+        stageInitializer.configureStage(stage);
         AudioInitializer.initializeAudio();
         stage.setScene(scene);
         stage.show();

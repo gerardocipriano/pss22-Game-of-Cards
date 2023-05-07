@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * 
  * @author gerardocipriano
  */
-public class WindowConfigurator {
+public class StageInitializer {
 
     private static final int SCENE_WIDTH = 1280;
     private static final int SCENE_HEIGHT = 720;
@@ -23,10 +23,11 @@ public class WindowConfigurator {
 
     /**
      * Configures the given stage for the application.
+     * e
      * 
      * @param stage the stage to configure
      */
-    public void configure(Stage stage) {
+    public void configureStage(Stage stage) {
         sceneManager.setPrimaryStage(stage);
         fullScreenManager.setPrimaryStage(stage);
         stageSizeTracker = new StageSizeTracker(stage);
