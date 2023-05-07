@@ -556,3 +556,15 @@ Ho seguito un approccio simile per la generazione degli Item nella ChoiceBox dei
 ```
 
 **Descrizione**: La lambda expression viene utilizzata come parametro del metodo runLater() della classe Platform. Questo metodo fa parte della JavaFX API e viene utilizzato per eseguire il codice specificato in un thread separato, diverso dal thread di interfaccia utente, in modo che l'interfaccia utente non si blocchi. La lambda expression viene eseguita in questo thread separato e contiene del codice che imposta alcune proprietà di oggetti della UI (choiceMainTheme e choiceMatchTheme).
+
+# Commenti finali
+
+## Autovalutazione e lavori futuri
+
+### Massimiliano Battelli
+
+### Gerardo Cipriano
+
+Ho partecipato al progetto di java con l’obiettivo di mettermi alla prova in un contesto reale e collaborativo. Il progetto si è rivelato più impegnativo e lungo di quanto mi aspettassi, ma anche più stimolante e formativo. Ho avuto l’opportunità di confrontarmi con i miei compagni di team, organizzando riunioni settimanali per discutere dei progressi e delle difficoltà di ciascuno. Ho imparato a usare Gradle come strumento di gestione delle dipendenze e della build. Ho compreso l’importanza della fase di progettazione, che è fondamentale per definire una struttura chiara e coerente del codice. Ho riconosciuto i limiti della suddivisione dei compiti che abbiamo adottato, che non ha tenuto conto delle diverse competenze e responsabilità dei membri del team. Se dovessi rifare un progetto, sceglierei un dominio più semplice e familiare, come un gestionale, invece che un gioco, che richiede una maggiore complessità e creatività.
+Ho seguito il principio del single responsibility, secondo cui ogni classe deve avere una sola responsabilità. Questo mi ha permesso di scrivere codice più modulare e riutilizzabile. Tuttavia, in alcuni casi secondo me ho esagerato nell’applicarlo, introducendo classi superflue o quasi errate. Ho affrontato alcuni problemi tecnici, come il ridimensionamento dello schermo su diverse risoluzioni, per i quali ho trovato una soluzione di compromesso che non mi soddisfa pienamente.
+In conclusione, ritengo che il progetto sia stato un’esperienza molto utile e formativa, che mi ha permesso di migliorare le mie abilità di programmazione a oggetti e di collaborazione. Sono consapevole dei miei errori e delle mie lacune, ma anche dei miei punti di forza e delle mie potenzialità.
