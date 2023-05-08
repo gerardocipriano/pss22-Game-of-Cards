@@ -109,15 +109,14 @@ classDiagram
 ### Massimiliano Battelli
 
 Il mio ruolo all'interno del gruppo prevedeva principalmente di sviluppare
-la sezione riguardante la gestione dei mazzi, ovvero creazione cancellazione
-e modifica e la relativa GUI. In aggiunta ho implementato la lettura e il
-salvataggio di essi nel file JSON. L'interfaccia dovrà mostrare le carte
-e i mazzi disponibili, dare la possibilità all'utente di selezionare
-le carte e salvarle in un mazzo. I mazzi possono venire cancellati
-e interagiti per visualizzarne le carte.  
-Ho utilizzato 3 liste verticali per visualizzare i mazzi, le carte contenute
-in ogni mazzo e le carte disponibili, dando modo all'utente di interagire con ogni
-elemento.
+la sezione riguardante la gestione dei mazzi ovvero creazione, cancellazione,
+modifica e la relativa GUI. In aggiunta ho implementato la lettura e il
+salvataggio di essi nel file JSON. Per sviluppare la parte grafica ho usato la libreria 
+JavaFX e il software SceneBuilder, il quale metteva a disposizione vari assetti per la 
+presentazione di elementi, ho quindi deciso di utilizzare 3 listView verticali: per le 
+carte da scegliere, i mazzi già salvati, e una dove verrano posizionate le carte scelte
+che comporranno il mazzo. Secondo documentazione gli elementi delle listView sono di tipo 
+ListCell, la quale verrà estesa da una sottoclasse per comporre una cella personalizzata.
 
 **Creazione celle nelle liste**
 
@@ -126,15 +125,19 @@ Rappresentazione UML del pattern Factory per le celle
 ```mermaid
 classDiagram
     class CellFactory {
+        <<Class>>
         +createDeckCell() DeckCell
         +createCenterListCell() CenterListCell
         +createRightListCell() RightListCell
     }
     class DeckCell {
+        <<Class>>
     }
     class CenterListCell {
+        <<Class>>
     }
     class RightListCell {
+        <<Class>>
     }
     CellFactory --> DeckCell
     CellFactory --> CenterListCell
@@ -142,10 +145,9 @@ classDiagram
 ```
 
 **Problema**  
-L'interfaccia presenta 3 liste verticali per visualizzare i mazzi,
-le carte del mazzo selezionato, e le carte totali disponibili.
-Ognuna di esse deve avere un'implementazione della propria cella,
-diversa per ogni lista.
+Il controller dell'interfaccia deve creare per ogni listView le 
+celle corrette: per la carta da selezionare, per la carta
+selezionata, per il mazzo.
 
 **Soluzione**
 Utilizzare il _pattern Factory Method_ per creare automaticamente
@@ -160,10 +162,17 @@ Rappresentazione UML del pattern Template per le celle delle carte
 ```mermaid
 classDiagram
     class CenterListCell {
+        <<Class>>
+        -buttonCommand: RemoveCard
     }
     class RightListCell {
+        <<Class>>
+        -buttonCommand: AddCard
     }
     class CardCell {
+        <<Class>>
+        -cellButton: Button
+        -label: Label
     }
     CardCell <|-- CenterListCell
     CardCell <|-- RightListCell
@@ -171,12 +180,13 @@ classDiagram
 
 **Problema**
 Sia la lista centrale che quella sulla destra contengono delle celle di carte che
-però differiscono per la funzionalità del pulsante, uno elimina la cella
-l'altro l'aggiunge al mazzo.
+pur rappresentando lo stesso elemento del software differiscono per la funzionalità
+del pulsante, una aggiunge la carta alla listView centrale, l'altra la elimina
 
 **Soluzione**
-Creare una classe padre CardCell che contiente le funzionalità comuni
-alle due celle che poi verrà estesa tramite il pattern _Template Method_.
+Creare una classe padre CardCell che estende l'originale ListCell che contiente tutte 
+le funzionalità comuni alle due celle, che poi verrà estesa tramite il pattern _Template Method_.
+Grazie a questo pattern elimino repitizioni di codice inutili.
 
 ### Gerardo Cipriano
 
