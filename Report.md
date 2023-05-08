@@ -409,6 +409,7 @@ considerata eseguiva le corrette funzionalità principali:
 **Descrizione**: Ho utilizzato questa libreria per gestire il parsing delle
 carte e dei mazzi la quale permette di convertire degli oggetti nella loro
 rappresentazione JSON e viceversa tramite semplici metodi: .toJson e .fromJson.
+Funzionalità incapsulate in classi apposite: DeckParser.java e CardParser.java.
 
 #### Passare l'oggetto Carta corretto al comando AddCard
 
@@ -469,7 +470,7 @@ al costruttore di AddCard perchè non avrebbe avuto nessun riferimento.
 
 **Descrizione**: Nel caso esista già un mazzo con lo stesso nome
 appare un dialog di conferma, il return di tipo Optional serve
-a gestire il caso che l'utente non accetti il dialog e quindi
+a gestire il caso in cui che l'utente non accetti il dialog e quindi
 la variabile result conterrà un null value.
 
 ### Gerardo Cipriano
@@ -571,7 +572,11 @@ Ho seguito un approccio simile per la generazione degli Item nella ChoiceBox dei
 
 ## Autovalutazione e lavori futuri
 
-### Massimiliano Battelli
+### Massimiliano Battelli  
+
+Non avendo mai lavorato con la programmazione ad oggetti questo progetto si è rivelato una sfida molto importante, non solo per lo studio del linguaggio per se, ma anche nell'affrontare gli ostacoli dello sviluppo di un progetto software di gruppo: coordinamento, sistemi di controllo versione, scrivere e leggere codice di altri, inoltre ho capito l'importanza dell'analisi del problema e del design della soluzione, i quali se fatti bene possono portare a un ingente decremento del lavoro nel futuro. Avendoci suddiviso il lavoro in parti simili, ognuno aveva un' interfaccia e la propria logica da implementare, è stato abbastanza facile poter proseguire autonomamente con il proprio lavoro senza dover dipendere troppo dai progressi degli altri colleghi, pur dovendo sempre rimanere aggiornati sula loro parte.
+Ho avuto alcune difficoltà iniziali perchè mi focalizzavo troppo su problemi marginali come trovare il design pattern perfetto, o l'implementazione 'migliore' del codice, quando in realtà era meglio focalizzarsi su una soluzione semplice e generale, e poi alla fine dedicare tempo a migliorie varie. 
+La praticità del progetto mi ha permesso di sviluppare meccanismi e processi mentali che poi si sono trasferiti molto bene su altre materie rendendomi un programmatore migliore. 
 
 ### Gerardo Cipriano
 
