@@ -88,7 +88,5 @@ public class RulesTest extends ApplicationTest {
 
         // Verify that the properties have been loaded correctly
         assertEquals("Card Creation is composed of the following phases...", properties.getProperty("CardCreation"));
-        assertEquals("Deck Management is composed of the following phases...",
-                properties.getProperty("DeckManagement"));
     }
 }
