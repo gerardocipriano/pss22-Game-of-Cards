@@ -9,12 +9,25 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AudioLoaderSingleton {
-    private static AudioLoaderSingleton instance;
+/**
+ * This class is responsible for loading audio tracks from specified folders.
+ * It loads main theme audio tracks from the "/sounds/music/MainThemes" folder
+ * and match theme audio tracks from the "/sounds/music/MatchThemes" folder.
+ * The loaded audio tracks are stored in two separate lists and can be accessed
+ * through the corresponding getter methods.
+ *
+ * @author gerardocipriano
+ */
+public class AudioLoader {
     private List<Media> mainThemeMediaList;
     private List<Media> matchThemeMediaList;
 
-    private AudioLoaderSingleton() {
+    /**
+     * Constructor for the AudioLoader class.
+     * It initializes the mainThemeMediaList and matchThemeMediaList and loads the
+     * audio tracks from the specified folders.
+     */
+    public AudioLoader() {
         mainThemeMediaList = new ArrayList<>();
         matchThemeMediaList = new ArrayList<>();
         try {
@@ -28,15 +41,14 @@ public class AudioLoaderSingleton {
         }
     }
 
-    public static AudioLoaderSingleton getInstance() {
-        if (instance == null) {
-            instance = new AudioLoaderSingleton();
-        }
-        return instance;
-    }
-
+    /**
+     * Loads main theme audio tracks from the "/sounds/music/MainThemes" folder.
+     *
+     * @throws AudioLoadingException if no audio tracks are found in the specified
+     *                               folder
+     */
     private void loadMainThemes() throws AudioLoadingException {
-        // Caricamento delle tracce audio dalla cartella delle risorse MainTheme
+        // Caricamento delle tracce audio dalla cartella delle risorse
         File mainThemeFolder = new File(getClass().getResource("/sounds/music/MainThemes").getFile());
         for (File file : mainThemeFolder.listFiles()) {
             if (file.isFile() && file.getName().endsWith(".mp3")) {
@@ -49,8 +61,14 @@ public class AudioLoaderSingleton {
         }
     }
 
+    /**
+     * Loads match theme audio tracks from the "/sounds/music/MatchThemes" folder.
+     *
+     * @throws AudioLoadingException if no audio tracks are found in the specified
+     *                               folder
+     */
     private void loadMatchThemes() throws AudioLoadingException {
-        // Loading of the audio tracks from the MatchTheme
+        // Loading of the audio tracks from the MatchThemeFile
         File matchThemeFolder = new File(getClass().getResource("/sounds/music/MatchThemes").getFile());
         for (File file : matchThemeFolder.listFiles()) {
             if (file.isFile() && file.getName().endsWith(".mp3")) {
@@ -63,10 +81,20 @@ public class AudioLoaderSingleton {
         }
     }
 
+    /**
+     * Returns a list of loaded main theme audio tracks.
+     *
+     * @return a list of loaded main theme audio tracks
+     */
     public List<Media> getMainThemeMediaList() {
         return mainThemeMediaList;
     }
 
+    /**
+     * Returns a list of loaded match theme audio tracks.
+     *
+     * @return a list of loaded match theme audio tracks
+     */
     public List<Media> getMatchThemeMediaList() {
         return matchThemeMediaList;
     }

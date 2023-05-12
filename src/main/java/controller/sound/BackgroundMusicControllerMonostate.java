@@ -5,12 +5,14 @@ import javafx.scene.media.Media;
 import java.util.List;
 
 /**
- * This class represents a Monostate that controls the background music of the application.
+ * This class represents a Monostate that controls the background music of the
+ * application.
  * It allows to play different themes and to change the volume of the music.
+ * 
  * @author gerardocipriano
  */
- 
- public class BackgroundMusicControllerMonostate implements IBackgroundMusicController {
+
+public class BackgroundMusicControllerMonostate implements IBackgroundMusicController {
     private MediaPlayerControllerSingleton mediaPlayerController = MediaPlayerControllerSingleton.getInstance();
     private static List<Media> mainThemeMediaList;
 
@@ -24,8 +26,9 @@ import java.util.List;
     }
 
     public static BackgroundMusicControllerMonostate createInstance() {
-        AudioLoaderSingleton audioLoader = AudioLoaderSingleton.getInstance();
-        return new BackgroundMusicControllerMonostate(audioLoader.getMainThemeMediaList(), audioLoader.getMatchThemeMediaList());
+        AudioLoader audioLoader = new AudioLoader();
+        return new BackgroundMusicControllerMonostate(audioLoader.getMainThemeMediaList(),
+                audioLoader.getMatchThemeMediaList());
     }
 
     public void playMainTheme() {
