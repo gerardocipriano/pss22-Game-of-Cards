@@ -14,9 +14,8 @@ public class AddCard implements IButtonCommand{
     private ListView<Card> centerList;
     private Card card;
 
-    public AddCard(RightListCell rightListCell, ListView<Card> centerList, Card card) {
+    public AddCard(RightListCell rightListCell, ListView<Card> centerList) {
         this.centerList = centerList;
-        this.card = card;
     }
 
     @Override

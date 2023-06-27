@@ -87,7 +87,9 @@ public class RulesTest extends ApplicationTest {
         Properties properties = tabPaneSetup.loadProperties("/rules/rules.properties");
 
         // Verify that the properties have been loaded correctly
+       
         assertEquals("Card Creation is composed of the following phases...",
                 properties.getProperty("CardCreation"));
+
     }
 }

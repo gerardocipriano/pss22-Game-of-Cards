@@ -18,9 +18,11 @@ public class RightListCell extends CardCell {
     public RightListCell(ListView<Card> centerList) {
         super(centerList);
         this.centerList = centerList;
-        buttonCommands.add(new AddCard(this, this.centerList, card));
+        
+        buttonCommands.add(new AddCard(this, this.centerList));
         buttonCommands.add(new PlayClipCommand());
         MacroCommand buttonMacro = new MacroCommand(buttonCommands);
+
         cellButton.setOnAction(event -> {
             Card card = getItem();
             for (IButtonCommand command : buttonCommands) {
@@ -28,8 +30,8 @@ public class RightListCell extends CardCell {
                     ((AddCard) command).setCard(card);
                 }
             }
+
             buttonMacro.execute();
         });
     }
-    
 }

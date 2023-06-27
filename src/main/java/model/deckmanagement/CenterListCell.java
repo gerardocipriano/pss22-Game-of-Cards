@@ -18,9 +18,11 @@ public class CenterListCell extends CardCell {
     public CenterListCell(ListView<Card> centerList) {
         super(centerList);
         this.centerList = centerList;
-        buttonCommands.add(new RemoveCard(this, this.centerList, null));
+        
+        buttonCommands.add(new RemoveCard(this, this.centerList));
         buttonCommands.add(new PlayClipCommand());
         MacroCommand buttonMacro = new MacroCommand(buttonCommands);
+        
         cellButton.setOnAction(event -> {
             Card card = getItem();
             for (IButtonCommand command : buttonCommands) {
