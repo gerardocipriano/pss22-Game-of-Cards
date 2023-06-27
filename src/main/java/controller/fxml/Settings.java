@@ -90,22 +90,6 @@ public class Settings {
             MacroCommand decksMacro = new MacroCommand(backCommands);
             decksMacro.execute();
         });
-
-        backButton.setOnAction(event -> {
-            List<IButtonCommand> backCommands = new ArrayList<>();
-            backCommands.add(new ChangeSceneCommand("MainMenu.fxml"));
-            backCommands.add(new PlayClipCommand());
-            MacroCommand decksMacro = new MacroCommand(backCommands);
-            decksMacro.execute();
-        });
-
-        toggleFullScreenButton.setOnAction(event -> {
-            List<IButtonCommand> backCommands = new ArrayList<>();
-            backCommands.add(new ToggleFullScreenCommand());
-            backCommands.add(new PlayClipCommand());
-            MacroCommand decksMacro = new MacroCommand(backCommands);
-            decksMacro.execute();
-        });
     }
 
     public ChoiceBox<String> getChoiceMainTheme() {

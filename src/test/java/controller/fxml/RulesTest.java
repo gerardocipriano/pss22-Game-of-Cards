@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import view.rules.TabPaneSetupView;
-import view.screen.WindowConfigurator;
+import view.screen.StageInitializer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,7 +24,7 @@ import java.io.IOException;
 
 public class RulesTest extends ApplicationTest {
 
-    private final WindowConfigurator windowConfigurator = new WindowConfigurator();
+    private final StageInitializer stageInitializer = new StageInitializer();
 
     /**
      * Set up the test environment by loading the "Rules" scene and getting its
@@ -39,7 +39,7 @@ public class RulesTest extends ApplicationTest {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        windowConfigurator.configure(stage);
+        stageInitializer.configureStage(stage);
 
         // Set the scene and show the stage
         stage.setScene(scene);
@@ -87,6 +87,9 @@ public class RulesTest extends ApplicationTest {
         Properties properties = tabPaneSetup.loadProperties("/rules/rules.properties");
 
         // Verify that the properties have been loaded correctly
-        assertEquals("Card Creation is composed of the following phases...", properties.getProperty("CardCreation"));
+       
+        assertEquals("Card Creation is composed of the following phases...",
+                properties.getProperty("CardCreation"));
+
     }
 }

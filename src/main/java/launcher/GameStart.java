@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.screen.WindowConfigurator;
+import view.screen.StageInitializer;
 import controller.sound.AudioInitializer;
 
 /**
@@ -16,17 +16,18 @@ import controller.sound.AudioInitializer;
  */
 public final class GameStart extends Application {
 
-    private final WindowConfigurator windowConfigurator;
+    private final StageInitializer stageInitializer;
 
     /**
      * Constructs a new GameStart object.
      */
     public GameStart() {
-        this.windowConfigurator = new WindowConfigurator();
+        this.stageInitializer = new StageInitializer();
     }
 
     /**
      * Starts the application.
+     * 
      * @param stage the primary stage for this application
      * @throws IOException if an I/O error occurs
      */
@@ -36,10 +37,10 @@ public final class GameStart extends Application {
         final Parent root = loader.load();
         final Scene scene = new Scene(root);
 
-        windowConfigurator.configure(stage);
+        stageInitializer.configureStage(stage);
         stage.setScene(scene);
         stage.show();
-        
+
         AudioInitializer.initializeAudio();
     }
 
