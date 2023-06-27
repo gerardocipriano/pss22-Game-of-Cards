@@ -14,9 +14,8 @@ public class RemoveCard implements IButtonCommand {
     private ListView<Card> centerList;
     private Card card;
 
-    public RemoveCard(CenterListCell centerListCell, ListView<Card> centerList, Card card) {
+    public RemoveCard(CenterListCell centerListCell, ListView<Card> centerList) {
         this.centerList = centerList;
-        this.card = card;
     }
 
     @Override

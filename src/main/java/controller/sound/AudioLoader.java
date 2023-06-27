@@ -5,7 +5,11 @@ import exceptions.ErrorDialogHandler;
 import javafx.application.Platform;
 import javafx.scene.media.Media;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,16 +52,11 @@ public class AudioLoader {
      *                               folder
      */
     private void loadMainThemes() throws AudioLoadingException {
-        // Caricamento delle tracce audio dalla cartella delle risorse
-        File mainThemeFolder = new File(getClass().getResource("/sounds/music/MainThemes").getFile());
-        for (File file : mainThemeFolder.listFiles()) {
-            if (file.isFile() && file.getName().endsWith(".mp3")) {
-                Media media = new Media(file.toURI().toString());
-                mainThemeMediaList.add(media);
-            }
-        }
-        if (mainThemeMediaList.isEmpty()) {
-            throw new AudioLoadingException("Failed to load main theme audio resources.");
+        int i = 1;
+        while( i < 5){
+            Media media = new Media(getClass().getResource("/sounds/music/MainThemes/MainTheme" + i + ".mp3").toString());
+            mainThemeMediaList.add(media);
+            i++;
         }
     }
 
@@ -68,19 +67,13 @@ public class AudioLoader {
      *                               folder
      */
     private void loadMatchThemes() throws AudioLoadingException {
-        // Loading of the audio tracks from the MatchThemeFile
-        File matchThemeFolder = new File(getClass().getResource("/sounds/music/MatchThemes").getFile());
-        for (File file : matchThemeFolder.listFiles()) {
-            if (file.isFile() && file.getName().endsWith(".mp3")) {
-                Media media = new Media(file.toURI().toString());
-                matchThemeMediaList.add(media);
-            }
-        }
-        if (matchThemeMediaList.isEmpty()) {
-            throw new AudioLoadingException("Failed to load match theme audio resources.");
+        int i = 1;
+        while( i < 6){
+            Media media = new Media(getClass().getResource("/sounds/music/MatchThemes/MatchTheme" + i + ".mp3").toString());
+            matchThemeMediaList.add(media);
+            i++;
         }
     }
-
     /**
      * Returns a list of loaded main theme audio tracks.
      *
