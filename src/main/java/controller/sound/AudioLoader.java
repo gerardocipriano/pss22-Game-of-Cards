@@ -5,11 +5,6 @@ import exceptions.ErrorDialogHandler;
 import javafx.application.Platform;
 import javafx.scene.media.Media;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +48,9 @@ public class AudioLoader {
      */
     private void loadMainThemes() throws AudioLoadingException {
         int i = 1;
-        while( i < 5){
-            Media media = new Media(getClass().getResource("/sounds/music/MainThemes/MainTheme" + i + ".mp3").toString());
+        while (i < 5) {
+            Media media = new Media(
+                    getClass().getResource("/sounds/music/MainThemes/MainTheme" + i + ".mp3").toString());
             mainThemeMediaList.add(media);
             i++;
         }
@@ -68,12 +64,14 @@ public class AudioLoader {
      */
     private void loadMatchThemes() throws AudioLoadingException {
         int i = 1;
-        while( i < 6){
-            Media media = new Media(getClass().getResource("/sounds/music/MatchThemes/MatchTheme" + i + ".mp3").toString());
+        while (i < 6) {
+            Media media = new Media(
+                    getClass().getResource("/sounds/music/MatchThemes/MatchTheme" + i + ".mp3").toString());
             matchThemeMediaList.add(media);
             i++;
         }
     }
+
     /**
      * Returns a list of loaded main theme audio tracks.
      *
